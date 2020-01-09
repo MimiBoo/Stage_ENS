@@ -1,0 +1,173 @@
+unit Unit2;
+
+interface
+
+uses
+  Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.Imaging.pngimage, Vcl.DBCtrls, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.UI.Intf,
+  FireDAC.Stan.Def, FireDAC.Phys, FireDAC.Comp.Client, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Stan.Pool, FireDAC.Phys.MSSQL,
+  FireDAC.Phys.MSSQLDef, FireDAC.VCLUI.Wait, Vcl.Grids, Vcl.DBGrids, ShellApi;
+
+type
+  TForm2 = class(TForm)
+    Body: TPanel;
+    Image1: TImage;
+    Panel1: TPanel;
+    Image2: TImage;
+    Image3: TImage;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Label1: TLabel;
+    Panel6: TPanel;
+    Panel7: TPanel;
+    btn1: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure Panel3Click(Sender: TObject);
+    procedure Panel4Click(Sender: TObject);
+    procedure btn1Click(Sender: TObject);
+
+
+
+
+  private
+      procedure WMNCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
+  public
+    { Public declarations }
+  end;
+
+
+
+var
+  Form2: TForm2;
+  NightBlue,LightBlue,BtnBlue: TColor;
+
+implementation
+
+{$R *.dfm}
+
+uses Data, point;
+procedure TForm2.WMNCHitTest(var Msg: TWMNCHitTest);
+  begin
+    inherited;
+    if Msg.Result = htClient then Msg.Result := htCaption;
+  end;
+
+procedure TForm2.btn1Click(Sender: TObject);
+begin
+ShellExecute(Handle, 'open', 'X:\PyProject\Stage\uploader.py',nil, nil, SW_SHOWNORMAL);
+end;
+
+procedure TForm2.Button1Click(Sender: TObject);
+begin
+Close;
+end;
+
+procedure TForm2.Button2Click(Sender: TObject);
+begin
+ if Form2.WindowState = wsNormal then
+   begin
+        Form2.WindowState:=wsMaximized;
+        with Screen.WorkAreaRect do
+            Form2.SetBounds(Left, Top, Right - Left, Bottom - Top);
+   end
+       else
+       begin
+         Form2.WindowState:=wsNormal;
+       end;
+end;
+
+
+
+
+procedure TForm2.Button3Click(Sender: TObject);
+begin
+     if Form2.WindowState = wsNormal then
+   begin
+        Form2.WindowState:=wsMinimized;
+   end else
+       begin
+         Form2.WindowState:=wsMinimized;
+       end;
+
+end;
+
+
+
+
+
+
+
+procedure TForm2.FormCreate(Sender: TObject);
+var
+    aShape: TShape;
+begin
+      NightBlue := TColor(RGB(33, 47, 61 ));
+      LightBlue := TColor(RGB(52, 73, 94  ));
+      BtnBlue := TColor(RGB(52, 60, 85  ));
+      Form2.Color := NightBlue;
+
+      Form2.Panel1.Color:= NightBlue;
+      Form2.Body.Color := LightBlue;
+      Form2.Panel4.Color:= BtnBlue;
+      Form2.Panel4.Font.Color:=  TColor(RGB(255, 255, 255));
+      Form2.Panel3.Color:= BtnBlue;
+      Form2.Panel3.Font.Color:=  TColor(RGB(255, 255, 255));
+      Form2.Panel2.Color:= BtnBlue;
+      Form2.Panel2.Font.Color:=  TColor(RGB(255, 255, 255));
+      Form2.Panel5.Color:= BtnBlue;
+      Form2.Panel5.Font.Color:=  TColor(RGB(255, 255, 255));
+      Form2.Panel6.Color:= BtnBlue;
+      Form2.Panel6.Font.Color:=  TColor(RGB(255, 255, 255));
+      Form2.Panel7.Color:= BtnBlue;
+      Form2.Panel7.Font.Color:=  TColor(RGB(255, 255, 255));
+
+end;
+
+
+
+
+procedure TForm2.Panel3Click(Sender: TObject);
+begin
+    Form1.Show;
+end;
+
+procedure TForm2.Panel4Click(Sender: TObject);
+begin
+ShellExecute(Handle, 'open', 'C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Asset\3rd Party\uploader.py',nil, nil, SW_SHOWNORMAL);
+end;
+
+
+{
+procedure TForm2.FormShow(Sender: TObject);
+var i: Integer;
+    TC: TCustomEdit;
+    aShape: TShape;
+
+
+begin
+  for i:=0 to ComponentCount-1 do begin
+      if (Components[i] is TCustomEdit) and
+         not (Components[i] is TMemo) then begin
+        TC := Components[i] as TCustomEdit;
+        aShape := TShape.Create(Self);
+        aShape.Parent := TC.Parent;
+        aShape.SetBounds(TC.Left,TC.Top,TC.Width,TC.Height+10);
+        TC.SetBounds(TC.Left+4,TC.Top+3,TC.Width-10,TC.Height+5);
+        TC.Anchors:=[akTop,akRight];
+        aShape.Shape:=stRoundRect;
+        aShape.Brush.Color:=TC.Brush.Color;
+        aShape.Pen.Color:=clWindowFrame;
+      end;
+  end;
+end; }
+
+end.

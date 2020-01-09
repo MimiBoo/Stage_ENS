@@ -1,0 +1,53 @@
+unit point;
+
+interface
+
+uses
+  Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage;
+
+type
+  TForm1 = class(TForm)
+    Body: TPanel;
+    Panel1: TPanel;
+    Image1: TImage;
+    Image3: TImage;
+    Image2: TImage;
+    procedure FormCreate(Sender: TObject);
+  private
+    procedure WMNCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  NightBlue,LightBlue,BtnBlue: TColor;
+
+
+
+implementation
+
+{$R *.dfm}
+
+ 
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+      NightBlue := TColor(RGB(33, 47, 61 ));
+      LightBlue := TColor(RGB(52, 73, 94  ));
+      BtnBlue := TColor(RGB(52, 60, 85  ));
+      Form1.Body.Color := LightBlue;
+      Form1.Color := NightBlue;
+      Form1.Panel1.Color:= NightBlue;
+
+
+
+end;
+
+procedure TForm1.WMNCHitTest(var Msg: TWMNCHitTest);
+begin
+inherited;
+  if Msg.Result = htClient then Msg.Result := htCaption;
+end;
+
+end.
