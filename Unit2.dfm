@@ -5338,7 +5338,7 @@ object Form2: TForm2
       Width = 147
       Height = 66
       BevelOuter = bvNone
-      Caption = #1573#1590#1575#1601#1577' '#1591#1575#1604#1576
+      Caption = #1575#1604#1591#1604#1576#1577
       Font.Charset = ARABIC_CHARSET
       Font.Color = clWindowText
       Font.Height = -19
@@ -5347,6 +5347,7 @@ object Form2: TForm2
       ParentBackground = False
       ParentFont = False
       TabOrder = 3
+      OnClick = Panel5Click
     end
     object Panel6: TPanel
       Left = 192
@@ -5354,7 +5355,7 @@ object Form2: TForm2
       Width = 147
       Height = 66
       BevelOuter = bvNone
-      Caption = #1573#1590#1575#1601#1577' '#1575#1604#1575#1587#1575#1578#1584#1577
+      Caption = ' '#1575#1604#1575#1587#1575#1578#1584#1577
       Font.Charset = ARABIC_CHARSET
       Font.Color = clWindowText
       Font.Height = -19
@@ -5363,6 +5364,7 @@ object Form2: TForm2
       ParentBackground = False
       ParentFont = False
       TabOrder = 4
+      OnClick = Panel6Click
     end
     object Panel7: TPanel
       Left = 22
@@ -5379,6 +5381,7 @@ object Form2: TForm2
       ParentBackground = False
       ParentFont = False
       TabOrder = 5
+      OnClick = Panel7Click
     end
   end
   object Panel1: TPanel
@@ -5414,8 +5417,8 @@ object Form2: TForm2
       OnClick = Button1Click
     end
     object Image2: TImage
-      Left = 17
-      Top = 12
+      Left = 33
+      Top = 8
       Width = 24
       Height = 24
       AutoSize = True

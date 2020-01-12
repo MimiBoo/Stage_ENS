@@ -1,0 +1,47 @@
+unit Edit_Stage;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
+  Vcl.StdCtrls, Vcl.DBCtrls, Vcl.ComCtrls;
+
+type
+  TForm8 = class(TForm)
+    Body: TPanel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Panel7: TPanel;
+    Panel2: TPanel;
+    Editstd_name: TEdit;
+    Editstd_lastname: TEdit;
+    EditbDate_place: TEdit;
+    bDate: TDateTimePicker;
+    DBComboBoxclass_num: TDBComboBox;
+    DBComboBoxstate_num: TDBComboBox;
+    Editstd_num: TEdit;
+    Label1: TLabel;
+    Panel1: TPanel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form8: TForm8;
+
+implementation
+
+{$R *.dfm}
+
+end.

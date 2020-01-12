@@ -1,0 +1,155 @@
+unit Stage;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
+  Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.DBCGrids, Vcl.DBCtrls;
+
+type
+  TForm6 = class(TForm)
+    Panel1: TPanel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Body: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    SearchBox1: TSearchBox;
+    GroupBox1: TGroupBox;
+    Panel4: TPanel;
+    DBCtrlGrid1: TDBCtrlGrid;
+    Panel5: TPanel;
+    DBText1: TDBText;
+    Panel6: TPanel;
+    DBText2: TDBText;
+    DBText3: TDBText;
+    DBText4: TDBText;
+    DBText5: TDBText;
+    ComboBox1: TComboBox;
+    procedure FormCreate(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure Panel2Click(Sender: TObject);
+    procedure Panel3Click(Sender: TObject);
+    procedure Panel4Click(Sender: TObject);
+    procedure SearchBox1Change(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form6: TForm6;
+    NightBlue,LightBlue,BtnBlue: TColor;
+
+implementation
+
+{$R *.dfm}
+
+uses Data, add_Stage, Edit_Stage;
+
+procedure TForm6.FormCreate(Sender: TObject);
+var
+    aShape: TShape;
+begin
+  NightBlue := TColor(RGB(33, 47, 61 ));
+      LightBlue := TColor(RGB(52, 73, 94  ));
+      BtnBlue := TColor(RGB(52, 60, 85  ));
+      Form6.Color := NightBlue;
+
+      Form6.Panel1.Color:= NightBlue;
+      Form6.Body.Color := LightBlue;
+
+      Form6.Panel2.Color:= BtnBlue;
+      Form6.Panel2.Font.Color:=  TColor(RGB(255, 255, 255));
+
+end;
+
+procedure TForm6.Image1Click(Sender: TObject);
+begin
+close;
+end;
+
+procedure TForm6.Panel2Click(Sender: TObject);
+begin
+Form7.ShowModal;
+end;
+
+procedure TForm6.Panel3Click(Sender: TObject);
+begin
+dbData.StudentTable.Edit;
+Form8.ShowModal;
+end;
+
+procedure TForm6.Panel4Click(Sender: TObject);
+    var vali: integer;
+begin
+  // ”Ì√Œ– «·„ €ÌÌ— ﬁÌ„… «·—”«·… √Ê ﬁÌ„… ÷€ÿ √Õœ «“—«— «·—”«·…
+  vali := Messagedlg('«Œ — ‰⁄„ √Ê ·«',mtConfirmation, [mbYes, mbNo], 0);
+
+if  vali = mrYes  then
+begin
+dbData.StudentTable.Delete;
+  ShowMessage(' „ «·Õ–›');
+end;
+
+end;
+
+procedure TForm6.SearchBox1Change(Sender: TObject);
+var nom:string ;
+begin
+
+
+try
+
+dbData.StudentTable.SQL.Clear;
+dbData.StudentTable.SQL.Add('SELECT * from Student  where [[std_num]]  like '+SearchBox1.Text+'%');
+dbData.StudentTable.Open;
+
+
+if ComboBox1.Text = '—ﬁ„ «·ÿ«·»' then
+begin
+dbData.StudentTable.SQL.Clear;
+dbData.StudentTable.SQL.Add('SELECT * from Student  where [[std_num]]  like '+QuotedStr(SearchBox1.Text+'%'));
+dbData.StudentTable.Open;
+
+end
+else
+begin
+if ComboBox1.Text = '«·«”„' then
+begin
+dbData.StudentTable.SQL.Clear;
+dbData.StudentTable.SQL.Add('SELECT * from Student  where [std_name]  like '+QuotedStr(SearchBox1.Text+'%'));
+dbData.StudentTable.Open;
+
+end
+else
+begin
+
+if ComboBox1.Text = '«··ﬁ»' then
+
+
+dbData.StudentTable.SQL.Clear;
+dbData.StudentTable.SQL.Add('SELECT * from Student  where [[std_lastname]]  like '+QuotedStr(SearchBox1.Text+'%'));
+dbData.StudentTable.Open;
+
+
+end;
+
+
+end;
+
+finally
+
+end;
+
+
+
+
+
+
+end;
+
+end.

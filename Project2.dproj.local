@@ -1,15 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BorlandProject>
 	<Transactions>
-    <Transaction>2020/01/06 12:48:39.000.428,=C:\Users\hp\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2020/01/06 12:49:51.000.998,C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit2.dfm=C:\Users\hp\Documents\Embarcadero\Studio\Projects\Unit2.dfm</Transaction>
-    <Transaction>2020/01/06 12:49:51.000.998,C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit2.pas=C:\Users\hp\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
-    <Transaction>2020/01/06 12:49:53.000.459,C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Project2.dproj=C:\Users\hp\Documents\Embarcadero\Studio\Projects\Project2.dproj</Transaction>
-    <Transaction>2020/01/09 09:34:31.000.307,=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit1.pas</Transaction>
-    <Transaction>2020/01/09 09:43:06.000.723,C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit1.pas=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Data.pas</Transaction>
-    <Transaction>2020/01/09 09:43:06.000.723,C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit1.dfm=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Data.dfm</Transaction>
-    <Transaction>2020/01/09 10:06:34.000.982,=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit1.pas</Transaction>
-    <Transaction>2020/01/09 10:06:57.000.025,C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit1.pas=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\point.pas</Transaction>
-    <Transaction>2020/01/09 10:06:57.000.025,C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit1.dfm=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\point.dfm</Transaction>
+    <Transaction>2020-01-06 12:48:39.000.428,=C:\Users\hp\Documents\Embarcadero\Studio\Projects\Unit2.pas</Transaction>
+    <Transaction>2020-01-06 12:49:51.000.998,C:\Users\hp\Documents\Embarcadero\Studio\Projects\Unit2.pas=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit2.pas</Transaction>
+    <Transaction>2020-01-06 12:49:51.000.998,C:\Users\hp\Documents\Embarcadero\Studio\Projects\Unit2.dfm=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit2.dfm</Transaction>
+    <Transaction>2020-01-06 12:49:53.000.459,C:\Users\hp\Documents\Embarcadero\Studio\Projects\Project2.dproj=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Project2.dproj</Transaction>
+    <Transaction>2020-01-09 09:34:31.000.307,=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit1.pas</Transaction>
+    <Transaction>2020-01-09 09:43:06.000.723,C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Data.pas=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit1.pas</Transaction>
+    <Transaction>2020-01-09 09:43:06.000.723,C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Data.dfm=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit1.dfm</Transaction>
+    <Transaction>2020-01-09 10:06:34.000.982,=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit1.pas</Transaction>
+    <Transaction>2020-01-09 10:06:57.000.025,C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\point.pas=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit1.pas</Transaction>
+    <Transaction>2020-01-09 10:06:57.000.025,C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\point.dfm=C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Unit1.dfm</Transaction>
+    <Transaction>2020-01-12 12:28:14.355,=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\ModelSupport_Project2\default.txvpck</Transaction>
+    <Transaction>2020-01-12 12:29:47.757,=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit3.pas</Transaction>
+    <Transaction>2020-01-12 12:30:30.860,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Settings.dfm=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit3.dfm</Transaction>
+    <Transaction>2020-01-12 12:30:30.860,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Settings.pas=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit3.pas</Transaction>
+    <Transaction>2020-01-12 12:33:40.800,=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit4.pas</Transaction>
+    <Transaction>2020-01-12 12:34:02.273,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\AddAdmin.dfm=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit4.dfm</Transaction>
+    <Transaction>2020-01-12 12:34:02.273,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\AddAdmin.pas=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit4.pas</Transaction>
+    <Transaction>2020-01-12 12:35:13.140,=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit5.pas</Transaction>
+    <Transaction>2020-01-12 12:35:34.998,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Login.pas=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit5.pas</Transaction>
+    <Transaction>2020-01-12 12:35:34.998,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Login.dfm=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit5.dfm</Transaction>
+    <Transaction>2020-01-12 12:41:11.380,=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit6.pas</Transaction>
+    <Transaction>2020-01-12 12:43:01.935,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\add_Stage.pas=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit6.pas</Transaction>
+    <Transaction>2020-01-12 12:43:01.935,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\add_Stage.dfm=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit6.dfm</Transaction>
+    <Transaction>2020-01-12 13:31:39.525,=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit7.pas</Transaction>
+    <Transaction>2020-01-12 13:34:42.415,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\add_Stage.pas=</Transaction>
+    <Transaction>2020-01-12 13:36:09.603,=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\add_Stage.pas</Transaction>
+    <Transaction>2020-01-12 13:37:10.920,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Stage.dfm=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\add_Stage.dfm</Transaction>
+    <Transaction>2020-01-12 13:37:10.920,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Stage.pas=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\add_Stage.pas</Transaction>
+    <Transaction>2020-01-12 13:37:26.622,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\add_Stage.pas=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit7.pas</Transaction>
+    <Transaction>2020-01-12 13:37:26.622,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\add_Stage.dfm=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit7.dfm</Transaction>
+    <Transaction>2020-01-12 15:06:17.095,=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit8.pas</Transaction>
+    <Transaction>2020-01-12 15:08:59.378,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Edit_Stage.pas=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit8.pas</Transaction>
+    <Transaction>2020-01-12 15:08:59.378,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Edit_Stage.dfm=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit8.dfm</Transaction>
+    <Transaction>2020-01-12 17:41:41.156,=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit9.pas</Transaction>
+    <Transaction>2020-01-12 17:44:37.173,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Teacher.dfm=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit9.dfm</Transaction>
+    <Transaction>2020-01-12 17:44:37.173,C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Teacher.pas=C:\Users\OUALIDDAHDI\Desktop\مجلد جديد (2)\Stage_ENS\Unit9.pas</Transaction>
   </Transactions>
 </BorlandProject>

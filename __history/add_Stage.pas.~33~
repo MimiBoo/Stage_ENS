@@ -1,0 +1,80 @@
+unit add_Stage;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
+  Vcl.StdCtrls, Vcl.ComCtrls, Vcl.DBCtrls, Vcl.Mask;
+
+type
+  TForm7 = class(TForm)
+    Body: TPanel;
+    Panel7: TPanel;
+    Label1: TLabel;
+    Panel1: TPanel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Panel2: TPanel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Editstd_name: TEdit;
+    Editstd_lastname: TEdit;
+    EditbDate_place: TEdit;
+    bDate: TDateTimePicker;
+    DBComboBoxclass_num: TDBComboBox;
+    DBComboBoxstate_num: TDBComboBox;
+    Label8: TLabel;
+    Editstd_num: TEdit;
+    procedure Image1Click(Sender: TObject);
+    procedure Panel2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form7: TForm7;
+
+implementation
+
+{$R *.dfm}
+
+uses Data;
+
+procedure TForm7.Image1Click(Sender: TObject);
+begin
+close;
+end;
+
+procedure TForm7.Panel2Click(Sender: TObject);
+var x:integer;
+begin
+
+dbData.StudentTable.Insert;
+dbData.StudentTablestd_num.AsString := Editstd_num.Text;
+dbData.StudentTablestd_name.AsString :=  Editstd_name.Text;
+dbData.StudentTablestd_lastname.AsString := Editstd_lastname.Text;
+dbData.StudentTablebDate_place.AsString := EditbDate_place.Text;
+dbData.StudentTablebDate.AsDateTime := bDate.DateTime;
+
+
+
+dbData.StudentTableclass_num.AsInteger := strtoint(DBComboBoxclass_num.GetCount);
+dbData.StudentTablestate_num.AsInteger := strtoint(DBComboBoxstate_num.GetCount);
+
+dbData.StudentTable.Post;
+
+////////////////////////
+
+
+
+end;
+
+end.

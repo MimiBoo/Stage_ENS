@@ -32,6 +32,9 @@ type
     procedure FormCreate(Sender: TObject);
     procedure Panel3Click(Sender: TObject);
     procedure Panel4Click(Sender: TObject);
+    procedure Panel7Click(Sender: TObject);
+    procedure Panel5Click(Sender: TObject);
+    procedure Panel6Click(Sender: TObject);
 
 
 
@@ -52,7 +55,7 @@ implementation
 
 {$R *.dfm}
 
-uses Data, point;
+uses Data, point, Settings, Login, add_Stage, Stage, Teacher;
 
 procedure TForm2.WMNCHitTest(var Msg: TWMNCHitTest);
   begin
@@ -65,6 +68,7 @@ procedure TForm2.WMNCHitTest(var Msg: TWMNCHitTest);
 procedure TForm2.Button1Click(Sender: TObject);
 begin
 Close;
+Form5.Close;
 end;
 
 procedure TForm2.Button2Click(Sender: TObject);
@@ -140,4 +144,19 @@ procedure TForm2.Panel4Click(Sender: TObject);
 begin
 ShellExecute(Handle, 'open', 'C:\Users\hp\Documents\Embarcadero\Studio\Projects\StageENS\Assets\app\uploader.py',nil, nil, SW_SHOWNORMAL);
 end;
+procedure TForm2.Panel5Click(Sender: TObject);
+begin
+Form6.ShowModal;
+end;
+
+procedure TForm2.Panel6Click(Sender: TObject);
+begin
+form9.ShowModal;
+end;
+
+procedure TForm2.Panel7Click(Sender: TObject);
+begin
+    Form3.Show;
+end;
+
 end.
