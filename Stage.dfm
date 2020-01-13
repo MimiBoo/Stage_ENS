@@ -17,7 +17,7 @@ object Form6: TForm6
   Position = poDesktopCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 14
+  TextHeight = 15
   object Panel1: TPanel
     Left = 710
     Top = 0
@@ -209,23 +209,20 @@ object Form6: TForm6
         TabOrder = 0
         RowCount = 14
         ShowHint = False
-        ExplicitWidth = 848
-        ExplicitHeight = 392
         object Panel5: TPanel
-          Left = 718
+          Left = 696
           Top = 0
-          Width = 96
+          Width = 118
           Height = 29
           Align = alRight
+          BevelOuter = bvNone
           TabOrder = 0
-          ExplicitLeft = 735
-          ExplicitHeight = 28
           object DBText1: TDBText
             AlignWithMargins = True
-            Left = 4
-            Top = 4
-            Width = 88
-            Height = 21
+            Left = 3
+            Top = 3
+            Width = 112
+            Height = 23
             Align = alClient
             Alignment = taCenter
             DataField = 'std_num'
@@ -236,27 +233,26 @@ object Form6: TForm6
             Font.Name = 'B amir'
             Font.Style = []
             ParentFont = False
-            ExplicitLeft = 48
-            ExplicitTop = 32
-            ExplicitWidth = 65
-            ExplicitHeight = 17
+            ExplicitLeft = 6
+            ExplicitWidth = 87
           end
         end
         object Panel6: TPanel
           Left = 0
           Top = 0
-          Width = 718
+          Width = 696
           Height = 29
           Align = alClient
+          BevelOuter = bvNone
           TabOrder = 1
-          ExplicitWidth = 735
-          ExplicitHeight = 28
+          OnClick = Panel6Click
+          ExplicitWidth = 718
           object DBText2: TDBText
             AlignWithMargins = True
-            Left = 588
-            Top = 4
-            Width = 126
-            Height = 21
+            Left = 564
+            Top = 3
+            Width = 129
+            Height = 23
             Align = alRight
             DataField = 'std_name'
             DataSource = dbData.DataSourceStudent
@@ -266,14 +262,14 @@ object Form6: TForm6
             Font.Name = 'B amir'
             Font.Style = []
             ParentFont = False
-            ExplicitHeight = 32
+            ExplicitLeft = 583
           end
           object DBText3: TDBText
             AlignWithMargins = True
-            Left = 464
-            Top = 4
+            Left = 440
+            Top = 3
             Width = 118
-            Height = 21
+            Height = 23
             Align = alRight
             Alignment = taCenter
             DataField = 'std_lastname'
@@ -284,14 +280,16 @@ object Form6: TForm6
             Font.Name = 'B amir'
             Font.Style = []
             ParentFont = False
+            ExplicitLeft = 464
+            ExplicitTop = 4
             ExplicitHeight = 32
           end
           object DBText4: TDBText
             AlignWithMargins = True
-            Left = 280
-            Top = 4
+            Left = 256
+            Top = 3
             Width = 178
-            Height = 21
+            Height = 23
             Align = alRight
             Alignment = taCenter
             DataField = 'bDate_place'
@@ -302,14 +300,16 @@ object Form6: TForm6
             Font.Name = 'B amir'
             Font.Style = []
             ParentFont = False
+            ExplicitLeft = 280
+            ExplicitTop = 4
             ExplicitHeight = 32
           end
           object DBText5: TDBText
             AlignWithMargins = True
-            Left = 176
-            Top = 4
+            Left = 152
+            Top = 3
             Width = 98
-            Height = 21
+            Height = 23
             Align = alRight
             Alignment = taCenter
             DataField = 'bDate'
@@ -320,6 +320,8 @@ object Form6: TForm6
             Font.Name = 'B amir'
             Font.Style = []
             ParentFont = False
+            ExplicitLeft = 176
+            ExplicitTop = 4
             ExplicitHeight = 32
           end
         end

@@ -15,9 +15,6 @@ type
     DataSourceSpec: TDataSource;
     Stage_ensConnection: TFDConnection;
     DataSourceAdmen: TDataSource;
-    AdmenTable: TFDQuery;
-    AdmenTableUser_Name: TStringField;
-    AdmenTablePassword: TStringField;
     DataSourceTeacher: TDataSource;
     DataSourceApsent: TDataSource;
     DataSourcePoint: TDataSource;
@@ -26,15 +23,6 @@ type
     DataSourceSubject: TDataSource;
     DataSourceState: TDataSource;
     DataSourceStudent: TDataSource;
-    TeacherTable: TFDQuery;
-    TeacherTableteach_num: TFDAutoIncField;
-    TeacherTableteach_name: TStringField;
-    TeacherTableteach_lastname: TStringField;
-    TeacherTableteach_level: TStringField;
-    TeacherTableteach_head: TStringField;
-    SubjectTable: TFDQuery;
-    SubjectTablesubj_num: TFDAutoIncField;
-    SubjectTablesubj_name: TStringField;
     StudentTable: TFDQuery;
     StudentTablestd_num: TStringField;
     StudentTablestd_name: TStringField;
@@ -53,15 +41,6 @@ type
     DivisionTablediv_num: TFDAutoIncField;
     DivisionTablediv_name: TStringField;
     ClassTable: TFDQuery;
-    ClassTableclass_num: TFDAutoIncField;
-    ClassTableclass_name: TStringField;
-    ClassTablediv_num: TIntegerField;
-    ClassTablespec_num: TIntegerField;
-    ApsentTable: TFDQuery;
-    ApsentTableapsent_num: TFDAutoIncField;
-    ApsentTableapsent_date: TDateField;
-    ApsentTableapsent_time: TTimeField;
-    ApsentTablestd_num: TIntegerField;
     PointTable: TFDQuery;
     PointTablepoint_num: TFDAutoIncField;
     PointTableexam1: TIntegerField;
@@ -72,6 +51,16 @@ type
     PointTablestd_num: TStringField;
     PointTablesubj_num: TIntegerField;
     PointTableteach_num: TIntegerField;
+    AdminTable: TFDQuery;
+    SubjectTable: TFDQuery;
+    TeacherTable: TFDQuery;
+    ApsentTable: TFDQuery;
+    AdminTableUser_Name: TStringField;
+    AdminTablePassword: TStringField;
+    ClassTableclass_num: TFDAutoIncField;
+    ClassTableclass_name: TStringField;
+    ClassTablediv_num: TIntegerField;
+    ClassTablespec_num: TIntegerField;
   private
     { Private declarations }
   public

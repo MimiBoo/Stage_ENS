@@ -59,11 +59,11 @@ end;
 procedure TForm5.Panel2Click(Sender: TObject);
 begin
 
-if (EdieUser_Name.Text = dbData.AdmenTableUser_Name.AsString) and
-              (EdiePassword.Text = dbData.AdmenTablePassword.AsString) then
+if (EdieUser_Name.Text = dbData.AdminTableUser_Name.AsString) and
+              (EdiePassword.Text = dbData.AdminTablePassword.AsString) then
    begin
      Form2.ShowModal;
-     Form5.Visible := True
+     Form5.Visible := false;
 
     end
 

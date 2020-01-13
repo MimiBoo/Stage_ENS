@@ -131,10 +131,10 @@ object Form3: TForm3
     TabOrder = 1
     object GroupBox1: TGroupBox
       Left = 0
-      Top = 0
+      Top = 6
       Width = 416
-      Height = 75
-      Align = alTop
+      Height = 83
+      Align = alBottom
       BiDiMode = bdRightToLeft
       DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
@@ -147,10 +147,10 @@ object Form3: TForm3
       ParentFont = False
       TabOrder = 0
       object Label1: TLabel
-        Left = 329
+        Left = 336
         Top = 3
-        Width = 70
-        Height = 19
+        Width = 63
+        Height = 20
         Caption = #1602#1587#1605' '#1575#1604#1576#1610#1575#1606#1575#1578':'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindow
@@ -197,10 +197,10 @@ object Form3: TForm3
     end
     object GroupBox2: TGroupBox
       Left = 0
-      Top = 75
+      Top = 89
       Width = 416
       Height = 110
-      Align = alTop
+      Align = alBottom
       BiDiMode = bdRightToLeft
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -211,10 +211,10 @@ object Form3: TForm3
       ParentFont = False
       TabOrder = 1
       object Label2: TLabel
-        Left = 306
+        Left = 313
         Top = 18
-        Width = 93
-        Height = 19
+        Width = 86
+        Height = 20
         Caption = #1602#1587#1605' '#1575#1604#1605#1587#1578#1582#1583#1605#1610#1606':'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindow

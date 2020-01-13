@@ -9,33 +9,16 @@ object dbData: TdbData
   end
   object Stage_ensConnection: TFDConnection
     Params.Strings = (
-      'ConnectionDef=Stage_ENS')
+      'ConnectionDef=StageENS')
     Connected = True
     LoginPrompt = False
     Left = 436
     Top = 250
   end
   object DataSourceAdmen: TDataSource
-    DataSet = AdmenTable
+    DataSet = AdminTable
     Left = 96
     Top = 128
-  end
-  object AdmenTable: TFDQuery
-    Active = True
-    Connection = Stage_ensConnection
-    SQL.Strings = (
-      'SELECT * FROM Stage_ENS.dbo.Admen')
-    Left = 101
-    Top = 68
-    object AdmenTableUser_Name: TStringField
-      FieldName = 'User_Name'
-      Required = True
-      Size = 30
-    end
-    object AdmenTablePassword: TStringField
-      FieldName = 'Password'
-      Required = True
-    end
   end
   object DataSourceTeacher: TDataSource
     DataSet = TeacherTable
@@ -76,64 +59,6 @@ object dbData: TdbData
     DataSet = StudentTable
     Left = 288
     Top = 312
-  end
-  object TeacherTable: TFDQuery
-    Active = True
-    Connection = Stage_ensConnection
-    SQL.Strings = (
-      'SELECT * FROM Stage_ENS.dbo.Teacher')
-    Left = 407
-    Top = 336
-    object TeacherTableteach_num: TFDAutoIncField
-      FieldName = 'teach_num'
-      Origin = 'teach_num'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object TeacherTableteach_name: TStringField
-      FieldName = 'teach_name'
-      Origin = 'teach_name'
-      Required = True
-      Size = 25
-    end
-    object TeacherTableteach_lastname: TStringField
-      FieldName = 'teach_lastname'
-      Origin = 'teach_lastname'
-      Required = True
-      Size = 25
-    end
-    object TeacherTableteach_level: TStringField
-      FieldName = 'teach_level'
-      Origin = 'teach_level'
-      Required = True
-      Size = 30
-    end
-    object TeacherTableteach_head: TStringField
-      FieldName = 'teach_head'
-      Origin = 'teach_head'
-      Required = True
-      Size = 30
-    end
-  end
-  object SubjectTable: TFDQuery
-    Active = True
-    Connection = Stage_ensConnection
-    SQL.Strings = (
-      'SELECT * FROM Stage_ENS.dbo.Subject')
-    Left = 349
-    Top = 194
-    object SubjectTablesubj_num: TFDAutoIncField
-      FieldName = 'subj_num'
-      Origin = 'subj_num'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object SubjectTablesubj_name: TStringField
-      FieldName = 'subj _name'
-      Origin = '[subj _name]'
-      Required = True
-      Size = 25
-    end
   end
   object StudentTable: TFDQuery
     Active = True
@@ -273,35 +198,6 @@ object dbData: TdbData
       Required = True
     end
   end
-  object ApsentTable: TFDQuery
-    Active = True
-    Connection = Stage_ensConnection
-    SQL.Strings = (
-      'SELECT * FROM Stage_ENS.dbo.Apsent')
-    Left = 478
-    Top = 325
-    object ApsentTableapsent_num: TFDAutoIncField
-      FieldName = 'apsent_num'
-      Origin = 'apsent_num'
-      ProviderFlags = [pfInWhere, pfInKey]
-      ReadOnly = True
-    end
-    object ApsentTableapsent_date: TDateField
-      FieldName = 'apsent_date'
-      Origin = 'apsent_date'
-      Required = True
-    end
-    object ApsentTableapsent_time: TTimeField
-      FieldName = 'apsent_time'
-      Origin = 'apsent_time'
-      Required = True
-    end
-    object ApsentTablestd_num: TIntegerField
-      FieldName = 'std_num'
-      Origin = 'std_num'
-      Required = True
-    end
-  end
   object PointTable: TFDQuery
     Active = True
     Connection = Stage_ensConnection
@@ -356,5 +252,49 @@ object dbData: TdbData
       Origin = 'teach_num'
       Required = True
     end
+  end
+  object AdminTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Admin')
+    Left = 96
+    Top = 94
+    object AdminTableUser_Name: TStringField
+      FieldName = 'User_Name'
+      Origin = 'User_Name'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 30
+    end
+    object AdminTablePassword: TStringField
+      FieldName = 'Password'
+      Origin = 'Password'
+      Required = True
+    end
+  end
+  object SubjectTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Subject')
+    Left = 355
+    Top = 190
+  end
+  object TeacherTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Teacher')
+    Left = 403
+    Top = 341
+  end
+  object ApsentTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Apsent')
+    Left = 474
+    Top = 323
   end
 end

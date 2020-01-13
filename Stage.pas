@@ -33,6 +33,7 @@ type
     procedure Panel3Click(Sender: TObject);
     procedure Panel4Click(Sender: TObject);
     procedure SearchBox1Change(Sender: TObject);
+    procedure Panel6Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -99,6 +100,11 @@ dbData.StudentTable.Delete;
   ShowMessage(' „ «·Õ–›');
 end;
 
+end;
+
+procedure TForm6.Panel6Click(Sender: TObject);
+begin
+Panel6.Color:= clWhite;
 end;
 
 procedure TForm6.SearchBox1Change(Sender: TObject);

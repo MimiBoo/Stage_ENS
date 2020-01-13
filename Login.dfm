@@ -17,7 +17,7 @@ object Form5: TForm5
   Position = poOwnerFormCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 14
+  TextHeight = 15
   object Panel1: TPanel
     Left = 247
     Top = 0
