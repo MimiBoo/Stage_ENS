@@ -170,10 +170,14 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void userAuth() {
-    if (user.user_id == _userId) {
+    if (user.userId == _userId) {
       if (user.password == _password) {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => NotesPage()));
+            context,
+            MaterialPageRoute(
+                builder: (context) => NotesPage(
+                      userId: user.userId,
+                    )));
       }
     }
   }
