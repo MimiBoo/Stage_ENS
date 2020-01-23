@@ -5,11 +5,11 @@ object Form7: TForm7
   BorderStyle = bsNone
   Caption = 'Form7'
   ClientHeight = 447
-  ClientWidth = 324
+  ClientWidth = 669
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
+  Font.Height = 18
   Font.Name = 'B amir'
   Font.Style = []
   OldCreateOrder = False
@@ -17,24 +17,24 @@ object Form7: TForm7
   Position = poDesktopCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 14
+  TextHeight = 18
   object Label1: TLabel
-    Left = 49
-    Top = 9
-    Width = 121
-    Height = 23
+    Left = 267
+    Top = 14
+    Width = 71
+    Height = 18
     Caption = #1573#1590#1575#1601#1577' '#1605#1578#1585#1576#1589
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
-    Font.Height = -19
-    Font.Name = 'Tahoma'
+    Font.Height = 18
+    Font.Name = 'B amir'
     Font.Style = [fsBold]
     ParentFont = False
   end
   object Body: TPanel
     Left = 0
     Top = 38
-    Width = 324
+    Width = 669
     Height = 409
     Align = alBottom
     Anchors = [akLeft, akTop, akRight, akBottom]
@@ -48,11 +48,9 @@ object Form7: TForm7
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 615
-    ExplicitHeight = 370
     object Label2: TLabel
-      Left = 238
-      Top = 40
+      Left = 590
+      Top = 32
       Width = 58
       Height = 18
       Caption = #1585#1602#1605' '#1575#1604#1591#1575#1604#1576':'
@@ -64,8 +62,8 @@ object Form7: TForm7
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 266
-      Top = 74
+      Left = 618
+      Top = 66
       Width = 30
       Height = 18
       Caption = #1575#1604#1575#1587#1605':'
@@ -77,8 +75,8 @@ object Form7: TForm7
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 268
-      Top = 114
+      Left = 620
+      Top = 106
       Width = 28
       Height = 18
       Caption = #1575#1604#1604#1602#1576':'
@@ -90,8 +88,8 @@ object Form7: TForm7
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 229
-      Top = 149
+      Left = 581
+      Top = 141
       Width = 67
       Height = 18
       Caption = #1578#1575#1585#1610#1582' '#1575#1604#1605#1610#1604#1575#1583':'
@@ -103,8 +101,8 @@ object Form7: TForm7
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 233
-      Top = 187
+      Left = 585
+      Top = 179
       Width = 63
       Height = 18
       Caption = #1605#1603#1575#1606' '#1575#1604#1605#1610#1604#1575#1583':'
@@ -116,8 +114,8 @@ object Form7: TForm7
       ParentFont = False
     end
     object Label7: TLabel
-      Left = 268
-      Top = 225
+      Left = 620
+      Top = 217
       Width = 28
       Height = 18
       Caption = #1575#1604#1602#1587#1605':'
@@ -128,12 +126,25 @@ object Form7: TForm7
       Font.Style = []
       ParentFont = False
     end
-    object Label8: TLabel
-      Left = 260
-      Top = 265
-      Width = 36
+    object Label10: TLabel
+      Left = 333
+      Top = 217
+      Width = 31
       Height = 18
-      Caption = #1575#1604#1608#1604#1575#1610#1577':'
+      Caption = #1575#1604#1601#1585#1593':'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 18
+      Font.Name = 'B amir'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label11: TLabel
+      Left = 595
+      Top = 253
+      Width = 54
+      Height = 18
+      Caption = #1575#1604#1578#1582#1589#1589':'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = 18
@@ -178,8 +189,8 @@ object Form7: TForm7
       OnClick = Panel2Click
     end
     object Editstd_name: TEdit
-      Left = 32
-      Top = 73
+      Left = 384
+      Top = 65
       Width = 177
       Height = 26
       Cursor = crIBeam
@@ -192,8 +203,8 @@ object Form7: TForm7
       TabOrder = 2
     end
     object Editstd_lastname: TEdit
-      Left = 32
-      Top = 108
+      Left = 384
+      Top = 100
       Width = 177
       Height = 26
       Cursor = crIBeam
@@ -205,70 +216,101 @@ object Form7: TForm7
       ParentFont = False
       TabOrder = 3
     end
-    object EditbDate_place: TEdit
-      Left = 32
-      Top = 180
-      Width = 177
-      Height = 26
-      Cursor = crIBeam
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = 18
-      Font.Name = 'B amir'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 4
-    end
     object bDate: TDateTimePicker
-      Left = 32
-      Top = 145
+      Left = 384
+      Top = 137
       Width = 177
       Height = 26
       Cursor = crHandPoint
       Date = 43842.573136712960000000
       Time = 43842.573136712960000000
-      TabOrder = 5
-    end
-    object DBComboBoxclass_num: TDBComboBox
-      Left = 64
-      Top = 222
-      Width = 145
-      Height = 26
-      Cursor = crHandPoint
-      DataField = 'class_name'
-      DataSource = dbData.DataSourceClass
-      ReadOnly = True
-      TabOrder = 6
-    end
-    object DBComboBoxstate_num: TDBComboBox
-      Left = 64
-      Top = 262
-      Width = 145
-      Height = 26
-      Cursor = crHandPoint
-      DataField = 'state_name'
-      DataSource = dbData.DataSourceState
-      ReadOnly = True
-      TabOrder = 7
+      TabOrder = 4
     end
     object Editstd_num: TEdit
-      Left = 88
-      Top = 37
+      Left = 440
+      Top = 29
       Width = 121
       Height = 26
       Cursor = crIBeam
+      TabOrder = 5
+    end
+    object DBComboBoxclass_num: TComboBox
+      Left = 431
+      Top = 214
+      Width = 130
+      Height = 26
+      TabOrder = 6
+      TextHint = #1573#1582#1578#1575#1585' '#1602#1587#1605
+    end
+    object DBComboBoxstate_num: TComboBox
+      Left = 432
+      Top = 174
+      Width = 130
+      Height = 26
+      TabOrder = 7
+      TextHint = #1573#1582#1578#1575#1585' '#1575#1604#1608#1604#1575#1610#1577
+    end
+    object Button1: TButton
+      Left = 384
+      Top = 215
+      Width = 41
+      Height = 25
+      Caption = '+'
       TabOrder = 8
+      OnClick = Button1Click
+    end
+    object Button2: TButton
+      Left = 385
+      Top = 174
+      Width = 41
+      Height = 25
+      Caption = '+'
+      TabOrder = 9
+      OnClick = Button2Click
+    end
+    object ComboBoxdiv_num: TComboBox
+      Left = 151
+      Top = 214
+      Width = 130
+      Height = 26
+      TabOrder = 10
+      TextHint = #1573#1582#1578#1575#1585' '#1575#1604#1601#1585#1593
+    end
+    object Button4: TButton
+      Left = 104
+      Top = 215
+      Width = 41
+      Height = 25
+      Caption = '+'
+      TabOrder = 11
+      OnClick = Button4Click
+    end
+    object ComboBoxspec_num: TComboBox
+      Left = 432
+      Top = 250
+      Width = 130
+      Height = 26
+      TabOrder = 12
+      TextHint = #1573#1582#1578#1575#1585' '#1575#1604#1578#1582#1589#1589
+    end
+    object Button5: TButton
+      Left = 385
+      Top = 251
+      Width = 41
+      Height = 25
+      Caption = '+'
+      TabOrder = 13
+      OnClick = Button5Click
     end
   end
   object Panel1: TPanel
-    Left = 199
+    Left = 544
     Top = 0
     Width = 125
     Height = 38
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitLeft = 490
     object Image1: TImage
       Left = 93
       Top = 8

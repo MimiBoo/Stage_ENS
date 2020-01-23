@@ -3,7 +3,7 @@ unit Teacher;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.DBCGrids,
   Vcl.WinXCtrls, Vcl.Imaging.pngimage, Vcl.ExtCtrls;
 
@@ -19,7 +19,6 @@ type
     SearchBox1: TSearchBox;
     GroupBox1: TGroupBox;
     DBCtrlGrid1: TDBCtrlGrid;
-    Panel4: TPanel;
     Panel5: TPanel;
     Panel6: TPanel;
     DBText1: TDBText;
@@ -29,7 +28,7 @@ type
     DBText5: TDBText;
     procedure Image1Click(Sender: TObject);
   private
-    { Private declarations }
+      procedure WMNCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
   public
     { Public declarations }
   end;
@@ -42,7 +41,11 @@ implementation
 {$R *.dfm}
 
 uses Data;
-
+procedure TForm9.WMNCHitTest(var Msg: TWMNCHitTest);
+  begin
+    inherited;
+    if Msg.Result = htClient then Msg.Result := htCaption;
+  end;
 procedure TForm9.Image1Click(Sender: TObject);
 begin
 close

@@ -3,7 +3,7 @@ unit Settings;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
   Vcl.StdCtrls, Vcl.DBCGrids, Vcl.DBCtrls, Data.Win.ADODB;
 
@@ -29,7 +29,7 @@ type
     procedure Panel4Click(Sender: TObject);
     procedure Panel3Click(Sender: TObject);
   private
-    { Private declarations }
+      procedure WMNCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
   public
     { Public declarations }
   end;
@@ -43,7 +43,11 @@ implementation
 {$R *.dfm}
 
 uses Data, AddAdmin;
-
+ procedure TForm3.WMNCHitTest(var Msg: TWMNCHitTest);
+  begin
+    inherited;
+    if Msg.Result = htClient then Msg.Result := htCaption;
+  end;
 procedure TForm3.FormCreate(Sender: TObject);
 var   aShape: TShape;
 begin

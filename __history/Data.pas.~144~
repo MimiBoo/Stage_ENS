@@ -1,0 +1,226 @@
+unit Data;
+
+interface
+
+uses
+  Windows,System.Variants,System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MSSQL,
+  FireDAC.Phys.MSSQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
+
+type
+  TdbData = class(TDataModule)
+    DataSourceSpec: TDataSource;
+    Stage_ensConnection: TFDConnection;
+    DataSourceAdmen: TDataSource;
+    DataSourceTeacher: TDataSource;
+    DataSourceApsent: TDataSource;
+    DataSourcePoint: TDataSource;
+    DataSourceDiv: TDataSource;
+    DataSourceClass: TDataSource;
+    DataSourceSubject: TDataSource;
+    DataSourceState: TDataSource;
+    DataSourceStudent: TDataSource;
+    DataSourceMunicipal: TDataSource;
+    AdmenTable: TFDQuery;
+    ApsentTable: TFDQuery;
+    ClassTable: TFDQuery;
+    DivisionTable: TFDQuery;
+    MunicipalTable: TFDQuery;
+    SpecTable: TFDQuery;
+    StateTable: TFDQuery;
+    StudentTable: TFDQuery;
+    SubjectTable: TFDQuery;
+    TeacherTable: TFDQuery;
+    ApsentTableapsent_num: TFDAutoIncField;
+    ApsentTableapsent_date: TDateField;
+    ApsentTableapsent_time: TTimeField;
+    ApsentTablestd_num: TStringField;
+    TeacherTableteach_num: TFDAutoIncField;
+    TeacherTableteach_name: TStringField;
+    TeacherTableteach_lastname: TStringField;
+    TeacherTableteach_level: TStringField;
+    TeacherTableteach_head: TStringField;
+    SpecTablespec_num: TFDAutoIncField;
+    SpecTablespec_name: TStringField;
+    SubjectTablesubj_num: TFDAutoIncField;
+    SubjectTablesubj_name: TStringField;
+    SubjectTableMultiplier: TIntegerField;
+    StateTablestate_num: TFDAutoIncField;
+    StateTablestate_name: TStringField;
+    DivisionTablediv_num: TFDAutoIncField;
+    DivisionTablediv_name: TStringField;
+    AdmenTableUser_Name: TStringField;
+    AdmenTablePassword: TStringField;
+    ClassTableclass_num: TFDAutoIncField;
+    ClassTableclass_name: TStringField;
+    MunicipalTableMunicipal_num: TFDAutoIncField;
+    MunicipalTableMunicipal_mane: TStringField;
+    MunicipalTablestate_num: TIntegerField;
+    DataSourcePonintviews: TDataSource;
+    DataSourceStudentview: TDataSource;
+    StudentTablestd_num: TStringField;
+    StudentTablestd_name: TStringField;
+    StudentTablestd_lastname: TStringField;
+    StudentTablebDate: TDateField;
+    StudentTableclass_num: TIntegerField;
+    StudentTablediv_num: TIntegerField;
+    StudentTablespec_num: TIntegerField;
+    StudentTablestate_num: TIntegerField;
+    PointTable: TFDQuery;
+    PointTablepoint_num: TFDAutoIncField;
+    PointTabletp: TFloatField;
+    PointTabletd: TFloatField;
+    PointTableexama1: TFloatField;
+    PointTableexama2: TFloatField;
+    PointTablestd_num: TStringField;
+    PointTablesubj_num: TIntegerField;
+    PointTableteach_num: TIntegerField;
+    PointTableYear: TIntegerField;
+    PointTableratrapage: TBooleanField;
+    PonintviewsView: TFDQuery;
+    StudentviewView: TFDQuery;
+    PonintviewsViewsubj_name: TStringField;
+    PonintviewsViewtp: TFloatField;
+    PonintviewsViewtd: TFloatField;
+    PonintviewsViewexama1: TFloatField;
+    PonintviewsViewexama2: TFloatField;
+    PonintviewsViewYear: TIntegerField;
+    PonintviewsViewratrapage: TBooleanField;
+    PonintviewsViewMultiplier: TIntegerField;
+    PonintviewsViewstd_num: TStringField;
+    StudentviewViewstd_num: TStringField;
+    StudentviewViewstd_name: TStringField;
+    StudentviewViewstd_lastname: TStringField;
+    StudentviewViewbDate: TDateField;
+    StudentviewViewdiv_name: TStringField;
+    StudentviewViewclass_name: TStringField;
+    StudentviewViewspec_name: TStringField;
+    StudentviewViewstate_name: TStringField;
+    PonintviewsViewSum: TFloatField;
+    DataSource1: TDataSource;
+    FDMemTable1: TFDMemTable;
+    FDMemTable1SumAll: TFloatField;
+    RatrapageviewView: TFDQuery;
+    procedure PonintviewsViewCalcFields(DataSet: TDataSet);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  dbData: TdbData;
+  sumAll : real;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+uses Unit17;
+
+{$R *.dfm}
+
+
+procedure TdbData.PonintviewsViewCalcFields(DataSet: TDataSet);
+var TP,TD,exama1,exama2,sum,x :real;
+begin
+//  dbData.FDMemTable1.Edit;
+//  dbData.FDMemTable1SumAll.AsFloat := 0;
+if (dbData.PonintviewsView.FieldByName('tp').AsVariant = NULL) and (dbData.PonintviewsView.FieldByName('td').AsVariant = NULL) then
+  begin
+    exama1 := dbData.PonintviewsView.FieldByName('exama1').AsFloat;
+    exama2 := dbData.PonintviewsView.FieldByName('exama2').AsFloat;
+    sum := (exama1+exama2)/2;
+
+
+    dbData.PonintviewsView.FieldByName('Sum').Value:= sum;
+
+
+
+
+    if sum <= 10 then
+     begin
+      dbData.PointTable.Edit;
+       dbData.PointTable.FieldByName('ratrapage').AsBoolean := true;
+      dbData.PointTable.Post;
+
+     end;
+
+
+  end;
+     if (dbData.PonintviewsView.FieldByName('tp').AsVariant = NULL) then
+        begin
+    exama1 := dbData.PonintviewsView.FieldByName('exama1').AsFloat;
+    exama2 := dbData.PonintviewsView.FieldByName('exama2').AsFloat;
+    TD := dbData.PonintviewsView.FieldByName('td').AsFloat;
+    sum := (exama1+exama2+TD)/3;
+
+    dbData.PonintviewsView.FieldByName('Sum').Value:= sum;
+
+
+    x :=  sum + x;
+
+    if sum <= 10 then
+     begin
+      dbData.PointTable.Edit;
+       dbData.PointTable.FieldByName('ratrapage').AsBoolean := true;
+       dbData.PointTable.Post;
+
+     end;
+        end;
+
+   if (dbData.PonintviewsView.FieldByName('td').AsVariant = NULL) then
+        begin
+    exama1 := dbData.PonintviewsView.FieldByName('exama1').AsFloat;
+    exama2 := dbData.PonintviewsView.FieldByName('exama2').AsFloat;
+    TP := dbData.PonintviewsView.FieldByName('tp').AsFloat;
+    sum := (exama1+exama2+TP)/3;
+   dbData.PonintviewsView.FieldByName('Sum').Value:= sum;
+
+       x :=  sum + x;
+   if sum <= 10 then
+     begin
+      dbData.PointTable.Edit;
+       dbData.PointTable.FieldByName('ratrapage').AsBoolean := true;
+       dbData.PointTable.Post;
+
+     end;
+        end;
+
+    if (dbData.PonintviewsView.FieldByName('td').AsVariant <> NULL) and (dbData.PonintviewsView.FieldByName('tp').AsVariant <> NULL)
+             and (dbData.PonintviewsView.FieldByName('exama1').AsVariant <> NULL) and (dbData.PonintviewsView.FieldByName('exama2').AsVariant <> NULL) then
+        begin
+    exama1 := dbData.PonintviewsView.FieldByName('exama1').AsFloat;
+    exama2 := dbData.PonintviewsView.FieldByName('exama2').AsFloat;
+    TD := dbData.PonintviewsView.FieldByName('td').AsFloat;
+    TP := dbData.PonintviewsView.FieldByName('tp').AsFloat;
+    sum := ((exama1+exama2)+((TP + TD )/ 2))/3;
+
+
+    dbData.PonintviewsView.FieldByName('Sum').Value:= sum;
+
+    x :=  sum + x;
+    if sum <= 10 then
+     begin
+
+       dbData.PointTable.Edit;
+       dbData.PointTable.FieldByName('ratrapage').AsBoolean := true;
+       dbData.PointTable.Post;
+
+     end;
+
+  end;
+
+
+
+//       dbData.FDMemTable1.FieldByName('SumAll').AsFloat:= x
+//                                   + dbData.FDMemTable1.FieldByName('SumAll').AsFloat;
+//
+
+end;
+
+
+end.

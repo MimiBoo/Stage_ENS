@@ -1,18 +1,24 @@
 object Form1: TForm1
   Left = 0
   Top = 0
+  BiDiMode = bdRightToLeft
   BorderStyle = bsNone
   Caption = 'Form1'
   ClientHeight = 717
   ClientWidth = 1315
   Color = clBtnFace
-  ParentFont = True
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = 18
+  Font.Name = 'B amir'
+  Font.Style = []
   OldCreateOrder = False
+  ParentBiDiMode = False
   Position = poDesktopCenter
   ScreenSnap = True
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 18
   object Body: TPanel
     Left = 0
     Top = 42
@@ -23,7 +29,723 @@ object Form1: TForm1
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
-    ExplicitTop = 48
+    object Panel4: TPanel
+      Left = 0
+      Top = 0
+      Width = 1315
+      Height = 17
+      Align = alTop
+      BevelOuter = bvNone
+      BiDiMode = bdRightToLeft
+      ParentBiDiMode = False
+      TabOrder = 0
+    end
+    object Panel5: TPanel
+      Left = 0
+      Top = 17
+      Width = 1315
+      Height = 48
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 1
+      object GridPanel1: TGridPanel
+        Left = 1128
+        Top = 0
+        Width = 187
+        Height = 48
+        Align = alRight
+        BevelOuter = bvNone
+        BiDiMode = bdRightToLeft
+        ColumnCollection = <
+          item
+            Value = 50.793650793650790000
+          end
+          item
+            Value = 49.206349206349210000
+          end>
+        ControlCollection = <
+          item
+            Column = 1
+            Control = Panel3
+            Row = 0
+          end
+          item
+            Column = 0
+            Control = Panel2
+            Row = 0
+          end
+          item
+            Column = 0
+            Row = 0
+          end>
+        ParentBiDiMode = False
+        RowCollection = <
+          item
+            Value = 50.000000000000000000
+          end
+          item
+            Value = 50.000000000000000000
+          end
+          item
+          end>
+        TabOrder = 0
+        object Panel3: TPanel
+          AlignWithMargins = True
+          Left = 97
+          Top = 3
+          Width = 87
+          Height = 41
+          Align = alTop
+          BevelInner = bvRaised
+          BevelOuter = bvNone
+          Caption = #1581#1601#1592
+          Font.Charset = ARABIC_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'B amir'
+          Font.Style = [fsBold]
+          ParentBackground = False
+          ParentFont = False
+          TabOrder = 0
+          OnClick = Panel3Click
+        end
+        object Panel2: TPanel
+          AlignWithMargins = True
+          Left = 3
+          Top = 3
+          Width = 88
+          Height = 41
+          Align = alTop
+          BevelInner = bvRaised
+          BevelOuter = bvNone
+          Caption = #1578#1593#1583#1610#1604' '#1575#1604#1606#1602#1591#1577
+          Font.Charset = ARABIC_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'B amir'
+          Font.Style = [fsBold]
+          ParentBackground = False
+          ParentFont = False
+          TabOrder = 1
+          OnClick = Panel2Click
+        end
+      end
+      object GridPanel3: TGridPanel
+        Left = 941
+        Top = 0
+        Width = 187
+        Height = 48
+        Align = alRight
+        BevelOuter = bvNone
+        BiDiMode = bdRightToLeft
+        ColumnCollection = <
+          item
+            Value = 50.793650793650790000
+          end
+          item
+            Value = 49.206349206349210000
+          end>
+        ControlCollection = <
+          item
+            Column = 1
+            Control = Panel11
+            Row = 0
+          end
+          item
+            Column = 0
+            Row = 0
+          end>
+        ParentBiDiMode = False
+        RowCollection = <
+          item
+            Value = 50.000000000000000000
+          end
+          item
+            Value = 50.000000000000000000
+          end
+          item
+          end>
+        TabOrder = 1
+        object Panel11: TPanel
+          AlignWithMargins = True
+          Left = 97
+          Top = 3
+          Width = 87
+          Height = 41
+          Align = alTop
+          BevelInner = bvRaised
+          BevelOuter = bvNone
+          Caption = #1573#1590#1575#1601#1577
+          Font.Charset = ARABIC_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'B amir'
+          Font.Style = [fsBold]
+          ParentBackground = False
+          ParentFont = False
+          TabOrder = 0
+          OnClick = Panel11Click
+        end
+      end
+    end
+    object DBGrid1: TDBGrid
+      Left = 0
+      Top = 236
+      Width = 1315
+      Height = 439
+      Align = alBottom
+      BorderStyle = bsNone
+      Ctl3D = True
+      DataSource = dbData.DataSourcePonintviews
+      DrawingStyle = gdsGradient
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindow
+      Font.Height = 18
+      Font.Name = 'B amir'
+      Font.Style = []
+      ParentColor = True
+      ParentCtl3D = False
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 2
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clBtnText
+      TitleFont.Height = 18
+      TitleFont.Name = 'B amir'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'tp'
+          ReadOnly = True
+          Title.Caption = #1575#1604#1575#1593#1605#1575#1604' '#1575#1604#1578#1591#1576#1610#1602#1610#1577
+          Width = 64
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'td'
+          ReadOnly = True
+          Title.Caption = #1575#1604#1575#1593#1605#1575#1604' '#1575#1604#1605#1608#1580#1607#1577
+          Width = 64
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'exama1'
+          ReadOnly = True
+          Title.Caption = #1575#1604#1575#1605#1578#1581#1575#1606' '#1575#1604#1575#1608#1604
+          Width = 88
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'exama2'
+          ReadOnly = True
+          Title.Caption = #1575#1604#1575#1605#1578#1581#1575#1606' '#1575#1604#1579#1575#1606#1610
+          Width = 64
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'subj_name'
+          ReadOnly = True
+          Title.Caption = #1575#1604#1605#1575#1583#1577
+          Width = 120
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Multiplier'
+          ReadOnly = True
+          Title.Caption = #1575#1604#1605#1593#1575#1605#1604
+          Width = 64
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Year'
+          ReadOnly = True
+          Title.Caption = #1575#1604#1587#1606#1577
+          Width = 73
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ratrapage'
+          ReadOnly = True
+          Title.Caption = #1575#1604#1575#1587#1578#1583#1585#1575#1603
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Sum'
+          Title.Caption = #1575#1604#1605#1593#1583#1604
+          Width = 51
+          Visible = True
+        end>
+    end
+    object Panel8: TPanel
+      Left = 0
+      Top = 97
+      Width = 1315
+      Height = 24
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 3
+    end
+    object Panel13: TPanel
+      Left = 0
+      Top = 65
+      Width = 1315
+      Height = 32
+      Align = alTop
+      BevelOuter = bvNone
+      TabOrder = 4
+      object GridPanel4: TGridPanel
+        Left = 0
+        Top = 0
+        Width = 1315
+        Height = 32
+        Align = alClient
+        BevelOuter = bvNone
+        ColumnCollection = <
+          item
+            Value = 50.000000000000000000
+          end
+          item
+            Value = 50.000000000000000000
+          end>
+        ControlCollection = <
+          item
+            Column = 1
+            Control = Panel14
+            Row = 0
+          end
+          item
+            Column = 0
+            Control = Panel15
+            Row = 0
+          end>
+        Ctl3D = False
+        DoubleBuffered = False
+        ParentCtl3D = False
+        ParentDoubleBuffered = False
+        RowCollection = <
+          item
+            Value = 100.000000000000000000
+          end
+          item
+            SizeStyle = ssAuto
+          end>
+        TabOrder = 0
+        object Panel14: TPanel
+          Left = 658
+          Top = 0
+          Width = 657
+          Height = 32
+          Align = alRight
+          BevelOuter = bvNone
+          TabOrder = 0
+          object Label4: TLabel
+            AlignWithMargins = True
+            Left = 588
+            Top = 3
+            Width = 66
+            Height = 26
+            Align = alRight
+            Caption = #1585#1602#1605' '#1575#1604#1591#1575#1604#1576' : '
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindow
+            Font.Height = 18
+            Font.Name = 'B amir'
+            Font.Style = []
+            ParentFont = False
+            ExplicitHeight = 18
+          end
+          object Label5: TLabel
+            AlignWithMargins = True
+            Left = 423
+            Top = 3
+            Width = 38
+            Height = 26
+            Align = alRight
+            Caption = #1575#1604#1575#1587#1605' : '
+            ExplicitHeight = 18
+          end
+          object Label8: TLabel
+            AlignWithMargins = True
+            Left = 260
+            Top = 3
+            Width = 36
+            Height = 26
+            Align = alRight
+            Caption = #1575#1604#1604#1602#1576' : '
+            ExplicitHeight = 18
+          end
+          object Editstd_num: TDBEdit
+            Left = 464
+            Top = 0
+            Width = 121
+            Height = 32
+            Align = alRight
+            DataField = 'std_num'
+            DataSource = dbData.DataSourceStudentview
+            Enabled = False
+            TabOrder = 0
+            OnChange = Editstd_numChange
+            ExplicitHeight = 24
+          end
+          object DBEdit2: TDBEdit
+            Left = 299
+            Top = 0
+            Width = 121
+            Height = 32
+            Align = alRight
+            DataField = 'std_name'
+            DataSource = dbData.DataSourceStudentview
+            Enabled = False
+            TabOrder = 1
+            ExplicitHeight = 24
+          end
+          object DBEdit3: TDBEdit
+            Left = 136
+            Top = 0
+            Width = 121
+            Height = 32
+            Align = alRight
+            DataField = 'std_lastname'
+            DataSource = dbData.DataSourceStudentview
+            Enabled = False
+            TabOrder = 2
+            ExplicitHeight = 24
+          end
+        end
+        object Panel15: TPanel
+          Left = 0
+          Top = 0
+          Width = 657
+          Height = 32
+          Align = alClient
+          BevelOuter = bvNone
+          TabOrder = 1
+          object Label1: TLabel
+            AlignWithMargins = True
+            Left = 180
+            Top = 3
+            Width = 25
+            Height = 26
+            Align = alLeft
+            Caption = #1575#1604#1587#1606#1577
+            ExplicitHeight = 18
+          end
+          object Panel16: TPanel
+            Left = 0
+            Top = 0
+            Width = 25
+            Height = 32
+            Align = alLeft
+            BevelOuter = bvNone
+            TabOrder = 0
+          end
+          object CheckBox2: TCheckBox
+            Left = 560
+            Top = 0
+            Width = 97
+            Height = 32
+            Align = alRight
+            BiDiMode = bdLeftToRight
+            Caption = #1575#1604#1575#1587#1578#1583#1585#1575#1603
+            ParentBiDiMode = False
+            TabOrder = 1
+            OnClick = CheckBox1Click
+          end
+          object ComboBox1: TComboBox
+            AlignWithMargins = True
+            Left = 28
+            Top = 3
+            Width = 146
+            Height = 26
+            Align = alLeft
+            Color = clGrayText
+            TabOrder = 2
+            OnChange = DBComboBoxspec_numChange
+            Items.Strings = (
+              #1575#1604#1575#1608#1604
+              #1575#1604#1579#1575#1606#1610
+              #1575#1604#1579#1575#1604#1579
+              #1575#1604#1585#1575#1576#1593
+              #1575#1604#1582#1575#1605#1587)
+          end
+        end
+      end
+    end
+    object Panel17: TPanel
+      Left = 0
+      Top = 121
+      Width = 1315
+      Height = 115
+      Align = alClient
+      BevelOuter = bvNone
+      TabOrder = 5
+      object Panel18: TPanel
+        Left = 0
+        Top = 0
+        Width = 1315
+        Height = 40
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 0
+        object Label9: TLabel
+          AlignWithMargins = True
+          Left = 1249
+          Top = 3
+          Width = 63
+          Height = 34
+          Align = alRight
+          Caption = #1575#1587#1578#1575#1584' '#1575#1604#1605#1575#1583#1577' :'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindow
+          Font.Height = 18
+          Font.Name = 'B amir'
+          Font.Style = []
+          ParentFont = False
+          ExplicitHeight = 18
+        end
+        object Label14: TLabel
+          AlignWithMargins = True
+          Left = 1042
+          Top = 3
+          Width = 49
+          Height = 34
+          Align = alRight
+          Caption = #1575#1604#1605#1602#1610#1575#1587' : '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindow
+          Font.Height = 18
+          Font.Name = 'B amir'
+          Font.Style = []
+          ParentFont = False
+          ExplicitHeight = 18
+        end
+        object Label15: TLabel
+          AlignWithMargins = True
+          Left = 836
+          Top = 3
+          Width = 48
+          Height = 34
+          Align = alRight
+          Caption = #1575#1604#1605#1593#1575#1605#1604' : '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindow
+          Font.Height = 18
+          Font.Name = 'B amir'
+          Font.Style = []
+          ParentFont = False
+          ExplicitHeight = 18
+        end
+        object DBComboBoxteach_name: TComboBox
+          AlignWithMargins = True
+          Left = 1097
+          Top = 3
+          Width = 146
+          Height = 26
+          Align = alRight
+          Color = clGrayText
+          Enabled = False
+          TabOrder = 0
+        end
+        object DBComboBoxsubj_name: TComboBox
+          AlignWithMargins = True
+          Left = 890
+          Top = 3
+          Width = 146
+          Height = 26
+          Align = alRight
+          Color = clGrayText
+          Enabled = False
+          TabOrder = 1
+          OnChange = DBComboBoxspec_numChange
+        end
+        object DBEditMultiplier: TDBEdit
+          AlignWithMargins = True
+          Left = 795
+          Top = 3
+          Width = 35
+          Height = 34
+          Align = alRight
+          DataField = 'Multiplier'
+          DataSource = dbData.DataSourceSubject
+          DragMode = dmAutomatic
+          Enabled = False
+          TabOrder = 2
+          ExplicitHeight = 26
+        end
+      end
+      object Panel19: TPanel
+        Left = 0
+        Top = 40
+        Width = 1315
+        Height = 40
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 1
+        object Label10: TLabel
+          AlignWithMargins = True
+          Left = 1250
+          Top = 3
+          Width = 62
+          Height = 34
+          Align = alRight
+          Caption = #1585#1602#1605' '#1575#1604#1606#1602#1591#1577' : '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindow
+          Font.Height = 18
+          Font.Name = 'B amir'
+          Font.Style = []
+          ParentFont = False
+          ExplicitHeight = 18
+        end
+        object Label11: TLabel
+          AlignWithMargins = True
+          Left = 1050
+          Top = 3
+          Width = 120
+          Height = 34
+          Align = alRight
+          Caption = #1606#1602#1591#1577' '#1575#1604#1575#1593#1605#1575#1604' '#1575#1604#1605#1608#1580#1607#1577' : '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindow
+          Font.Height = 18
+          Font.Name = 'B amir'
+          Font.Style = []
+          ParentFont = False
+          ExplicitHeight = 18
+        end
+        object Label12: TLabel
+          AlignWithMargins = True
+          Left = 863
+          Top = 3
+          Width = 118
+          Height = 34
+          Align = alRight
+          Caption = #1606#1602#1591#1577' '#1575#1604#1575#1593#1605#1575#1604' '#1575#1604#1578#1591#1576#1610#1602#1610#1577' :'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindow
+          Font.Height = 18
+          Font.Name = 'B amir'
+          Font.Style = []
+          ParentFont = False
+          ExplicitHeight = 18
+        end
+        object Label13: TLabel
+          AlignWithMargins = True
+          Left = 667
+          Top = 3
+          Width = 127
+          Height = 34
+          Align = alRight
+          Caption = #1606#1602#1591#1577' '#1575#1604#1575#1605#1578#1581#1575#1606' '#1575#1604#1588#1575#1605#1604'1 : '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindow
+          Font.Height = 18
+          Font.Name = 'B amir'
+          Font.Style = []
+          ParentFont = False
+          ExplicitHeight = 18
+        end
+        object Label2: TLabel
+          AlignWithMargins = True
+          Left = 471
+          Top = 3
+          Width = 127
+          Height = 34
+          Align = alRight
+          Caption = #1606#1602#1591#1577' '#1575#1604#1575#1605#1578#1581#1575#1606' '#1575#1604#1588#1575#1605#1604'2 : '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindow
+          Font.Height = 18
+          Font.Name = 'B amir'
+          Font.Style = []
+          ParentFont = False
+          ExplicitHeight = 18
+        end
+        object DBEdit4: TDBEdit
+          AlignWithMargins = True
+          Left = 1176
+          Top = 3
+          Width = 68
+          Height = 34
+          Align = alRight
+          DataField = 'point_num'
+          DataSource = dbData.DataSourcePoint
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -15
+          Font.Name = 'B amir'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+          ExplicitHeight = 25
+        end
+        object Panel6: TPanel
+          AlignWithMargins = True
+          Left = 353
+          Top = 3
+          Width = 49
+          Height = 34
+          Align = alRight
+          BevelOuter = bvNone
+          Caption = #1578#1605
+          Font.Charset = ARABIC_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -19
+          Font.Name = 'B amir'
+          Font.Style = [fsBold]
+          ParentBackground = False
+          ParentFont = False
+          TabOrder = 1
+          OnClick = Panel6Click
+        end
+        object Edittd: TEdit
+          Left = 984
+          Top = 0
+          Width = 63
+          Height = 40
+          Align = alRight
+          TabOrder = 2
+          ExplicitHeight = 26
+        end
+        object Editexama2: TEdit
+          Left = 405
+          Top = 0
+          Width = 63
+          Height = 40
+          Align = alRight
+          TabOrder = 3
+          ExplicitHeight = 26
+        end
+        object Editexama1: TEdit
+          Left = 601
+          Top = 0
+          Width = 63
+          Height = 40
+          Align = alRight
+          TabOrder = 4
+          ExplicitHeight = 26
+        end
+        object Edittp: TEdit
+          Left = 797
+          Top = 0
+          Width = 63
+          Height = 40
+          Align = alRight
+          TabOrder = 5
+          ExplicitHeight = 26
+        end
+      end
+    end
   end
   object Panel1: TPanel
     Left = 1168
@@ -34,7 +756,7 @@ object Form1: TForm1
     BevelOuter = bvNone
     TabOrder = 1
     object Image1: TImage
-      Left = 117
+      Left = 114
       Top = 8
       Width = 24
       Height = 24
@@ -58,8 +780,8 @@ object Form1: TForm1
       OnClick = Image1Click
     end
     object Image3: TImage
-      Left = 49
-      Top = 9
+      Left = 54
+      Top = 8
       Width = 24
       Height = 24
       AutoSize = True

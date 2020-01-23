@@ -102,10 +102,6 @@
         <DelphiCompile Include="$(MainSource)">
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
-        <DCCReference Include="Unit2.pas">
-            <Form>Form2</Form>
-            <FormType>dfm</FormType>
-        </DCCReference>
         <DCCReference Include="Data.pas">
             <Form>dbData</Form>
             <FormType>dfm</FormType>
@@ -142,6 +138,41 @@
         <DCCReference Include="Teacher.pas">
             <Form>Form9</Form>
             <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Add_class.pas">
+            <Form>Form10</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Add_State.pas">
+            <Form>Form11</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Add_Spec.pas">
+            <Form>Form12</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Add_Division.pas">
+            <Form>Form13</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Unit14.pas">
+            <Form>Form14</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Unit2.pas">
+            <Form>Form2</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Add_Subject.pas">
+            <Form>Form15</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Unit17.pas">
+            <Form>Form17</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="Ratrapage.pas">
+            <Form>Form16</Form>
         </DCCReference>
         <None Include="ModelSupport_Project2\default.txvpck"/>
         <BuildConfiguration Include="Release">

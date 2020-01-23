@@ -1,0 +1,62 @@
+unit Add_State;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
+  Vcl.Mask, Vcl.DBCtrls, Vcl.StdCtrls;
+
+type
+  TForm11 = class(TForm)
+    Body: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    Editstate_num: TEdit;
+    Panel2: TPanel;
+    Panel7: TPanel;
+    DBEdit1: TDBEdit;
+    Panel1: TPanel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    procedure Panel2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form11: TForm11;
+
+implementation
+
+{$R *.dfm}
+
+uses Data;
+
+procedure TForm11.Panel2Click(Sender: TObject);
+begin
+
+
+if (Editstate_num.Text <> '' ) then
+ begin
+
+
+dbData.StateTable.Insert;
+
+dbData.StateTablestate_name.AsString :=  Editstate_num.Text;
+
+dbData.StateTable.Post;
+
+
+ end
+ else
+ begin
+   ShowMessage('Â‰«ﬂ Œ«‰… ›«—€…');
+ end;
+
+end;
+
+end.

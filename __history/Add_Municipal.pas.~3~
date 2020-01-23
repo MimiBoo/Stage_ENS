@@ -1,0 +1,108 @@
+unit Add_Municipal;
+
+interface
+
+uses
+  Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls, Vcl.Mask, Vcl.DBCtrls;
+
+type
+  TForm16 = class(TForm)
+    Body: TPanel;
+    Label1: TLabel;
+    Label2: TLabel;
+    EditMunicipal_num: TEdit;
+    Panel2: TPanel;
+    Panel7: TPanel;
+    DBEdit1: TDBEdit;
+    Panel1: TPanel;
+    Image1: TImage;
+    Image2: TImage;
+    Image3: TImage;
+    Label3: TLabel;
+    DBComboBoxstate_num: TComboBox;
+    procedure Panel2Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+     procedure WMNCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form16: TForm16;
+
+   NightBlue,LightBlue,BtnBlue: TColor;
+
+implementation
+
+{$R *.dfm}
+
+uses Data;
+
+
+procedure TForm16.WMNCHitTest(var Msg: TWMNCHitTest);
+  begin
+    inherited;
+    if Msg.Result = htClient then Msg.Result := htCaption;
+  end;
+
+procedure TForm16.FormCreate(Sender: TObject);
+var
+    aShape: TShape;
+begin
+ NightBlue := TColor(RGB(33, 47, 61 ));
+      LightBlue := TColor(RGB(52, 73, 94  ));
+      BtnBlue := TColor(RGB(52, 60, 85  ));
+      Form16.Color := NightBlue;
+
+      Form16.Panel1.Color:= NightBlue;
+      Form16.Body.Color := LightBlue;
+
+      Form16.Panel2.Color:= BtnBlue;
+      Form16.Panel2.Font.Color:=  TColor(RGB(255, 255, 255));
+
+      Form16.Panel7.Color:= BtnBlue;
+      Form16.Panel7.Font.Color:=  TColor(RGB(255, 255, 255));
+
+end;
+
+procedure TForm16.Panel2Click(Sender: TObject);
+begin
+   if (EditMunicipal_num.Text <> '' ) then
+ begin
+
+
+dbData.MunicipalTable.Insert;
+
+dbData.MunicipalTableMunicipal_mane.AsString :=  EditMunicipal_num.Text;
+
+with dbData.StateTable do
+ begin
+   Close;
+   SQL.Clear;
+   SQL.Text := 'select * from State where state_name = '+quotedstr(DBComboBoxstate_num.Text);
+   Open;
+
+   dbData.StateTable.First;
+
+   while not dbData.StateTable.Eof do
+    begin
+     dbData.MunicipalTablestate_num.AsInteger :=  StrtoInt(dbData.StateTable['state_num']) ;
+
+    dbData.StateTable.Next;
+    end;
+ end;
+
+dbData.MunicipalTable.Post;
+
+
+ end
+ else
+ begin
+   ShowMessage('Â‰«ﬂ Œ«‰… ›«—€…');
+ end;
+end;
+
+end.

@@ -48,8 +48,6 @@ object Form8: TForm8
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 332
-    ExplicitHeight = 428
     object Label2: TLabel
       Left = 238
       Top = 40
@@ -177,48 +175,6 @@ object Form8: TForm8
       TabOrder = 1
       OnClick = Panel2Click
     end
-    object Editstd_name: TEdit
-      Left = 32
-      Top = 73
-      Width = 177
-      Height = 26
-      Cursor = crIBeam
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = 18
-      Font.Name = 'B amir'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 2
-    end
-    object Editstd_lastname: TEdit
-      Left = 32
-      Top = 108
-      Width = 177
-      Height = 26
-      Cursor = crIBeam
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = 18
-      Font.Name = 'B amir'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 3
-    end
-    object EditbDate_place: TEdit
-      Left = 32
-      Top = 180
-      Width = 177
-      Height = 26
-      Cursor = crIBeam
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = 18
-      Font.Name = 'B amir'
-      Font.Style = []
-      ParentFont = False
-      TabOrder = 4
-    end
     object bDate: TDateTimePicker
       Left = 32
       Top = 145
@@ -227,29 +183,7 @@ object Form8: TForm8
       Cursor = crHandPoint
       Date = 43842.573136712960000000
       Time = 43842.573136712960000000
-      TabOrder = 5
-    end
-    object DBComboBoxclass_num: TDBComboBox
-      Left = 64
-      Top = 222
-      Width = 145
-      Height = 26
-      Cursor = crHandPoint
-      DataField = 'class_name'
-      DataSource = dbData.DataSourceClass
-      ReadOnly = True
-      TabOrder = 6
-    end
-    object DBComboBoxstate_num: TDBComboBox
-      Left = 64
-      Top = 262
-      Width = 145
-      Height = 26
-      Cursor = crHandPoint
-      DataField = 'state_name'
-      DataSource = dbData.DataSourceState
-      ReadOnly = True
-      TabOrder = 7
+      TabOrder = 2
     end
     object DBEdit1: TDBEdit
       Left = 88
@@ -258,7 +192,41 @@ object Form8: TForm8
       Height = 26
       DataField = 'std_num'
       DataSource = dbData.DataSourceStudent
-      TabOrder = 8
+      TabOrder = 3
+    end
+    object DBEdit2: TDBEdit
+      Left = 64
+      Top = 71
+      Width = 145
+      Height = 26
+      DataField = 'std_name'
+      DataSource = dbData.DataSourceStudent
+      TabOrder = 4
+    end
+    object DBEdit3: TDBEdit
+      Left = 64
+      Top = 113
+      Width = 145
+      Height = 26
+      DataField = 'std_lastname'
+      DataSource = dbData.DataSourceStudent
+      TabOrder = 5
+    end
+    object DBComboBoxstate_num: TComboBox
+      Left = 79
+      Top = 262
+      Width = 130
+      Height = 26
+      TabOrder = 6
+      TextHint = #1573#1582#1578#1575#1585' '#1575#1604#1608#1604#1575#1610#1577
+    end
+    object DBComboBoxclass_num: TComboBox
+      Left = 79
+      Top = 222
+      Width = 130
+      Height = 26
+      TabOrder = 7
+      TextHint = #1573#1582#1578#1575#1585' '#1602#1587#1605
     end
   end
   object Panel1: TPanel
@@ -269,7 +237,6 @@ object Form8: TForm8
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitLeft = 207
     object Image1: TImage
       Left = 93
       Top = 8

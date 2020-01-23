@@ -3,7 +3,7 @@ unit AddAdmin;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
   Vcl.StdCtrls;
 
@@ -27,7 +27,7 @@ type
     procedure Image1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
   private
-    { Private declarations }
+      procedure WMNCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
   public
     { Public declarations }
   end;
@@ -40,7 +40,11 @@ implementation
 {$R *.dfm}
 
 uses Data;
-
+      procedure TForm4.WMNCHitTest(var Msg: TWMNCHitTest);
+  begin
+    inherited;
+    if Msg.Result = htClient then Msg.Result := htCaption;
+  end;
 procedure TForm4.Button1Click(Sender: TObject);
 begin
 

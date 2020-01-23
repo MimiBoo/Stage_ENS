@@ -1,0 +1,617 @@
+object dbData: TdbData
+  OldCreateOrder = False
+  Height = 494
+  Width = 825
+  object DataSourceSpec: TDataSource
+    DataSet = SpecTable
+    Left = 448
+    Top = 136
+  end
+  object Stage_ensConnection: TFDConnection
+    Params.Strings = (
+      'ConnectionDef=Stage_ENS')
+    Connected = True
+    LoginPrompt = False
+    Left = 396
+    Top = 18
+  end
+  object DataSourceAdmen: TDataSource
+    DataSet = AdmenTable
+    Left = 40
+    Top = 136
+  end
+  object DataSourceTeacher: TDataSource
+    DataSet = TeacherTable
+    Left = 344
+    Top = 136
+  end
+  object DataSourceApsent: TDataSource
+    DataSet = ApsentTable
+    Left = 232
+    Top = 136
+  end
+  object DataSourcePoint: TDataSource
+    DataSet = PointTable
+    Left = 128
+    Top = 136
+  end
+  object DataSourceDiv: TDataSource
+    DataSet = DivisionTable
+    Left = 768
+    Top = 136
+  end
+  object DataSourceClass: TDataSource
+    DataSet = ClassTable
+    Left = 512
+    Top = 336
+  end
+  object DataSourceSubject: TDataSource
+    DataSet = SubjectTable
+    Left = 560
+    Top = 136
+  end
+  object DataSourceState: TDataSource
+    DataSet = StateTable
+    Left = 664
+    Top = 136
+  end
+  object DataSourceStudent: TDataSource
+    DataSet = StudentTable
+    Left = 624
+    Top = 336
+  end
+  object DataSourceMunicipal: TDataSource
+    DataSet = MunicipalTable
+    Left = 744
+    Top = 336
+  end
+  object AdmenTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Admen')
+    Left = 32
+    Top = 211
+    object AdmenTableUser_Name: TStringField
+      FieldName = 'User_Name'
+      Origin = 'User_Name'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 30
+    end
+    object AdmenTablePassword: TStringField
+      FieldName = 'Password'
+      Origin = 'Password'
+      Required = True
+    end
+  end
+  object ApsentTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Apsent')
+    Left = 236
+    Top = 201
+    object ApsentTableapsent_num: TFDAutoIncField
+      FieldName = 'apsent_num'
+      Origin = 'apsent_num'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object ApsentTableapsent_date: TDateField
+      FieldName = 'apsent_date'
+      Origin = 'apsent_date'
+      Required = True
+    end
+    object ApsentTableapsent_time: TTimeField
+      FieldName = 'apsent_time'
+      Origin = 'apsent_time'
+      Required = True
+    end
+    object ApsentTablestd_num: TStringField
+      FieldName = 'std_num'
+      Origin = 'std_num'
+      Required = True
+      Size = 16
+    end
+  end
+  object ClassTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Class')
+    Left = 511
+    Top = 390
+    object ClassTableclass_num: TFDAutoIncField
+      FieldName = 'class_num'
+      Origin = 'class_num'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object ClassTableclass_name: TStringField
+      FieldName = 'class_name'
+      Origin = 'class_name'
+      Required = True
+      Size = 25
+    end
+  end
+  object DivisionTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Division')
+    Left = 775
+    Top = 196
+    object DivisionTablediv_num: TFDAutoIncField
+      FieldName = 'div_num'
+      Origin = 'div_num'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object DivisionTablediv_name: TStringField
+      FieldName = 'div_name'
+      Origin = 'div_name'
+      Required = True
+      Size = 50
+    end
+  end
+  object MunicipalTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Municipal')
+    Left = 745
+    Top = 395
+    object MunicipalTableMunicipal_num: TFDAutoIncField
+      FieldName = 'Municipal_num'
+      Origin = 'Municipal_num'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object MunicipalTableMunicipal_mane: TStringField
+      FieldName = 'Municipal_mane'
+      Origin = 'Municipal_mane'
+      Required = True
+      Size = 25
+    end
+    object MunicipalTablestate_num: TIntegerField
+      FieldName = 'state_num'
+      Origin = 'state_num'
+      Required = True
+    end
+  end
+  object SpecTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Spec')
+    Left = 457
+    Top = 195
+    object SpecTablespec_num: TFDAutoIncField
+      FieldName = 'spec_num'
+      Origin = 'spec_num'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object SpecTablespec_name: TStringField
+      FieldName = 'spec_name'
+      Origin = 'spec_name'
+      Required = True
+      Size = 25
+    end
+  end
+  object StateTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.State')
+    Left = 670
+    Top = 203
+    object StateTablestate_num: TFDAutoIncField
+      FieldName = 'state_num'
+      Origin = 'state_num'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object StateTablestate_name: TStringField
+      FieldName = 'state_name'
+      Origin = 'state_name'
+      Required = True
+      Size = 25
+    end
+  end
+  object StudentTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Student')
+    Left = 632
+    Top = 407
+    object StudentTablestd_num: TStringField
+      FieldName = 'std_num'
+      Required = True
+      Size = 16
+    end
+    object StudentTablestd_name: TStringField
+      FieldName = 'std_name'
+      Required = True
+      Size = 25
+    end
+    object StudentTablestd_lastname: TStringField
+      FieldName = 'std_lastname'
+      Required = True
+      Size = 25
+    end
+    object StudentTablebDate: TDateField
+      FieldName = 'bDate'
+      Required = True
+    end
+    object StudentTableclass_num: TIntegerField
+      FieldName = 'class_num'
+      Required = True
+    end
+    object StudentTablediv_num: TIntegerField
+      FieldName = 'div_num'
+      Required = True
+    end
+    object StudentTablespec_num: TIntegerField
+      FieldName = 'spec_num'
+      Required = True
+    end
+    object StudentTablestate_num: TIntegerField
+      FieldName = 'state_num'
+      Required = True
+    end
+  end
+  object SubjectTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Subject')
+    Left = 558
+    Top = 200
+    object SubjectTablesubj_num: TFDAutoIncField
+      FieldName = 'subj_num'
+      Origin = 'subj_num'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object SubjectTablesubj_name: TStringField
+      FieldName = 'subj_name'
+      Origin = 'subj_name'
+      Required = True
+      Size = 25
+    end
+    object SubjectTableMultiplier: TIntegerField
+      FieldName = 'Multiplier'
+      Origin = 'Multiplier'
+      Required = True
+    end
+  end
+  object TeacherTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Teacher')
+    Left = 351
+    Top = 197
+    object TeacherTableteach_num: TFDAutoIncField
+      FieldName = 'teach_num'
+      Origin = 'teach_num'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object TeacherTableteach_name: TStringField
+      FieldName = 'teach_name'
+      Origin = 'teach_name'
+      Required = True
+      Size = 25
+    end
+    object TeacherTableteach_lastname: TStringField
+      FieldName = 'teach_lastname'
+      Origin = 'teach_lastname'
+      Required = True
+      Size = 25
+    end
+    object TeacherTableteach_level: TStringField
+      FieldName = 'teach_level'
+      Origin = 'teach_level'
+      Required = True
+      Size = 30
+    end
+    object TeacherTableteach_head: TStringField
+      FieldName = 'teach_head'
+      Origin = 'teach_head'
+      Required = True
+      Size = 30
+    end
+  end
+  object DataSourcePonintviews: TDataSource
+    DataSet = PonintviewsView
+    Left = 416
+    Top = 400
+  end
+  object DataSourceStudentview: TDataSource
+    DataSet = StudentviewView
+    Left = 32
+    Top = 424
+  end
+  object PointTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Point')
+    Left = 139
+    Top = 216
+    object PointTablepoint_num: TFDAutoIncField
+      FieldName = 'point_num'
+      ReadOnly = True
+    end
+    object PointTabletp: TFloatField
+      FieldName = 'tp'
+    end
+    object PointTabletd: TFloatField
+      FieldName = 'td'
+    end
+    object PointTableexama1: TFloatField
+      FieldName = 'exama1'
+    end
+    object PointTableexama2: TFloatField
+      FieldName = 'exama2'
+    end
+    object PointTablestd_num: TStringField
+      FieldName = 'std_num'
+      Required = True
+      Size = 16
+    end
+    object PointTablesubj_num: TIntegerField
+      FieldName = 'subj_num'
+      Required = True
+    end
+    object PointTableteach_num: TIntegerField
+      FieldName = 'teach_num'
+      Required = True
+    end
+    object PointTableYear: TIntegerField
+      FieldName = 'Year'
+      Required = True
+    end
+    object PointTableratrapage: TBooleanField
+      FieldName = 'ratrapage'
+      Required = True
+    end
+  end
+  object PonintviewsView: TFDQuery
+    Active = True
+    OnCalcFields = PonintviewsViewCalcFields
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.PonintViews')
+    Left = 421
+    Top = 337
+    object PonintviewsViewsubj_name: TStringField
+      FieldName = 'subj_name'
+      Origin = 'subj_name'
+      Required = True
+      Size = 25
+    end
+    object PonintviewsViewtp: TFloatField
+      FieldName = 'tp'
+      Origin = 'tp'
+    end
+    object PonintviewsViewtd: TFloatField
+      FieldName = 'td'
+      Origin = 'td'
+    end
+    object PonintviewsViewSum: TFloatField
+      DisplayWidth = 3
+      FieldKind = fkInternalCalc
+      FieldName = 'Sum'
+      Precision = 3
+    end
+    object PonintviewsViewexama1: TFloatField
+      FieldName = 'exama1'
+      Origin = 'exama1'
+    end
+    object PonintviewsViewexama2: TFloatField
+      FieldName = 'exama2'
+      Origin = 'exama2'
+    end
+    object PonintviewsViewYear: TIntegerField
+      FieldName = 'Year'
+      Origin = 'Year'
+      Required = True
+    end
+    object PonintviewsViewratrapage: TBooleanField
+      FieldName = 'ratrapage'
+      Origin = 'ratrapage'
+      Required = True
+    end
+    object PonintviewsViewMultiplier: TIntegerField
+      FieldName = 'Multiplier'
+      Origin = 'Multiplier'
+      Required = True
+    end
+    object PonintviewsViewstd_num: TStringField
+      FieldName = 'std_num'
+      Origin = 'std_num'
+      Required = True
+      Size = 16
+    end
+  end
+  object StudentviewView: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.StudentView')
+    Left = 41
+    Top = 358
+    object StudentviewViewstd_num: TStringField
+      FieldName = 'std_num'
+      Origin = 'std_num'
+      Required = True
+      Size = 16
+    end
+    object StudentviewViewstd_name: TStringField
+      FieldName = 'std_name'
+      Origin = 'std_name'
+      Required = True
+      Size = 25
+    end
+    object StudentviewViewstd_lastname: TStringField
+      FieldName = 'std_lastname'
+      Origin = 'std_lastname'
+      Required = True
+      Size = 25
+    end
+    object StudentviewViewbDate: TDateField
+      FieldName = 'bDate'
+      Origin = 'bDate'
+      Required = True
+    end
+    object StudentviewViewdiv_name: TStringField
+      FieldName = 'div_name'
+      Origin = 'div_name'
+      Required = True
+      Size = 50
+    end
+    object StudentviewViewclass_name: TStringField
+      FieldName = 'class_name'
+      Origin = 'class_name'
+      Required = True
+      Size = 25
+    end
+    object StudentviewViewspec_name: TStringField
+      FieldName = 'spec_name'
+      Origin = 'spec_name'
+      Required = True
+      Size = 25
+    end
+    object StudentviewViewstate_name: TStringField
+      FieldName = 'state_name'
+      Origin = 'state_name'
+      Required = True
+      Size = 25
+    end
+  end
+  object DataSource1: TDataSource
+    DataSet = FDMemTable1
+    Left = 336
+    Top = 400
+  end
+  object FDMemTable1: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'SumAll'
+        DataType = ftFloat
+        Precision = 4
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 336
+    Top = 344
+    object FDMemTable1SumAll: TFloatField
+      DisplayWidth = 5
+      FieldKind = fkInternalCalc
+      FieldName = 'SumAll'
+      Precision = 4
+    end
+  end
+  object DataSourceRatrapageview: TDataSource
+    Left = 240
+    Top = 408
+  end
+  object DataSource2: TDataSource
+    DataSet = FDMemTable2
+    Left = 136
+    Top = 408
+  end
+  object FDMemTable2: TFDMemTable
+    Active = True
+    FieldDefs = <
+      item
+        Name = 'SumAll'
+        DataType = ftFloat
+        Precision = 4
+      end>
+    IndexDefs = <>
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
+    UpdateOptions.CheckRequired = False
+    UpdateOptions.AutoCommitUpdates = True
+    StoreDefs = True
+    Left = 136
+    Top = 352
+    object FloatField1: TFloatField
+      DisplayWidth = 5
+      FieldKind = fkInternalCalc
+      FieldName = 'SumAll'
+      Precision = 4
+    end
+  end
+  object RatrapageviewView: TFDQuery
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.RatrapageView')
+    Left = 244
+    Top = 359
+    object RatrapageviewViewtp: TFloatField
+      FieldName = 'tp'
+      Origin = 'tp'
+    end
+    object RatrapageviewViewtd: TFloatField
+      FieldName = 'td'
+      Origin = 'td'
+    end
+    object RatrapageviewViewexama1: TFloatField
+      FieldName = 'exama1'
+      Origin = 'exama1'
+    end
+    object RatrapageviewViewexama2: TFloatField
+      FieldName = 'exama2'
+      Origin = 'exama2'
+    end
+    object RatrapageviewViewYear: TIntegerField
+      FieldName = 'Year'
+      Origin = 'Year'
+      Required = True
+    end
+    object RatrapageviewViewratrapage: TBooleanField
+      FieldName = 'ratrapage'
+      Origin = 'ratrapage'
+      Required = True
+    end
+    object RatrapageviewViewsubj_name: TStringField
+      FieldName = 'subj_name'
+      Origin = 'subj_name'
+      Required = True
+      Size = 25
+    end
+    object RatrapageviewViewMultiplier: TIntegerField
+      FieldName = 'Multiplier'
+      Origin = 'Multiplier'
+      Required = True
+    end
+    object RatrapageviewViewstd_num: TStringField
+      FieldName = 'std_num'
+      Origin = 'std_num'
+      Required = True
+      Size = 16
+    end
+    object RatrapageviewViewSum: TFloatField
+      FieldKind = fkInternalCalc
+      FieldName = 'Sum'
+    end
+  end
+end

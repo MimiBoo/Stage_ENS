@@ -134,9 +134,35 @@ object Form5: TForm5
     ParentBiDiMode = False
     ParentBackground = False
     TabOrder = 1
+    object Label1: TLabel
+      Left = 271
+      Top = 43
+      Width = 64
+      Height = 18
+      Caption = #1573#1587#1605' '#1575#1604#1605#1587#1578#1582#1583#1605
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindow
+      Font.Height = 18
+      Font.Name = 'B amir'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 275
+      Top = 85
+      Width = 60
+      Height = 18
+      Caption = #1603#1604#1605#1577' '#1575#1604#1605#1585#1608#1585
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindow
+      Font.Height = 18
+      Font.Name = 'B amir'
+      Font.Style = []
+      ParentFont = False
+    end
     object EdieUser_Name: TEdit
-      Left = 88
-      Top = 56
+      Left = 104
+      Top = 40
       Width = 161
       Height = 26
       Font.Charset = DEFAULT_CHARSET
@@ -149,33 +175,52 @@ object Form5: TForm5
       TextHint = #1573#1587#1605' '#1575#1604#1605#1587#1578#1582#1583#1605
     end
     object EdiePassword: TEdit
-      Left = 88
-      Top = 106
+      Left = 104
+      Top = 82
       Width = 161
       Height = 26
+      HelpType = htKeyword
+      HelpKeyword = '*'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = 18
       Font.Name = 'B amir'
       Font.Style = []
       ParentFont = False
+      PasswordChar = '*'
       TabOrder = 1
       TextHint = #1603#1604#1605#1577' '#1575#1604#1605#1585#1608#1585
     end
     object Panel2: TPanel
-      Left = 88
+      Left = 104
       Top = 152
       Width = 161
       Height = 33
+      ParentCustomHint = False
+      BevelOuter = bvNone
       Caption = #1578#1587#1580#1610#1604' '#1583#1582#1608#1604
+      Color = clActiveCaption
+      DoubleBuffered = False
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 18
+      Font.Height = -11
       Font.Name = 'B amir'
       Font.Style = []
+      ParentDoubleBuffered = False
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = False
       TabOrder = 2
       OnClick = Panel2Click
+    end
+    object CheckBox1: TCheckBox
+      Left = 168
+      Top = 114
+      Width = 97
+      Height = 17
+      Caption = #1573#1592#1607#1575#1585' '#1603#1604#1605#1577' '#1575#1604#1605#1585#1608#1585
+      TabOrder = 3
+      OnClick = CheckBox1Click
     end
   end
 end

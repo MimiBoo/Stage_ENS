@@ -2,7 +2,6 @@ program Project2;
 
 uses
   Vcl.Forms,
-  Unit2 in 'Unit2.pas' {Form2},
   Vcl.Themes,
   Vcl.Styles,
   Data in 'Data.pas' {dbData: TDataModule},
@@ -13,7 +12,16 @@ uses
   add_Stage in 'add_Stage.pas' {Form7},
   Stage in 'Stage.pas' {Form6},
   Edit_Stage in 'Edit_Stage.pas' {Form8},
-  Teacher in 'Teacher.pas' {Form9};
+  Teacher in 'Teacher.pas' {Form9},
+  Add_class in 'Add_class.pas' {Form10},
+  Add_State in 'Add_State.pas' {Form11},
+  Add_Spec in 'Add_Spec.pas' {Form12},
+  Add_Division in 'Add_Division.pas' {Form13},
+  Unit14 in 'Unit14.pas' {Form14},
+  Unit2 in 'Unit2.pas' {Form2},
+  Add_Subject in 'Add_Subject.pas' {Form15},
+  Unit17 in 'Unit17.pas' {Form17},
+  Ratrapage in 'Ratrapage.pas' {Form16};
 
 {$R *.res}
 
@@ -21,7 +29,6 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TForm5, Form5);
-  Application.CreateForm(TForm2, Form2);
   Application.CreateForm(TdbData, dbData);
   Application.CreateForm(TForm1, Form1);
   Application.CreateForm(TForm3, Form3);
@@ -30,5 +37,15 @@ begin
   Application.CreateForm(TForm6, Form6);
   Application.CreateForm(TForm8, Form8);
   Application.CreateForm(TForm9, Form9);
+  Application.CreateForm(TForm10, Form10);
+  Application.CreateForm(TForm11, Form11);
+  Application.CreateForm(TForm12, Form12);
+  Application.CreateForm(TForm13, Form13);
+  Application.CreateForm(TForm14, Form14);
+  Application.CreateForm(TForm14, Form14);
+  Application.CreateForm(TForm2, Form2);
+  Application.CreateForm(TForm15, Form15);
+  Application.CreateForm(TForm17, Form17);
+  Application.CreateForm(TForm16, Form16);
   Application.Run;
 end.

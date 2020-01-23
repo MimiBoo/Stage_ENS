@@ -3,7 +3,7 @@ unit Login;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
   Vcl.StdCtrls;
 
@@ -17,11 +17,15 @@ type
     EdieUser_Name: TEdit;
     EdiePassword: TEdit;
     Panel2: TPanel;
+    CheckBox1: TCheckBox;
+    Label1: TLabel;
+    Label2: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
   private
-    { Private declarations }
+    procedure WMNCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
   public
     { Public declarations }
   end;
@@ -34,6 +38,25 @@ implementation
 {$R *.dfm}
 
 uses Data, point, Unit2;
+
+
+procedure TForm5.WMNCHitTest(var Msg: TWMNCHitTest);
+  begin
+    inherited;
+    if Msg.Result = htClient then Msg.Result := htCaption;
+  end;
+
+procedure TForm5.CheckBox1Click(Sender: TObject);
+begin
+if CheckBox1.Checked = true then
+
+ EdiePassword.PasswordChar := #0
+ else
+ begin
+       EdiePassword.PasswordChar := '*'
+ end;
+
+end;
 
 procedure TForm5.FormCreate(Sender: TObject);
 var   aShape: TShape;

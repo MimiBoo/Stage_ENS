@@ -5,7 +5,7 @@ object Form9: TForm9
   BorderStyle = bsNone
   Caption = 'Form9'
   ClientHeight = 533
-  ClientWidth = 361
+  ClientWidth = 976
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,14 +18,13 @@ object Form9: TForm9
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
-    Left = 236
+    Left = 851
     Top = 0
     Width = 125
     Height = 38
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitLeft = 717
     object Image1: TImage
       Left = 93
       Top = 8
@@ -125,7 +124,7 @@ object Form9: TForm9
   object Body: TPanel
     Left = 0
     Top = 38
-    Width = 361
+    Width = 976
     Height = 495
     Align = alBottom
     Anchors = [akLeft, akTop, akRight, akBottom]
@@ -133,9 +132,8 @@ object Form9: TForm9
     Color = clActiveCaption
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 842
     object Panel2: TPanel
-      Left = 174
+      Left = 875
       Top = 6
       Width = 82
       Height = 27
@@ -151,7 +149,7 @@ object Form9: TForm9
       TabOrder = 0
     end
     object Panel3: TPanel
-      Left = 94
+      Left = 795
       Top = 6
       Width = 74
       Height = 27
@@ -167,8 +165,8 @@ object Form9: TForm9
       TabOrder = 1
     end
     object SearchBox1: TSearchBox
-      Left = 2
-      Top = 39
+      Left = 760
+      Top = 160
       Width = 193
       Height = 26
       Font.Charset = DEFAULT_CHARSET
@@ -182,9 +180,9 @@ object Form9: TForm9
     end
     object GroupBox1: TGroupBox
       Left = 0
-      Top = 66
-      Width = 361
-      Height = 429
+      Top = 192
+      Width = 976
+      Height = 303
       Align = alBottom
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -193,37 +191,34 @@ object Form9: TForm9
       Font.Style = []
       ParentFont = False
       TabOrder = 3
-      ExplicitWidth = 842
       object DBCtrlGrid1: TDBCtrlGrid
         Left = 2
         Top = 18
-        Width = 357
-        Height = 409
+        Width = 972
+        Height = 283
         Align = alClient
         DataSource = dbData.DataSourceTeacher
         DragCursor = crArrow
         PanelBorder = gbNone
-        PanelHeight = 29
-        PanelWidth = 340
+        PanelHeight = 20
+        PanelWidth = 955
         ParentShowHint = False
         TabOrder = 0
         RowCount = 14
         ShowHint = False
-        ExplicitWidth = 838
         object Panel5: TPanel
-          Left = 287
+          Left = 902
           Top = 0
           Width = 53
-          Height = 29
+          Height = 20
           Align = alRight
           TabOrder = 0
-          ExplicitLeft = 768
           object DBText2: TDBText
             AlignWithMargins = True
             Left = 4
             Top = 4
             Width = 45
-            Height = 21
+            Height = 12
             Align = alClient
             Alignment = taCenter
             DataField = 'teach_num'
@@ -237,20 +232,15 @@ object Form9: TForm9
         object Panel6: TPanel
           Left = 0
           Top = 0
-          Width = 287
-          Height = 29
+          Width = 902
+          Height = 20
           Align = alClient
           TabOrder = 1
-          ExplicitLeft = 320
-          ExplicitTop = -8
-          ExplicitWidth = 185
-          ExplicitHeight = 41
           object DBText1: TDBText
-            AlignWithMargins = True
-            Left = 218
-            Top = 4
+            Left = 836
+            Top = 1
             Width = 65
-            Height = 21
+            Height = 18
             Align = alRight
             Alignment = taCenter
             DataField = 'teach_name'
@@ -260,11 +250,10 @@ object Form9: TForm9
             ExplicitHeight = 17
           end
           object DBText3: TDBText
-            AlignWithMargins = True
-            Left = 5
-            Top = 4
+            Left = 641
+            Top = 1
             Width = 65
-            Height = 21
+            Height = 18
             Align = alRight
             Alignment = taCenter
             DataField = 'teach_head'
@@ -274,11 +263,10 @@ object Form9: TForm9
             ExplicitHeight = 17
           end
           object DBText4: TDBText
-            AlignWithMargins = True
-            Left = 76
-            Top = 4
+            Left = 706
+            Top = 1
             Width = 65
-            Height = 21
+            Height = 18
             Align = alRight
             Alignment = taCenter
             DataField = 'teach_level'
@@ -288,11 +276,10 @@ object Form9: TForm9
             ExplicitHeight = 17
           end
           object DBText5: TDBText
-            AlignWithMargins = True
-            Left = 147
-            Top = 4
+            Left = 771
+            Top = 1
             Width = 65
-            Height = 21
+            Height = 18
             Align = alRight
             Alignment = taCenter
             DataField = 'teach_lastname'
@@ -303,22 +290,6 @@ object Form9: TForm9
           end
         end
       end
-    end
-    object Panel4: TPanel
-      Left = 13
-      Top = 6
-      Width = 75
-      Height = 27
-      BevelOuter = bvNone
-      Caption = #1581#1584#1601
-      Font.Charset = ARABIC_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -19
-      Font.Name = 'B amir'
-      Font.Style = [fsBold]
-      ParentBackground = False
-      ParentFont = False
-      TabOrder = 4
     end
   end
 end

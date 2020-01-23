@@ -3,7 +3,7 @@ unit Edit_Stage;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
   Vcl.StdCtrls, Vcl.DBCtrls, Vcl.ComCtrls, Vcl.Mask;
 
@@ -19,24 +19,23 @@ type
     Label8: TLabel;
     Panel7: TPanel;
     Panel2: TPanel;
-    Editstd_name: TEdit;
-    Editstd_lastname: TEdit;
-    EditbDate_place: TEdit;
     bDate: TDateTimePicker;
-    DBComboBoxclass_num: TDBComboBox;
-    DBComboBoxstate_num: TDBComboBox;
     Label1: TLabel;
     Panel1: TPanel;
     Image1: TImage;
     Image2: TImage;
     Image3: TImage;
     DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBComboBoxstate_num: TComboBox;
+    DBComboBoxclass_num: TComboBox;
     procedure Panel2Click(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Panel7Click(Sender: TObject);
   private
-    { Private declarations }
+      procedure WMNCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
   public
     { Public declarations }
   end;
@@ -49,7 +48,11 @@ implementation
 {$R *.dfm}
 
 uses Data;
-
+ procedure TForm8.WMNCHitTest(var Msg: TWMNCHitTest);
+  begin
+    inherited;
+    if Msg.Result = htClient then Msg.Result := htCaption;
+  end;
 procedure TForm8.FormCreate(Sender: TObject);
 
 var
@@ -72,6 +75,8 @@ end;
 
 procedure TForm8.Image1Click(Sender: TObject);
 begin
+DBComboBoxclass_num.Items.Clear;
+DBComboBoxstate_num.Items.Clear;
 dbData.StudentTable.Cancel;
 close;
 end;
@@ -81,20 +86,47 @@ procedure TForm8.Panel2Click(Sender: TObject);
     var vali: integer;
 begin
   // ”Ì√Œ– «·„ €ÌÌ— ﬁÌ„… «·—”«·… √Ê ﬁÌ„… ÷€ÿ √Õœ «“—«— «·—”«·…
-  vali := Messagedlg('«Œ — ‰⁄„ √Ê ·«',mtConfirmation, [mbYes, mbNo], 0);
+  vali := Messagedlg('Â·  —Ìœ  €Ì— „Õ ÊÏ „·› «·ÿ«·»',mtConfirmation, [mbYes, mbNo], 0);
 
 if  vali = mrYes  then
 begin
 dbData.StudentTable.Edit;
-//dbData.StudentTablestd_num.AsString := Editstd_num.Text;
-dbData.StudentTablestd_name.AsString :=  Editstd_name.Text;
-dbData.StudentTablestd_lastname.AsString := Editstd_lastname.Text;
-dbData.StudentTablebDate_place.AsString := EditbDate_place.Text;
 dbData.StudentTablebDate.AsDateTime := bDate.DateTime;
 
 
-dbData.StudentTableclass_num.AsInteger := DBComboBoxclass_num.GetCount+1;
-dbData.StudentTablestate_num.AsInteger := DBComboBoxstate_num.GetCount+1;
+with dbData.ClassTable do
+ begin
+   Close;
+   SQL.Clear;
+   SQL.Text := 'select * from Class where class_name = '+quotedstr(DBComboBoxclass_num.Text);
+   Open;
+
+   dbData.ClassTable.First;
+
+   while not dbData.ClassTable.Eof do
+    begin
+    dbData.StudentTableclass_num.AsInteger :=  StrtoInt(dbData.ClassTable['class_num']) ;
+
+      dbData.ClassTable.Next;
+    end;
+ end;
+
+ with dbData.StateTable do
+ begin
+   Close;
+   SQL.Clear;
+   SQL.Text := 'select * from State where state_name = '+quotedstr(DBComboBoxstate_num.Text);
+   Open;
+
+   dbData.StateTable.First;
+
+   while not dbData.StateTable.Eof do
+    begin
+ //   dbData.StudentTablestate_num.AsInteger :=  StrtoInt(dbData.StateTable['state_num']) ;
+
+      dbData.StateTable.Next;
+    end;
+ end;
 
 dbData.StudentTable.Post;
 
@@ -105,6 +137,8 @@ end;
 
 procedure TForm8.Panel7Click(Sender: TObject);
 begin
+DBComboBoxclass_num.Items.Clear;
+DBComboBoxstate_num.Items.Clear;
   dbData.StudentTable.Cancel;
   close
 end;
