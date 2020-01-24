@@ -1,3 +1,5 @@
+import 'package:ens_app/models/pdf_file.dart';
+import 'package:ens_app/models/testing.dart';
 import 'package:ens_app/models/user_model.dart';
 import 'package:ens_app/views/notes_page.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
         var data = snap.value;
         for (var key in keys) {
           if (data[key]['user_id'] == userId.toString()) {
-            user = UserData(data[key]['user_id'], data[key]['password']);
+            setState(() {
+              user = UserData(data[key]['user_id'], data[key]['password']);
+            });
           }
         }
       },
@@ -107,7 +111,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       keyboardType: TextInputType.number,
                       validator: (input) =>
                           input.length != 16 ? "رقم التسجيل خاطئ" : null,
-                      onSaved: (input) => _userId = input,
+                      onSaved: (input) {
+                        setState(() {
+                          _userId = input;
+                        });
+                      },
                       decoration: InputDecoration.collapsed(
                         hintText: 'رقم التسجيل',
                         hintStyle: TextStyle(letterSpacing: 1.5, fontSize: 20),
@@ -143,7 +151,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       validator: (input) => input.length < 6
                           ? "يجب أن تكون كلمة السر أطول من 6 حروف"
                           : null,
-                      onSaved: (input) => _password = input,
+                      onSaved: (input) {
+                        setState(() {
+                          _password = input;
+                        });
+                      },
                       decoration: InputDecoration.collapsed(
                         hintText: 'كلمة السر',
                         hintStyle: TextStyle(letterSpacing: 1.5, fontSize: 20),
@@ -184,7 +196,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       child: Text(
                         'تسجيل الدخول',
                         textDirection: TextDirection.rtl,
-                        style: TextStyle(fontSize: 18),
+                        style: TextStyle(fontSize: 18, color: Colors.green),
                       ),
                     ),
                   ),
@@ -223,7 +235,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           color: Theme.of(context).primaryColor,
                           child: Icon(
                             Icons.info_outline,
-                            size: 45,
+                            size: 35,
+                            color: Colors.green,
                           ),
                         ),
                       ),
@@ -281,10 +294,11 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
-  void _submit() {
+  void _submit() async {
     if (formkey.currentState.validate()) {
       formkey.currentState.save();
-      getUserDetails(_userId, _password);
+
+      await getUserDetails(_userId, _password);
       userAuth();
     }
   }

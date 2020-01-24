@@ -1,3 +1,4 @@
+import 'package:ens_app/models/pdf_file.dart';
 import 'package:ens_app/models/user_notes.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -16,6 +17,8 @@ class _NotesPageState extends State<NotesPage> {
   List<Note> notes = List<Note>();
   UserNotes user_notes;
   String _name;
+  bool isFinish = false;
+  double total = 0;
   @override
   void initState() {
     super.initState();
@@ -117,6 +120,7 @@ class _NotesPageState extends State<NotesPage> {
                       child: Icon(
                         Icons.arrow_back,
                         size: 45,
+                        color: Colors.green,
                       ),
                     ),
                   ),
@@ -129,6 +133,7 @@ class _NotesPageState extends State<NotesPage> {
                       color: Colors.black,
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
+                      fontFamily: 'Simple',
                     ),
                   ),
                 ),
@@ -155,13 +160,20 @@ class _NotesPageState extends State<NotesPage> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(8)),
                     child: RaisedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        PdfResault res = PdfResault(
+                          usernotes: user_notes,
+                        );
+
+                        res.createPdf();
+                      },
                       elevation: 0,
                       padding: EdgeInsets.only(right: 1),
                       color: Theme.of(context).primaryColor,
                       child: Icon(
                         Icons.file_download,
                         size: 45,
+                        color: Colors.green,
                       ),
                     ),
                   ),
@@ -225,6 +237,7 @@ class _NotesPageState extends State<NotesPage> {
                 horizontalMargin: 20,
                 sortColumnIndex: 0,
                 sortAscending: true,
+                columnSpacing: 0,
                 columns: [
                   DataColumn(
                     label: Text(
@@ -257,6 +270,49 @@ class _NotesPageState extends State<NotesPage> {
                 rows: _notesTable(),
               ),
             ),
+            Container(
+              padding: EdgeInsets.only(right: 100, left: 90),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    'المجموع',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    isFinish ? (total).round().toString() : '0',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.center,
+                  )
+                ],
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.only(right: 100, left: 90),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    'المعدل',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    isFinish ? (total / 4).toStringAsFixed(2) : '0',
+                    style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: (total / 4) < 10 ? Colors.red : Colors.green),
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.center,
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),
@@ -266,18 +322,25 @@ class _NotesPageState extends State<NotesPage> {
   List<DataRow> _notesTable() {
     List<DataRow> _rows = [];
     double resault;
+    double temp = 0;
     for (var subj in user_notes.notes) {
       if (subj.td != null && subj.tp == null) {
         resault = (subj.exam1 + subj.exam2 + subj.td) / 3;
+
+        temp += resault;
+
         _rows.add(
           DataRow(
             cells: [
               DataCell(
-                Text(
-                  '${subj.subject}',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                  textDirection: TextDirection.rtl,
-                  textAlign: TextAlign.center,
+                Container(
+                  width: 200,
+                  child: Text(
+                    '${subj.subject}',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
               DataCell(
@@ -306,15 +369,21 @@ class _NotesPageState extends State<NotesPage> {
       }
       if (subj.tp != null && subj.td == null) {
         resault = (subj.exam1 + subj.exam2 + subj.tp) / 3;
+
+        temp += resault;
+
         _rows.add(
           DataRow(
             cells: [
               DataCell(
-                Text(
-                  '${subj.subject}',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                  textDirection: TextDirection.rtl,
-                  textAlign: TextAlign.center,
+                Container(
+                  width: 200,
+                  child: Text(
+                    '${subj.subject}',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
               DataCell(
@@ -343,15 +412,21 @@ class _NotesPageState extends State<NotesPage> {
       }
       if (subj.tp != null && subj.td != null) {
         resault = (subj.exam1 + subj.exam2 + (subj.tp + subj.td) / 2) / 3;
+
+        temp += resault;
+
         _rows.add(
           DataRow(
             cells: [
               DataCell(
-                Text(
-                  '${subj.subject}',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                  textDirection: TextDirection.rtl,
-                  textAlign: TextAlign.center,
+                Container(
+                  width: 200,
+                  child: Text(
+                    '${subj.subject}',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
               DataCell(
@@ -380,15 +455,21 @@ class _NotesPageState extends State<NotesPage> {
       }
       if (subj.tp == null && subj.td == null) {
         resault = (subj.exam1 + subj.exam2) / 2;
+
+        temp += resault;
+
         _rows.add(
           DataRow(
             cells: [
               DataCell(
-                Text(
-                  '${subj.subject}',
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-                  textDirection: TextDirection.rtl,
-                  textAlign: TextAlign.center,
+                Container(
+                  width: 200,
+                  child: Text(
+                    '${subj.subject}',
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ),
               DataCell(
@@ -405,7 +486,7 @@ class _NotesPageState extends State<NotesPage> {
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
-                    color: resault < 10 ? Colors.red : Colors.black,
+                    color: resault < 5 ? Colors.red : Colors.black,
                   ),
                   textDirection: TextDirection.rtl,
                   textAlign: TextAlign.center,
@@ -416,64 +497,10 @@ class _NotesPageState extends State<NotesPage> {
         );
       }
     }
-
+    setState(() {
+      total = temp;
+      isFinish = true;
+    });
     return _rows;
   }
 }
-/*Table(
-                  columnWidths: {
-                    0: FlexColumnWidth(4.500),
-                    1: FlexColumnWidth(1.5),
-                    2: FlexColumnWidth(2),
-                  },
-                  textDirection: TextDirection.rtl,
-                  border: TableBorder.all(
-                    color: Colors.black,
-                    width: 1,
-                  ),
-                  children: [
-                    TableRow(
-                      children: [
-                        Text(
-                          'المادة',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.center,
-                        ),
-                        Text(
-                          'المعامل',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.center,
-                        ),
-                        Text(
-                          'النتيجة',
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                          textDirection: TextDirection.rtl,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
-                  ],
-                ), */
-
-/*
-Table(
-          columnWidths: {
-            0: FlexColumnWidth(4.500),
-            1: FlexColumnWidth(1.5),
-            2: FlexColumnWidth(2),
-          },
-          textDirection: TextDirection.rtl,
-          border: TableBorder.all(
-            color: Colors.black,
-            width: 1,
-          ),
-          children: [
-            _rows[0],
-            _rows[1]
-          ],
-        ), */
