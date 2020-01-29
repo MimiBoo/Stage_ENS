@@ -4,7 +4,7 @@ object Form14: TForm14
   BiDiMode = bdRightToLeft
   BorderStyle = bsNone
   Caption = 'Form14'
-  ClientHeight = 513
+  ClientHeight = 570
   ClientWidth = 1144
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -19,14 +19,14 @@ object Form14: TForm14
   PixelsPerInch = 96
   TextHeight = 18
   object Label1: TLabel
-    Left = 294
+    Left = 477
     Top = 8
-    Width = 45
-    Height = 18
-    Caption = #1575#1604#1585#1575#1574#1610#1587#1610#1577
+    Width = 83
+    Height = 19
+    Caption = #1575#1604#1605#1593#1583#1604#1575#1578' '#1608#1606#1602#1575#1591
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
-    Font.Height = 18
+    Font.Height = 20
     Font.Name = 'B amir'
     Font.Style = [fsBold]
     ParentFont = False
@@ -35,31 +35,23 @@ object Form14: TForm14
     Left = 0
     Top = 38
     Width = 1144
-    Height = 475
+    Height = 532
     Align = alBottom
     Anchors = [akLeft, akTop, akRight, akBottom]
     BevelOuter = bvNone
     Color = clActiveCaption
     ParentBackground = False
     TabOrder = 0
+    ExplicitHeight = 475
     object Panel5: TPanel
       Left = 0
       Top = 49
       Width = 1144
-      Height = 48
+      Height = 19
       Align = alTop
       BevelOuter = bvNone
       TabOrder = 0
-      object Button1: TButton
-        Left = 992
-        Top = 0
-        Width = 152
-        Height = 48
-        Align = alRight
-        Caption = ' '#1589#1576' '#1575#1604#1606#1602#1575#1591
-        TabOrder = 0
-        OnClick = Button1Click
-      end
+      ExplicitTop = 55
     end
     object Panel2: TPanel
       Left = 0
@@ -108,7 +100,6 @@ object Form14: TForm14
         Align = alRight
         Color = clGrayText
         TabOrder = 0
-        OnChange = DBComboBoxspec_numChange
       end
       object DBComboBoxdiv_num: TComboBox
         AlignWithMargins = True
@@ -119,7 +110,6 @@ object Form14: TForm14
         Align = alRight
         Color = clGrayText
         TabOrder = 1
-        OnChange = DBComboBoxdiv_numChange
       end
       object DBComboBoxclass_num: TComboBox
         AlignWithMargins = True
@@ -130,7 +120,29 @@ object Form14: TForm14
         Align = alRight
         Color = clGrayText
         TabOrder = 2
-        OnChange = DBComboBoxdiv_numChange
+      end
+      object Panel16: TPanel
+        AlignWithMargins = True
+        Left = 421
+        Top = 3
+        Width = 67
+        Height = 26
+        Align = alRight
+        BevelOuter = bvNone
+        Caption = #1576#1581#1579
+        Ctl3D = True
+        Font.Charset = ARABIC_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'B amir'
+        Font.Style = [fsBold]
+        ParentBackground = False
+        ParentCtl3D = False
+        ParentFont = False
+        TabOrder = 3
+        OnClick = Panel16Click
+        ExplicitLeft = 48
+        ExplicitHeight = 35
       end
     end
     object Panel3: TPanel
@@ -144,19 +156,22 @@ object Form14: TForm14
     end
     object DBGrid1: TDBGrid
       Left = 0
-      Top = 97
+      Top = 68
       Width = 1144
-      Height = 378
+      Height = 423
       Align = alClient
+      Color = clBtnFace
       Ctl3D = True
-      DataSource = dbData.DataSourceStudentview
+      DataSource = Form17.DataSource1
       DrawingStyle = gdsGradient
+      FixedColor = clWindow
+      GradientStartColor = clCream
       Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindow
+      Font.Color = clWindowText
       Font.Height = 18
       Font.Name = 'B amir'
       Font.Style = []
-      ParentColor = True
+      ImeMode = imSAlpha
       ParentCtl3D = False
       ParentFont = False
       ParentShowHint = False
@@ -164,9 +179,11 @@ object Form14: TForm14
       TabOrder = 3
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
-      TitleFont.Height = 18
+      TitleFont.Height = 20
       TitleFont.Name = 'B amir'
       TitleFont.Style = []
+      Touch.ParentTabletOptions = False
+      Touch.TabletOptions = [toPressAndHold]
       Columns = <
         item
           Expanded = False
@@ -198,9 +215,9 @@ object Form14: TForm14
         end
         item
           Expanded = False
-          FieldName = 'Municipal_mane'
+          FieldName = 'state_name'
           Title.Caption = #1605#1603#1575#1606' '#1575#1604#1605#1610#1604#1575#1583
-          Width = 125
+          Width = 142
           Visible = True
         end
         item
@@ -224,6 +241,38 @@ object Form14: TForm14
           Width = 149
           Visible = True
         end>
+    end
+    object Panel4: TPanel
+      Left = 0
+      Top = 491
+      Width = 1144
+      Height = 41
+      Align = alBottom
+      TabOrder = 4
+      ExplicitLeft = 480
+      ExplicitTop = 248
+      ExplicitWidth = 185
+      object Panel6: TPanel
+        AlignWithMargins = True
+        Left = 4
+        Top = 4
+        Width = 149
+        Height = 33
+        Align = alLeft
+        BevelOuter = bvNone
+        Caption = #1589#1576' '#1575#1604#1606#1602#1575#1591
+        Ctl3D = True
+        Font.Charset = ARABIC_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -19
+        Font.Name = 'B amir'
+        Font.Style = [fsBold]
+        ParentBackground = False
+        ParentCtl3D = False
+        ParentFont = False
+        TabOrder = 0
+        OnClick = Panel6Click
+      end
     end
   end
   object Panel1: TPanel

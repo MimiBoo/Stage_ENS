@@ -35,6 +35,7 @@ type
     procedure Panel7Click(Sender: TObject);
     procedure Panel5Click(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
+    procedure Panel6Click(Sender: TObject);
 
 
 
@@ -55,7 +56,7 @@ implementation
 
 {$R *.dfm}
 
-uses Data, point, Settings, Login, Stage, Unit14, Unit17;
+uses Data, point, Settings, Login, Stage, Unit14, Unit17, Teacher;
 
 procedure TForm2.WMNCHitTest(var Msg: TWMNCHitTest);
   begin
@@ -248,7 +249,61 @@ ShellExecute(Handle, 'open', 'C:\Users\hp\Documents\Embarcadero\Studio\Projects\
 end;
 procedure TForm2.Panel5Click(Sender: TObject);
 begin
+
+with dbData.SpecTable do
+ begin
+   Close;
+   SQL.Clear;
+   SQL.Text := 'select * from Spec';
+   Open;
+
+   dbData.SpecTable.First;
+
+   while not dbData.SpecTable.Eof do
+    begin
+      Form6.DBComboBoxspec_num.Items.Add(dbData.SpecTable['spec_name']);
+      dbData.SpecTable.Next;
+    end;
+ end;
+
+ with dbData.DivisionTable do
+ begin
+   Close;
+   SQL.Clear;
+   SQL.Text := 'select * from Division';
+   Open;
+
+   dbData.DivisionTable.First;
+
+   while not dbData.DivisionTable.Eof do
+    begin
+      Form6.DBComboBoxdiv_num.Items.Add(dbData.DivisionTable['div_name']);
+      dbData.DivisionTable.Next;
+    end;
+ end;
+
+with dbData.ClassTable do
+ begin
+   Close;
+   SQL.Clear;
+   SQL.Text := 'select * from Class';
+   Open;
+
+   dbData.ClassTable.First;
+
+   while not dbData.ClassTable.Eof do
+    begin
+      Form6.DBComboBoxclass_num.Items.Add(dbData.ClassTable['class_name']);
+      dbData.ClassTable.Next;
+    end;
+ end;
+
    Form6.Show;
+end;
+
+procedure TForm2.Panel6Click(Sender: TObject);
+begin
+   Form9.ShowModal;
 end;
 
 procedure TForm2.Panel7Click(Sender: TObject);

@@ -5,7 +5,7 @@ object Form8: TForm8
   BorderStyle = bsNone
   Caption = 'Form8'
   ClientHeight = 456
-  ClientWidth = 348
+  ClientWidth = 614
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -34,7 +34,7 @@ object Form8: TForm8
   object Body: TPanel
     Left = 0
     Top = 38
-    Width = 348
+    Width = 614
     Height = 418
     Align = alBottom
     Anchors = [akLeft, akTop, akRight, akBottom]
@@ -48,9 +48,10 @@ object Form8: TForm8
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
+    ExplicitWidth = 745
     object Label2: TLabel
-      Left = 238
-      Top = 40
+      Left = 494
+      Top = 32
       Width = 58
       Height = 18
       Caption = #1585#1602#1605' '#1575#1604#1591#1575#1604#1576':'
@@ -62,8 +63,8 @@ object Form8: TForm8
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 266
-      Top = 74
+      Left = 522
+      Top = 66
       Width = 30
       Height = 18
       Caption = #1575#1604#1575#1587#1605':'
@@ -75,8 +76,8 @@ object Form8: TForm8
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 268
-      Top = 114
+      Left = 524
+      Top = 106
       Width = 28
       Height = 18
       Caption = #1575#1604#1604#1602#1576':'
@@ -88,8 +89,8 @@ object Form8: TForm8
       ParentFont = False
     end
     object Label5: TLabel
-      Left = 229
-      Top = 149
+      Left = 485
+      Top = 141
       Width = 67
       Height = 18
       Caption = #1578#1575#1585#1610#1582' '#1575#1604#1605#1610#1604#1575#1583':'
@@ -101,8 +102,8 @@ object Form8: TForm8
       ParentFont = False
     end
     object Label6: TLabel
-      Left = 233
-      Top = 187
+      Left = 489
+      Top = 179
       Width = 63
       Height = 18
       Caption = #1605#1603#1575#1606' '#1575#1604#1605#1610#1604#1575#1583':'
@@ -114,8 +115,8 @@ object Form8: TForm8
       ParentFont = False
     end
     object Label7: TLabel
-      Left = 268
-      Top = 225
+      Left = 524
+      Top = 217
       Width = 28
       Height = 18
       Caption = #1575#1604#1602#1587#1605':'
@@ -126,12 +127,25 @@ object Form8: TForm8
       Font.Style = []
       ParentFont = False
     end
-    object Label8: TLabel
-      Left = 260
-      Top = 265
-      Width = 36
+    object Label11: TLabel
+      Left = 498
+      Top = 259
+      Width = 54
       Height = 18
-      Caption = #1575#1604#1608#1604#1575#1610#1577':'
+      Caption = #1575#1604#1578#1582#1589#1589':'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 18
+      Font.Name = 'B amir'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label10: TLabel
+      Left = 236
+      Top = 259
+      Width = 31
+      Height = 18
+      Caption = #1575#1604#1601#1585#1593':'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = 18
@@ -176,8 +190,8 @@ object Form8: TForm8
       OnClick = Panel2Click
     end
     object bDate: TDateTimePicker
-      Left = 32
-      Top = 145
+      Left = 288
+      Top = 137
       Width = 177
       Height = 26
       Cursor = crHandPoint
@@ -186,57 +200,74 @@ object Form8: TForm8
       TabOrder = 2
     end
     object DBEdit1: TDBEdit
-      Left = 88
-      Top = 32
+      Left = 344
+      Top = 24
       Width = 121
       Height = 26
       DataField = 'std_num'
-      DataSource = dbData.DataSourceStudent
+      DataSource = Form17.DataSource1
       TabOrder = 3
     end
     object DBEdit2: TDBEdit
-      Left = 64
-      Top = 71
+      Left = 320
+      Top = 63
       Width = 145
       Height = 26
       DataField = 'std_name'
-      DataSource = dbData.DataSourceStudent
+      DataSource = Form17.DataSource1
       TabOrder = 4
     end
     object DBEdit3: TDBEdit
-      Left = 64
-      Top = 113
+      Left = 320
+      Top = 105
       Width = 145
       Height = 26
       DataField = 'std_lastname'
-      DataSource = dbData.DataSourceStudent
+      DataSource = Form17.DataSource1
       TabOrder = 5
     end
     object DBComboBoxstate_num: TComboBox
-      Left = 79
-      Top = 262
+      Left = 335
+      Top = 176
       Width = 130
       Height = 26
       TabOrder = 6
       TextHint = #1573#1582#1578#1575#1585' '#1575#1604#1608#1604#1575#1610#1577
     end
     object DBComboBoxclass_num: TComboBox
-      Left = 79
-      Top = 222
+      Left = 335
+      Top = 214
       Width = 130
       Height = 26
       TabOrder = 7
       TextHint = #1573#1582#1578#1575#1585' '#1602#1587#1605
     end
+    object ComboBoxspec_num: TComboBox
+      Left = 335
+      Top = 254
+      Width = 130
+      Height = 26
+      TabOrder = 8
+      TextHint = #1573#1582#1578#1575#1585' '#1575#1604#1578#1582#1589#1589
+    end
+    object ComboBoxdiv_num: TComboBox
+      Left = 54
+      Top = 254
+      Width = 130
+      Height = 26
+      TabOrder = 9
+      TextHint = #1573#1582#1578#1575#1585' '#1575#1604#1601#1585#1593
+    end
   end
   object Panel1: TPanel
-    Left = 223
+    Left = 489
     Top = 0
     Width = 125
     Height = 38
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitLeft = 223
     object Image1: TImage
       Left = 93
       Top = 8

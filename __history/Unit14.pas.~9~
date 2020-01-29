@@ -1,0 +1,78 @@
+unit Unit14;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.pngimage, Vcl.ExtCtrls,
+  Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.Mask, Vcl.DBCtrls;
+
+type
+  TForm14 = class(TForm)
+    Body: TPanel;
+    Label1: TLabel;
+    Panel1: TPanel;
+    Image1: TImage;
+    Image2: TImage;
+    Panel5: TPanel;
+    Image3: TImage;
+    Panel2: TPanel;
+    Label4: TLabel;
+    Label5: TLabel;
+    ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
+    Panel3: TPanel;
+    Label2: TLabel;
+    Label3: TLabel;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    Button1: TButton;
+    procedure FormCreate(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+  private
+    procedure WMNCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form14: TForm14;
+    NightBlue,LightBlue,BtnBlue: TColor;
+
+implementation
+
+{$R *.dfm}
+
+uses Data;
+
+procedure TForm14.Image1Click(Sender: TObject);
+begin
+close
+end;
+
+procedure TForm14.WMNCHitTest(var Msg: TWMNCHitTest);
+  begin
+    inherited;
+    if Msg.Result = htClient then Msg.Result := htCaption;
+  end;
+
+procedure TForm14.FormCreate(Sender: TObject);
+var
+    aShape: TShape;
+begin
+      NightBlue := TColor(RGB(33, 47, 61 ));
+      LightBlue := TColor(RGB(52, 73, 94  ));
+      BtnBlue := TColor(RGB(52, 60, 85  ));
+      Form14.Color := NightBlue;
+
+      Form14.Panel1.Color:= NightBlue;
+      Form14.Body.Color := LightBlue;
+//      Form14.Panel4.Color:= BtnBlue;
+//      Form14.Panel4.Font.Color:=  TColor(RGB(255, 255, 255));
+//      Form14.Panel3.Color:= BtnBlue;
+//      Form14.Panel3.Font.Color:=  TColor(RGB(255, 255, 255));
+//      Form14.Panel2.Color:= BtnBlue;
+//      Form14.Panel2.Font.Color:=  TColor(RGB(255, 255, 255));
+end;
+
+end.

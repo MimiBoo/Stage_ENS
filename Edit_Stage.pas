@@ -16,7 +16,6 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
-    Label8: TLabel;
     Panel7: TPanel;
     Panel2: TPanel;
     bDate: TDateTimePicker;
@@ -30,6 +29,10 @@ type
     DBEdit3: TDBEdit;
     DBComboBoxstate_num: TComboBox;
     DBComboBoxclass_num: TComboBox;
+    ComboBoxspec_num: TComboBox;
+    Label11: TLabel;
+    ComboBoxdiv_num: TComboBox;
+    Label10: TLabel;
     procedure Panel2Click(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -47,7 +50,7 @@ implementation
 
 {$R *.dfm}
 
-uses Data;
+uses Data, Unit17;
  procedure TForm8.WMNCHitTest(var Msg: TWMNCHitTest);
   begin
     inherited;

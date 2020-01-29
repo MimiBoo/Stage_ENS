@@ -5,26 +5,28 @@ object Form9: TForm9
   BorderStyle = bsNone
   Caption = 'Form9'
   ClientHeight = 533
-  ClientWidth = 976
+  ClientWidth = 628
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
-  Font.Height = -11
-  Font.Name = 'Tahoma'
+  Font.Height = 18
+  Font.Name = 'B amir'
   Font.Style = []
   OldCreateOrder = False
   ParentBiDiMode = False
   Position = poDesktopCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 13
+  TextHeight = 18
   object Panel1: TPanel
-    Left = 851
+    Left = 503
     Top = 0
     Width = 125
     Height = 38
     Align = alRight
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitLeft = 851
     object Image1: TImage
       Left = 93
       Top = 8
@@ -124,7 +126,7 @@ object Form9: TForm9
   object Body: TPanel
     Left = 0
     Top = 38
-    Width = 976
+    Width = 628
     Height = 495
     Align = alBottom
     Anchors = [akLeft, akTop, akRight, akBottom]
@@ -132,8 +134,9 @@ object Form9: TForm9
     Color = clActiveCaption
     ParentBackground = False
     TabOrder = 1
+    ExplicitWidth = 976
     object Panel2: TPanel
-      Left = 875
+      Left = 531
       Top = 6
       Width = 82
       Height = 27
@@ -147,9 +150,10 @@ object Form9: TForm9
       ParentBackground = False
       ParentFont = False
       TabOrder = 0
+      OnClick = Panel2Click
     end
     object Panel3: TPanel
-      Left = 795
+      Left = 451
       Top = 6
       Width = 74
       Height = 27
@@ -163,10 +167,11 @@ object Form9: TForm9
       ParentBackground = False
       ParentFont = False
       TabOrder = 1
+      OnClick = Panel3Click
     end
     object SearchBox1: TSearchBox
-      Left = 760
-      Top = 160
+      Left = 420
+      Top = 39
       Width = 193
       Height = 26
       Font.Charset = DEFAULT_CHARSET
@@ -177,119 +182,80 @@ object Form9: TForm9
       ParentFont = False
       TabOrder = 2
       TextHint = #1576#1581#1579' '#1593#1606' '#1591#1575#1604#1576
+      OnChange = SearchBox1Change
     end
-    object GroupBox1: TGroupBox
+    object DBGrid1: TDBGrid
       Left = 0
-      Top = 192
-      Width = 976
-      Height = 303
+      Top = 88
+      Width = 628
+      Height = 407
       Align = alBottom
+      DataSource = dbData.DataSourceTeacher
+      DrawingStyle = gdsGradient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = 16
+      Font.Height = 18
       Font.Name = 'B amir'
       Font.Style = []
+      ParentColor = True
       ParentFont = False
       TabOrder = 3
-      object DBCtrlGrid1: TDBCtrlGrid
-        Left = 2
-        Top = 18
-        Width = 972
-        Height = 283
-        Align = alClient
-        DataSource = dbData.DataSourceTeacher
-        DragCursor = crArrow
-        PanelBorder = gbNone
-        PanelHeight = 20
-        PanelWidth = 955
-        ParentShowHint = False
-        TabOrder = 0
-        RowCount = 14
-        ShowHint = False
-        object Panel5: TPanel
-          Left = 902
-          Top = 0
-          Width = 53
-          Height = 20
-          Align = alRight
-          TabOrder = 0
-          object DBText2: TDBText
-            AlignWithMargins = True
-            Left = 4
-            Top = 4
-            Width = 45
-            Height = 12
-            Align = alClient
-            Alignment = taCenter
-            DataField = 'teach_num'
-            DataSource = dbData.DataSourceTeacher
-            ExplicitLeft = 616
-            ExplicitTop = 16
-            ExplicitWidth = 65
-            ExplicitHeight = 17
-          end
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = 18
+      TitleFont.Name = 'B amir'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'teach_num'
+          Title.Caption = #1585#1602#1605' '#1575#1604#1593#1575#1605#1604
+          Visible = True
         end
-        object Panel6: TPanel
-          Left = 0
-          Top = 0
-          Width = 902
-          Height = 20
-          Align = alClient
-          TabOrder = 1
-          object DBText1: TDBText
-            Left = 836
-            Top = 1
-            Width = 65
-            Height = 18
-            Align = alRight
-            Alignment = taCenter
-            DataField = 'teach_name'
-            DataSource = dbData.DataSourceTeacher
-            ExplicitLeft = 616
-            ExplicitTop = 16
-            ExplicitHeight = 17
-          end
-          object DBText3: TDBText
-            Left = 641
-            Top = 1
-            Width = 65
-            Height = 18
-            Align = alRight
-            Alignment = taCenter
-            DataField = 'teach_head'
-            DataSource = dbData.DataSourceTeacher
-            ExplicitLeft = 616
-            ExplicitTop = 16
-            ExplicitHeight = 17
-          end
-          object DBText4: TDBText
-            Left = 706
-            Top = 1
-            Width = 65
-            Height = 18
-            Align = alRight
-            Alignment = taCenter
-            DataField = 'teach_level'
-            DataSource = dbData.DataSourceTeacher
-            ExplicitLeft = 616
-            ExplicitTop = 16
-            ExplicitHeight = 17
-          end
-          object DBText5: TDBText
-            Left = 771
-            Top = 1
-            Width = 65
-            Height = 18
-            Align = alRight
-            Alignment = taCenter
-            DataField = 'teach_lastname'
-            DataSource = dbData.DataSourceTeacher
-            ExplicitLeft = 616
-            ExplicitTop = 16
-            ExplicitHeight = 17
-          end
+        item
+          Expanded = False
+          FieldName = 'teach_name'
+          Title.Caption = #1575#1604#1575#1587#1605
+          Width = 110
+          Visible = True
         end
-      end
+        item
+          Expanded = False
+          FieldName = 'teach_lastname'
+          Title.Caption = #1575#1604#1604#1602#1576
+          Width = 134
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'teach_level'
+          Title.Caption = #1575#1604#1605#1587#1578#1608#1609
+          Width = 148
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'teach_head'
+          Width = 120
+          Visible = True
+        end>
+    end
+    object Panel4: TPanel
+      Left = 371
+      Top = 6
+      Width = 74
+      Height = 27
+      BevelOuter = bvNone
+      Caption = #1581#1601#1592
+      Font.Charset = ARABIC_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'B amir'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 4
+      OnClick = Panel4Click
     end
   end
 end

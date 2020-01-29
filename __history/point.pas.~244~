@@ -1,0 +1,465 @@
+unit point;
+
+interface
+
+uses
+  Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
+  Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.DBCtrls, Vcl.DBCGrids, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, Data.Win.ADODB, Vcl.Mask, Vcl.ComCtrls;
+
+type
+  TForm1 = class(TForm)
+    Body: TPanel;
+    Panel1: TPanel;
+    Image1: TImage;
+    Image3: TImage;
+    Image2: TImage;
+    GridPanel1: TGridPanel;
+    Panel3: TPanel;
+    Panel2: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    DBGrid1: TDBGrid;
+    Panel8: TPanel;
+    GridPanel3: TGridPanel;
+    Panel11: TPanel;
+    Panel13: TPanel;
+    GridPanel4: TGridPanel;
+    Panel14: TPanel;
+    Label4: TLabel;
+    Label5: TLabel;
+    Panel15: TPanel;
+    Panel16: TPanel;
+    CheckBox2: TCheckBox;
+    Panel17: TPanel;
+    Panel18: TPanel;
+    Panel19: TPanel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    DBEdit4: TDBEdit;
+    Label8: TLabel;
+    Label9: TLabel;
+    DBComboBoxteach_name: TComboBox;
+    Label14: TLabel;
+    DBComboBoxsubj_name: TComboBox;
+    Label15: TLabel;
+    DBEditMultiplier: TDBEdit;
+    Editstd_num: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    ComboBox1: TComboBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    Panel6: TPanel;
+    Edittd: TEdit;
+    Editexama2: TEdit;
+    Editexama1: TEdit;
+    Edittp: TEdit;
+    Label3: TLabel;
+    Edit1: TEdit;
+    procedure FormCreate(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure SearchBox1Change(Sender: TObject);
+    procedure DBComboBoxclass_numChange(Sender: TObject);
+    procedure DBComboBoxdiv_numChange(Sender: TObject);
+    procedure DBComboBoxspec_numChange(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
+    procedure Editstd_numChange(Sender: TObject);
+    procedure Panel3Click(Sender: TObject);
+    procedure Panel2Click(Sender: TObject);
+    procedure Panel6Click(Sender: TObject);
+    procedure Panel11Click(Sender: TObject);
+    procedure DBEdit1Change(Sender: TObject);
+    procedure DBEdit5Change(Sender: TObject);
+    procedure DBEdit6Change(Sender: TObject);
+  private
+    procedure WMNCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  NightBlue,LightBlue,BtnBlue: TColor;
+  x,subj_num:integer;
+
+
+
+implementation
+
+{$R *.dfm}
+
+uses Data, Unit14;
+
+ 
+procedure TForm1.CheckBox1Click(Sender: TObject);
+begin
+
+
+if CheckBox2.Checked = true then
+ begin
+dbData.PonintviewsView.SQL.Clear;
+dbData.PonintviewsView.SQL.Add('SELECT * from PonintViews where dbo.Point.ratrapage = True ');
+dbData.PonintviewsView.Open;
+ end
+ else
+ begin
+dbData.PonintviewsView.SQL.Clear;
+dbData.PonintviewsView.SQL.Add('SELECT * from PonintViews where std_num ='+quotedstr(Editstd_num.Text));
+dbData.PonintviewsView.Open;
+ end;
+
+end;
+
+procedure TForm1.DBComboBoxclass_numChange(Sender: TObject);
+begin
+
+//dbData.View_1View.SQL.Clear;
+//dbData.View_1View.SQL.Add('SELECT * from View_1  where class_name  like '+QuotedStr(DBComboBoxclass_num.Text+'%'));
+//dbData.View_1View.Open;
+
+end;
+
+procedure TForm1.DBComboBoxdiv_numChange(Sender: TObject);
+begin
+//
+//dbData.View_1View.SQL.Clear;
+//dbData.View_1View.SQL.Add('SELECT * from View_1  where div_name  like '+QuotedStr(DBComboBoxdiv_num.Text+'%'));
+//dbData.View_1View.Open;
+
+end;
+
+procedure TForm1.DBComboBoxspec_numChange(Sender: TObject);
+begin
+with dbData.SubjectTable do
+ begin
+   Close;
+   SQL.Clear;
+   SQL.Text := 'select * from Subject where  subj_name = '+quotedstr(DBComboBoxsubj_name.Text);
+   Open;
+
+   dbData.SubjectTable.First;
+
+   while not dbData.SubjectTable.Eof do
+    begin
+       x := dbData.SubjectTable['subj_num'];
+       DBEditMultiplier.Text := dbData.SubjectTable['Multiplier'] ;
+      dbData.SubjectTable.Next;
+    end;
+ end;
+
+ with dbData.PointTable do
+ begin
+   Close;
+   SQL.Clear;
+   SQL.Text := 'select * from Point where std_num = '+quotedstr(Editstd_num.Text);
+   Open;
+
+   dbData.PointTable.First;
+
+   while not dbData.PointTable.Eof do
+    begin
+
+    subj_num :=  StrtoInt(dbData.PointTable['subj_num']) ;
+
+      dbData.PointTable.Next;
+    end;
+ end;
+//dbData.View_1View.SQL.Clear;
+//dbData.View_1View.SQL.Add('SELECT * from View_1  where spec_name  like '+QuotedStr(DBComboBoxspec_num.Text+'%'));
+//dbData.View_1View.Open;
+
+//   DBEdit1.Text := '';
+//    DBEdit5.Text := '';
+//     DBEdit6.Text := '';
+//      DBEdit7.Text := '';
+end;
+
+procedure TForm1.DBEdit1Change(Sender: TObject);
+begin
+
+//    DBEdit5.Text := '';
+//     DBEdit6.Text := '';
+//      DBEdit7.Text := '';
+end;
+
+procedure TForm1.DBEdit5Change(Sender: TObject);
+begin
+//
+//     DBEdit6.Text := '';
+//      DBEdit7.Text := '';
+end;
+
+procedure TForm1.DBEdit6Change(Sender: TObject);
+begin
+
+   //   DBEdit7.Text := '';
+end;
+
+procedure TForm1.Editstd_numChange(Sender: TObject);
+begin
+dbData.PonintviewsView.SQL.Clear;
+dbData.PonintviewsView.SQL.Add('SELECT * from PonintViews  where std_num  = '+Editstd_num.Text);
+dbData.PonintviewsView.Open;
+
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+
+
+      NightBlue := TColor(RGB(33, 47, 61 ));
+      LightBlue := TColor(RGB(52, 73, 94  ));
+      BtnBlue := TColor(RGB(52, 60, 85  ));
+      Form1.Body.Color := LightBlue;
+      Form1.Color := NightBlue;
+      Form1.Panel1.Color:= NightBlue;
+
+      Form1.GridPanel1.Color:= BtnBlue;
+      Form1.Panel3.Color:= BtnBlue;
+      Form1.Panel3.Font.Color:=  TColor(RGB(255, 255, 255));
+      Form1.Panel2.Color:= BtnBlue;
+      Form1.Panel2.Font.Color:=  TColor(RGB(255, 255, 255));
+
+      Form1.Panel4.Color:= BtnBlue;
+      Form1.Panel4.Font.Color:=  TColor(RGB(255, 255, 255));
+
+      Form1.Panel5.Color:= BtnBlue;
+      Form1.Panel5.Font.Color:=  TColor(RGB(255, 255, 255));
+
+
+//      Form1.Panel6.Color:= BtnBlue;
+//      Form1.Panel6.Font.Color:=  TColor(RGB(255, 255, 255));
+//
+
+//
+//      if dbData.View_1Viewexam1.AsFloat < 8 then
+//       begin
+//         dbData.View_1Viewexam1.:=  TColor(RGB(255, 255, 255));
+//        end;
+
+end;
+
+procedure TForm1.Image1Click(Sender: TObject);
+begin
+
+Close;
+end;
+
+procedure TForm1.Image2Click(Sender: TObject);
+begin
+if Form1.WindowState = wsNormal then
+   begin
+        Form1.WindowState:=wsMaximized;
+        with Screen.WorkAreaRect do
+            Form1.SetBounds(Left, Top, Right - Left, Bottom - Top);
+   end
+       else
+       begin
+         Form1.WindowState:=wsNormal;
+       end;
+end;
+
+procedure TForm1.Image3Click(Sender: TObject);
+begin
+    if Form1.WindowState = wsNormal then
+       begin
+          Form1.WindowState:=wsMinimized;
+      end else
+       begin
+         Form1.WindowState:=wsMinimized;
+       end;
+end;
+
+procedure TForm1.Panel11Click(Sender: TObject);
+begin
+//   dbData.PointTable.Insert;
+//   dbData.PonintviewsView.Insert;
+////   DBEdit1.Enabled := true;
+////    DBEdit5.Enabled := true;
+////     DBEdit6.Enabled := true;
+////      DBEdit7.Enabled := true;
+//      Panel6.Enabled := true;
+      Form1.DBComboBoxsubj_name.Enabled := true;
+      Form1.DBComboBoxteach_name.Enabled := true;
+      Panel6.Enabled := true;
+
+
+end;
+
+procedure TForm1.Panel2Click(Sender: TObject);
+begin
+
+
+dbData.PointTable.Edit;
+dbData.PonintviewsView.Edit;
+DBGrid1.Columns[0].ReadOnly := False;
+DBGrid1.Columns[1].ReadOnly := False;
+DBGrid1.Columns[2].ReadOnly := False;
+DBGrid1.Columns[3].ReadOnly := False;
+
+DBGrid1.Columns[5].ReadOnly := False;
+DBGrid1.Columns[6].ReadOnly := False;
+DBGrid1.Columns[7].ReadOnly := False;
+
+end;
+
+procedure TForm1.Panel3Click(Sender: TObject);
+begin
+
+
+  dbData.PointTable.Post;
+  dbData.PonintviewsView.Post;
+  DBGrid1.Columns[0].ReadOnly := true;
+DBGrid1.Columns[1].ReadOnly := true;
+DBGrid1.Columns[2].ReadOnly := true;
+DBGrid1.Columns[3].ReadOnly := true;
+
+DBGrid1.Columns[5].ReadOnly := true;
+DBGrid1.Columns[6].ReadOnly := true;
+DBGrid1.Columns[7].ReadOnly := true;
+
+end;
+
+procedure TForm1.Panel6Click(Sender: TObject);
+begin
+
+try
+
+
+dbData.PointTable.Insert;
+
+if Edittp.Text = '' then
+begin
+  dbData.PointTabletp.AsVariant := Null ;
+end
+else
+begin
+  dbData.PointTabletp.AsFloat :=  StrToFloat(Edittp.Text);
+
+end;
+
+if Edittd.Text = '' then
+begin
+  dbData.PointTabletd.AsVariant :=  Null;
+end
+else
+begin
+  dbData.PointTabletp.AsFloat :=  StrToFloat(Edittd.Text);
+end;
+
+if Editexama1.Text = '' then
+begin
+  dbData.PointTableexama1.AsVariant :=  Null;
+end
+else
+begin
+  dbData.PointTableexama1.AsFloat :=  StrToFloat(Editexama1.Text);
+end;
+
+if Editexama2.Text = '' then
+begin
+  dbData.PointTableexama2.AsVariant :=  Null;
+end
+else
+begin
+  dbData.PointTableexama2.AsFloat :=  StrToFloat(Editexama2.Text);
+end;
+dbData.PointTablestd_num.AsInteger :=  StrToint(Editstd_num.Text);
+
+dbData.PointTableratrapage.AsBoolean := False;
+dbData.PointTableYear.AsInteger := 1;
+
+with dbData.SubjectTable do
+ begin
+   Close;
+   SQL.Clear;
+   SQL.Text := 'select * from Subject where subj_name = '+quotedstr(DBComboBoxsubj_name.Text);
+   Open;
+
+   dbData.SubjectTable.First;
+
+   while not dbData.SubjectTable.Eof do
+    begin
+    dbData.PointTablesubj_num.AsInteger :=  StrtoInt(dbData.SubjectTable['subj_num']) ;
+    DBEditMultiplier.Text := dbData.SubjectTable['Multiplier'] ;
+      dbData.SubjectTable.Next;
+    end;
+ end;
+
+ with dbData.TeacherTable do
+ begin
+   Close;
+   SQL.Clear;
+   SQL.Text := 'select * from Teacher where teach_name like '+quotedstr(DBComboBoxteach_name.Text+'%');
+   Open;
+
+   dbData.TeacherTable.First;
+
+   while not dbData.TeacherTable.Eof do
+    begin
+    dbData.PointTableteach_num.AsInteger :=  StrtoInt(dbData.TeacherTable['teach_num']) ;
+
+      dbData.TeacherTable.Next;
+    end;
+ end;
+
+
+
+dbData.PointTable.Post;
+Edittp.Text := '';
+Edittd.Text := '';
+Editexama1.Text := '';
+Editexama2.Text := '';
+dbData.PonintviewsView.Refresh;
+
+//   DBEdit1.Enabled := False;
+//    DBEdit5.Enabled := False;
+//     DBEdit6.Enabled := False;
+//      DBEdit7.Enabled := False;
+       Panel6.Enabled := False;
+         Form1.DBComboBoxsubj_name.Enabled := False;
+      Form1.DBComboBoxteach_name.Enabled := False;
+
+// end
+// else
+//  begin
+//    ShowMessage('ÇáãÇÏÉ ãæÌæÏÉ');
+//  end;
+finally
+
+end;
+end;
+
+procedure TForm1.SearchBox1Change(Sender: TObject);
+begin
+
+
+
+try
+//
+//
+//dbData.View_1View.SQL.Clear;
+//dbData.View_1View.SQL.Add('SELECT * from View_1  where std_num  like '+QuotedStr(SearchBox1.Text+'%'));
+//dbData.View_1View.Open;
+
+
+finally
+
+end;
+
+
+end;
+
+procedure TForm1.WMNCHitTest(var Msg: TWMNCHitTest);
+begin
+inherited;
+  if Msg.Result = htClient then Msg.Result := htCaption;
+end;
+
+end.

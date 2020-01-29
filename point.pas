@@ -58,6 +58,9 @@ type
     Editexama2: TEdit;
     Editexama1: TEdit;
     Edittp: TEdit;
+    Label3: TLabel;
+    EditRatrapage: TEdit;
+    Label6: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure Image2Click(Sender: TObject);
@@ -92,7 +95,7 @@ implementation
 
 {$R *.dfm}
 
-uses Data, Unit14;
+uses Data, Unit14, Unit17;
 
  
 procedure TForm1.CheckBox1Click(Sender: TObject);
@@ -201,6 +204,7 @@ end;
 
 procedure TForm1.Editstd_numChange(Sender: TObject);
 begin
+
 dbData.PonintviewsView.SQL.Clear;
 dbData.PonintviewsView.SQL.Add('SELECT * from PonintViews  where std_num  = '+Editstd_num.Text);
 dbData.PonintviewsView.Open;
@@ -285,6 +289,9 @@ begin
 //      Panel6.Enabled := true;
       Form1.DBComboBoxsubj_name.Enabled := true;
       Form1.DBComboBoxteach_name.Enabled := true;
+      Panel6.Enabled := true;
+
+
 end;
 
 procedure TForm1.Panel2Click(Sender: TObject);
@@ -297,7 +304,7 @@ DBGrid1.Columns[0].ReadOnly := False;
 DBGrid1.Columns[1].ReadOnly := False;
 DBGrid1.Columns[2].ReadOnly := False;
 DBGrid1.Columns[3].ReadOnly := False;
-
+DBGrid1.Columns[4].ReadOnly := False;
 DBGrid1.Columns[5].ReadOnly := False;
 DBGrid1.Columns[6].ReadOnly := False;
 DBGrid1.Columns[7].ReadOnly := False;
@@ -336,6 +343,7 @@ end
 else
 begin
   dbData.PointTabletp.AsFloat :=  StrToFloat(Edittp.Text);
+
 end;
 
 if Edittd.Text = '' then
@@ -344,7 +352,7 @@ begin
 end
 else
 begin
-  dbData.PointTabletp.AsFloat :=  StrToFloat(Edittd.Text);
+  dbData.PointTabletd.AsFloat :=  StrToFloat(Edittd.Text);
 end;
 
 if Editexama1.Text = '' then
@@ -364,9 +372,19 @@ else
 begin
   dbData.PointTableexama2.AsFloat :=  StrToFloat(Editexama2.Text);
 end;
+
+if EditRatrapage.Text = '' then
+begin
+  dbData.PointTableratrapage.AsVariant :=  Null;
+end
+else
+begin
+  dbData.PointTableratrapage.AsFloat :=  StrToFloat(EditRatrapage.Text);
+end;
+
 dbData.PointTablestd_num.AsInteger :=  StrToint(Editstd_num.Text);
 
-dbData.PointTableratrapage.AsBoolean := False;
+
 dbData.PointTableYear.AsInteger := 1;
 
 with dbData.SubjectTable do
@@ -406,6 +424,10 @@ with dbData.SubjectTable do
 
 
 dbData.PointTable.Post;
+Edittp.Text := '';
+Edittd.Text := '';
+Editexama1.Text := '';
+Editexama2.Text := '';
 dbData.PonintviewsView.Refresh;
 
 //   DBEdit1.Enabled := False;

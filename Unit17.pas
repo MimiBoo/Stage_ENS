@@ -18,9 +18,6 @@ type
     GridPanel1: TGridPanel;
     Panel3: TPanel;
     DBGrid2: TDBGrid;
-    Panel10: TPanel;
-    Panel11: TPanel;
-    DBText1: TDBText;
     Panel5: TPanel;
     DBGrid1: TDBGrid;
     Panel12: TPanel;
@@ -40,39 +37,56 @@ type
     Panel7: TPanel;
     Panel8: TPanel;
     Panel9: TPanel;
-    PageControl1: TPageControl;
-    TabSheet1: TTabSheet;
-    TabSheet2: TTabSheet;
+    Panel16: TPanel;
+    ADOConnection1: TADOConnection;
+    ADOQuery1: TADOQuery;
+    DataSource1: TDataSource;
+    DBGrid3: TDBGrid;
+    Panel10: TPanel;
+    Panel11: TPanel;
     Panel15: TPanel;
     Label1: TLabel;
+    DBText1: TDBText;
+    Splitter1: TSplitter;
     Label5: TLabel;
-    Label6: TLabel;
-    ComboBox1: TComboBox;
-    ComboBox2: TComboBox;
-    ComboBox3: TComboBox;
-    Panel16: TPanel;
-    Image4: TImage;
-    Image7: TImage;
-    Panel17: TPanel;
-    GridPanel2: TGridPanel;
-    Panel19: TPanel;
-    Panel20: TPanel;
-    Panel21: TPanel;
     DBText2: TDBText;
-    Panel22: TPanel;
-    DBGrid4: TDBGrid;
-    DBGrid3: TDBGrid;
+    DataSource2: TDataSource;
+    ADOQuery2: TADOQuery;
+    ADOQuery2subj_name: TStringField;
+    ADOQuery2tp: TFloatField;
+    ADOQuery2td: TFloatField;
+    ADOQuery2exama1: TFloatField;
+    ADOQuery2exama2: TFloatField;
+    ADOQuery2Year: TIntegerField;
+    ADOQuery2ratrapage: TFloatField;
+    ADOQuery2Multiplier: TIntegerField;
+    ADOQuery2std_num: TStringField;
+    ADOQuery2Sum: TFloatField;
+    Panel17: TPanel;
+    Panel18: TPanel;
+    ADOQuery2R: TStringField;
+    ADOQuery1std_num: TStringField;
+    ADOQuery1std_name: TStringField;
+    ADOQuery1std_lastname: TStringField;
+    ADOQuery1bDate: TWideStringField;
+    ADOQuery1div_name: TStringField;
+    ADOQuery1class_name: TStringField;
+    ADOQuery1spec_name: TStringField;
+    ADOQuery1state_name: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure Image2Click(Sender: TObject);
     procedure DBGrid2DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
-    procedure Panel9Click(Sender: TObject);
     procedure Panel8Click(Sender: TObject);
     procedure Image5Click(Sender: TObject);
     procedure Image6Click(Sender: TObject);
     procedure Image7Click(Sender: TObject);
     procedure Image4Click(Sender: TObject);
+    procedure Panel16Click(Sender: TObject);
+    procedure ADOQuery2CalcFields(DataSet: TDataSet);
+    procedure Panel17Click(Sender: TObject);
+    procedure Panel18Click(Sender: TObject);
   private
         procedure WMNCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
   public
@@ -87,7 +101,7 @@ implementation
 
 {$R *.dfm}
 
-uses Login, Data, Ratrapage;
+uses Login, Data, Ratrapage, Settings, point;
 
 procedure TForm17.Image1Click(Sender: TObject);
 begin
@@ -110,42 +124,53 @@ end;
 
 procedure TForm17.Image4Click(Sender: TObject);
 begin
-dbData.StudentviewView.Prior;
-dbData.RatrapageviewView.Edit;
-dbData.StudentviewView.Edit;
-dbData.FDMemTable2.Edit;
-dbData.FDMemTable2SumAll.AsFloat := 0;
-
-
-dbData.RatrapageviewView.DisableControls;
-dbData.RatrapageviewView.First;
-dbData.FDMemTable2.Refresh;
-While not(dbData.RatrapageviewView.EOF) do
-    begin
-
-      dbData.FDMemTable2.Edit;
-
-      dbData.FDMemTable2.FieldByName('SumAll').AsFloat := dbData.FDMemTable2.FieldByName('SumAll').AsFloat
-                                            + dbData.RatrapageviewView.FieldByName('Sum').AsFloat;
-      dbData.RatrapageviewView.Next;
-    end;
-
-    dbData.RatrapageviewView.EnableControls;
-
-
-
-dbData.RatrapageviewView.Edit;
-dbData.StudentviewView.Edit;
-dbData.FDMemTable2.Edit;
+//dbData.StudentviewView.Prior;
+//dbData.RatrapageviewView.Edit;
+//dbData.StudentviewView.Edit;
+//dbData.FDMemTable2.Edit;
+//dbData.FDMemTable2SumAll.AsFloat := 0;
+//
+//
+//dbData.RatrapageviewView.DisableControls;
+//dbData.RatrapageviewView.First;
+//dbData.FDMemTable2.Refresh;
+//While not(dbData.RatrapageviewView.EOF) do
+//    begin
+//
+//      dbData.FDMemTable2.Edit;
+//
+//      dbData.FDMemTable2.FieldByName('SumAll').AsFloat := dbData.FDMemTable2.FieldByName('SumAll').AsFloat
+//                                            + dbData.RatrapageviewView.FieldByName('Sum').AsFloat;
+//      dbData.RatrapageviewView.Next;
+//    end;
+//
+//    dbData.RatrapageviewView.EnableControls;
+//
+//
+//
+//dbData.RatrapageviewView.Edit;
+//dbData.StudentviewView.Edit;
+//dbData.FDMemTable2.Edit;
 end;
 
 procedure TForm17.Image5Click(Sender: TObject);
+var Multiplier:integer;
 begin
+
 dbData.StudentviewView.Prior;
+ADOQuery1.Prior;
+
+
 dbData.PonintviewsView.Edit;
+
 dbData.StudentviewView.Edit;
 dbData.FDMemTable1.Edit;
+
+
+dbData.FDMemTable1Average.AsFloat := 0;
 dbData.FDMemTable1SumAll.AsFloat := 0;
+dbData.FDMemTable1Ratrapage.AsFloat := 0;
+Multiplier := 0;
 
 
 dbData.PonintviewsView.DisableControls;
@@ -158,26 +183,107 @@ While not(dbData.PonintviewsView.EOF) do
 
       dbData.FDMemTable1.FieldByName('SumAll').AsFloat := dbData.FDMemTable1.FieldByName('SumAll').AsFloat
                                             + dbData.PonintviewsView.FieldByName('Sum').AsFloat;
+
+      Multiplier := Multiplier + dbData.PonintviewsView.FieldByName('Multiplier').AsInteger;
+
+
+
       dbData.PonintviewsView.Next;
     end;
 
+     dbData.FDMemTable1.FieldByName('Average').AsFloat := dbData.FDMemTable1.FieldByName('SumAll').AsFloat / Multiplier;
+
+      if dbData.FDMemTable1.FieldByName('Average').AsFloat >= 10 then
+       begin
+
+       dbData.FDMemTable1.FieldByName('Result').AsString := '‰«ÃÕ'
+       end
+       else if dbData.FDMemTable1.FieldByName('Average').AsFloat <= 5 then
+        begin
+           dbData.FDMemTable1.FieldByName('Result').AsString := '—«”»'
+        end
+         else
+          begin
+            dbData.FDMemTable1.FieldByName('Result').AsString := '«·«” œ—«ﬂ'
+          end;
+
+
     dbData.PonintviewsView.EnableControls;
+///////////////////////////////////////
+if DBText2.Caption = NULL then
+begin
+try
+
+ dbData.RatrapageviewView.DisableControls;
+dbData.RatrapageviewView.First;
+While not(dbData.RatrapageviewView.EOF) do
+    begin
+
+      dbData.FDMemTable1.Edit;
+
+      dbData.FDMemTable1.FieldByName('Ratrapage').AsFloat := dbData.FDMemTable1.FieldByName('Ratrapage').AsFloat
+                                            + dbData.RatrapageviewView.FieldByName('Sum').AsFloat;
+
+      Multiplier := Multiplier + dbData.RatrapageviewView.FieldByName('Multiplier').AsInteger;
 
 
 
-dbData.PonintviewsView.Edit;
-dbData.StudentviewView.Edit;
-dbData.FDMemTable1.Edit;
+      dbData.RatrapageviewView.Next;
+    end;
+
+     dbData.FDMemTable1.FieldByName('Average').AsFloat := dbData.FDMemTable1.FieldByName('Ratrapage').AsFloat / Multiplier;
+
+      if dbData.FDMemTable1.FieldByName('Average').AsFloat >= 10 then
+       begin
+
+       dbData.FDMemTable1.FieldByName('Result').AsString := '‰«ÃÕ'
+       end
+       else if dbData.FDMemTable1.FieldByName('Average').AsFloat <= 5 then
+        begin
+           dbData.FDMemTable1.FieldByName('Result').AsString := '—«”»'
+        end
+         else
+          begin
+            dbData.FDMemTable1.FieldByName('Result').AsString := '«·«” œ—«ﬂ'
+          end;
+
+
+    dbData.RatrapageviewView.EnableControls;
+///////////////////////////////////////
+
+
+
+except
+  on EZeroDivide do
+
 end;
 
+end;
+
+
+
+
+end;
+
+
 procedure TForm17.Image6Click(Sender: TObject);
+var Multiplier : integer;
 begin
 dbData.StudentviewView.Next;
+ADOQuery1.Next;
+
+
+dbData.StudentviewView.Edit;
+
 dbData.PonintviewsView.Edit;
+
 dbData.StudentviewView.Edit;
 dbData.FDMemTable1.Edit;
-dbData.FDMemTable1SumAll.AsFloat := 0;
 
+
+dbData.FDMemTable1Average.AsFloat := 0;
+dbData.FDMemTable1SumAll.AsFloat := 0;
+Multiplier := 0;
 
 dbData.PonintviewsView.DisableControls;
 dbData.PonintviewsView.First;
@@ -189,91 +295,249 @@ While not(dbData.PonintviewsView.EOF) do
 
       dbData.FDMemTable1.FieldByName('SumAll').AsFloat := dbData.FDMemTable1.FieldByName('SumAll').AsFloat
                                             + dbData.PonintviewsView.FieldByName('Sum').AsFloat;
+
+            Multiplier := Multiplier + dbData.PonintviewsView.FieldByName('Multiplier').AsInteger;
+
       dbData.PonintviewsView.Next;
     end;
+
+
+    dbData.FDMemTable1.FieldByName('Average').AsFloat := dbData.FDMemTable1.FieldByName('SumAll').AsFloat / Multiplier;
+
+
+      if dbData.FDMemTable1.FieldByName('Average').AsFloat >= 10 then
+       begin
+
+       dbData.FDMemTable1.FieldByName('Result').AsString := '‰«ÃÕ'
+       end
+       else if dbData.FDMemTable1.FieldByName('Average').AsFloat <= 5 then
+        begin
+           dbData.FDMemTable1.FieldByName('Result').AsString := '—«”»'
+        end
+         else
+          begin
+            dbData.FDMemTable1.FieldByName('Result').AsString := '«·«” œ—«ﬂ'
+          end;
+
 
     dbData.PonintviewsView.EnableControls;
 
 
+    dbData.FDMemTable1Ratrapage.AsFloat := 0;
+    ////////////////////////////////////////////
+    ///
+    ///
+    ///
+if DBText2.Caption = NULL then
+begin
 
-dbData.PonintviewsView.Edit;
-dbData.StudentviewView.Edit;
-dbData.FDMemTable1.Edit;
+try
+
+ dbData.RatrapageviewView.DisableControls;
+dbData.RatrapageviewView.First;
+    While not(dbData.RatrapageviewView.EOF) do
+    begin
+
+      dbData.FDMemTable1.Edit;
+
+      dbData.FDMemTable1.FieldByName('Ratrapage').AsFloat := dbData.FDMemTable1.FieldByName('Ratrapage').AsFloat
+                                            + dbData.RatrapageviewView.FieldByName('Sum').AsFloat;
+
+      Multiplier := Multiplier + dbData.RatrapageviewView.FieldByName('Multiplier').AsInteger;
+
+
+
+      dbData.RatrapageviewView.Next;
+    end;
+
+     dbData.FDMemTable1.FieldByName('Average').AsFloat := dbData.FDMemTable1.FieldByName('Ratrapage').AsFloat / Multiplier;
+
+      if dbData.FDMemTable1.FieldByName('Average').AsFloat >= 10 then
+       begin
+
+       dbData.FDMemTable1.FieldByName('Result').AsString := '‰«ÃÕ'
+       end
+       else if dbData.FDMemTable1.FieldByName('Average').AsFloat <= 5 then
+        begin
+           dbData.FDMemTable1.FieldByName('Result').AsString := '—«”»'
+        end
+         else
+          begin
+            dbData.FDMemTable1.FieldByName('Result').AsString := '«·«” œ—«ﬂ'
+          end;
+
+
+    dbData.RatrapageviewView.EnableControls;
+///////////////////////////////////////
+
+
+
+
+except
+  on EZeroDivide do
+
+end;
+
+
+end;
+
+
 end;
 
 procedure TForm17.Image7Click(Sender: TObject);
 begin
-dbData.StudentviewView.Next;
-dbData.RatrapageviewView.Edit;
+//dbData.StudentviewView.Next;
+//dbData.RatrapageviewView.Edit;
+//dbData.StudentviewView.Edit;
+//dbData.FDMemTable2.Edit;
+//dbData.FDMemTable2SumAll.AsFloat := 0;
+//
+//
+//dbData.RatrapageviewView.DisableControls;
+//dbData.RatrapageviewView.First;
+//dbData.FDMemTable2.Refresh;
+//While not(dbData.RatrapageviewView.EOF) do
+//    begin
+//
+//      dbData.FDMemTable2.Edit;
+//
+//      dbData.FDMemTable2.FieldByName('SumAll').AsFloat := dbData.FDMemTable2.FieldByName('SumAll').AsFloat
+//                                            + dbData.RatrapageviewView.FieldByName('Sum').AsFloat;
+//      dbData.RatrapageviewView.Next;
+//    end;
+//
+//    dbData.RatrapageviewView.EnableControls;
+//
+//
+//
+//dbData.RatrapageviewView.Edit;
+//dbData.StudentviewView.Edit;
+//dbData.FDMemTable2.Edit;
+end;
+
+procedure TForm17.Panel16Click(Sender: TObject);
+begin
+
+try
+  with ADOQuery1 do
+  begin
+    SQL.Clear;
+    SQL.Add('Select *');
+    SQL.Add('from Stage_ENS.dbo.StudentView ');
+    SQL.Add('where [class_name] = ' +QuotedStr(DBComboBoxclass_num.Text)
+                                              +' and div_name ='+QuotedStr(DBComboBoxdiv_num.Text)
+                                                          +'and spec_name = '+QuotedStr(DBComboBoxspec_num.Text));
+    Open;
+  end;
+
+
+
+
+
+except
+  on EZeroDivide do
+
+end;
+
+end;
+
+procedure TForm17.Panel17Click(Sender: TObject);
+begin
+
+
+
+
+dbData.RatrapageviewView.Active := true;
 dbData.StudentviewView.Edit;
-dbData.FDMemTable2.Edit;
-dbData.FDMemTable2SumAll.AsFloat := 0;
+try
+  with dbData.RatrapageviewView do
+  begin
 
 
-dbData.RatrapageviewView.DisableControls;
-dbData.RatrapageviewView.First;
-dbData.FDMemTable2.Refresh;
-While not(dbData.RatrapageviewView.EOF) do
-    begin
-
-      dbData.FDMemTable2.Edit;
-
-      dbData.FDMemTable2.FieldByName('SumAll').AsFloat := dbData.FDMemTable2.FieldByName('SumAll').AsFloat
-                                            + dbData.RatrapageviewView.FieldByName('Sum').AsFloat;
-      dbData.RatrapageviewView.Next;
-    end;
-
-    dbData.RatrapageviewView.EnableControls;
+        SQL.Clear;
+        SQL.Add('Select *');
+        SQL.Add('from Stage_ENS.dbo.RatrapageView ');
+        SQL.Add('where [std_num] = ' +QuotedStr(dbData.StudentviewViewstd_num.AsString));
+        Open;
 
 
 
-dbData.RatrapageviewView.Edit;
+  end;
+
+
+
+except
+  on EZeroDivide do
+
+end;
+Panel18.Enabled:= true;
+end;
+
+procedure TForm17.Panel18Click(Sender: TObject);
+begin
 dbData.StudentviewView.Edit;
-dbData.FDMemTable2.Edit;
+
+Form1.Edittd.Enabled:= False;
+Form1.Edittp.Enabled:= False;
+Form1.Editexama1.Enabled:= False;
+Form1.Editexama2.Enabled:= False;
+Form1.Panel11.Enabled:= False;
+
+
+
+Form1.ShowModal;
 end;
 
 procedure TForm17.Panel8Click(Sender: TObject);
 begin
 Form16.ShowModal;
-//dbData.PonintviewsView.Edit;
-//dbData.StudentviewView.Edit;
-//dbData.FDMemTable1.Edit;
-//dbData.FDMemTable1SumAll.AsFloat := 0;
-//
-//
-//dbData.PonintviewsView.DisableControls;
-//dbData.PonintviewsView.First;
-//dbData.FDMemTable1.Refresh;
-//While not(dbData.PonintviewsView.EOF) do
-//    begin
-//
-//      dbData.FDMemTable1.Edit;
-//
-//      dbData.FDMemTable1.FieldByName('SumAll').AsFloat := dbData.FDMemTable1.FieldByName('SumAll').AsFloat
-//                                            + dbData.PonintviewsView.FieldByName('Sum').AsFloat;
-//      dbData.PonintviewsView.Next;
-//    end;
-//
-//    dbData.PonintviewsView.EnableControls;
-//
-//
-//
-//dbData.PonintviewsView.Edit;
-//dbData.StudentviewView.Edit;
-//dbData.FDMemTable1.Edit;
+dbData.PonintviewsView.Edit;
+dbData.StudentviewView.Edit;
+dbData.FDMemTable1.Edit;
+dbData.FDMemTable1Average.AsFloat := 0;
 
-end;
 
-procedure TForm17.Panel9Click(Sender: TObject);
-begin
+dbData.PonintviewsView.DisableControls;
+dbData.PonintviewsView.First;
+dbData.FDMemTable1.Refresh;
+While not(dbData.PonintviewsView.EOF) do
+    begin
 
-try
-dbData.StudentviewView.SQL.Clear;
-dbData.StudentviewView.SQL.Add('SELECT * from Studentview  where class_name = '+QuotedStr(DBComboBoxclass_num.Text)+' and div_name ='+QuotedStr(DBComboBoxdiv_num.Text)+'and spec_name = '+QuotedStr(DBComboBoxspec_num.Text));
-dbData.StudentviewView.Open
-finally
+      dbData.FDMemTable1.Edit;
 
-end;
+      dbData.FDMemTable1.FieldByName('SumAll').AsFloat := dbData.FDMemTable1.FieldByName('SumAll').AsFloat
+                                            + dbData.PonintviewsView.FieldByName('Sum').AsFloat;
+
+      dbData.FDMemTable1.FieldByName('Multiplier').AsInteger := dbData.FDMemTable1.FieldByName('Multiplier').AsInteger
+                                             + dbData.PonintviewsView.FieldByName('Multiplier').AsInteger;
+
+      dbData.FDMemTable1.FieldByName('Average').AsFloat := dbData.FDMemTable1.FieldByName('SumAll').AsFloat / dbData.FDMemTable1.FieldByName('Multiplier').AsInteger  ;
+
+
+    if dbData.FDMemTable1.FieldByName('Average').AsFloat >= 10 then
+       begin
+
+       dbData.FDMemTable1.FieldByName('Result').AsString := '‰«ÃÕ'
+       end
+       else if dbData.FDMemTable1.FieldByName('Average').AsFloat <= 5 then
+        begin
+           dbData.FDMemTable1.FieldByName('Result').AsString := '—«”»'
+        end
+         else
+          begin
+            dbData.FDMemTable1.FieldByName('Result').AsString := '«·«” œ—«ﬂ'
+          end;
+
+      dbData.PonintviewsView.Next;
+    end;
+
+    dbData.PonintviewsView.EnableControls;
+
+
+
+dbData.PonintviewsView.Edit;
+dbData.StudentviewView.Edit;
+dbData.FDMemTable1.Edit;
 
 end;
 
@@ -282,6 +546,66 @@ procedure TForm17.WMNCHitTest(var Msg: TWMNCHitTest);
     inherited;
     if Msg.Result = htClient then Msg.Result := htCaption;
   end;
+procedure TForm17.ADOQuery2CalcFields(DataSet: TDataSet);
+var TP,TD,exama1,exama2,sum,x,ratrapage:real;
+begin
+
+if dbData.PonintviewsView.FieldByName('ratrapage').AsFloat <> NULL then
+ begin
+
+ if (dbData.PonintviewsView.FieldByName('tp').AsVariant = NULL) and (dbData.PonintviewsView.FieldByName('td').AsVariant = NULL) then
+      begin
+
+
+        ADOQuery2.FieldByName('Sum').AsFloat := dbData.PonintviewsView.FieldByName('ratrapage').AsFloat;
+
+      end
+      else
+
+      if (dbData.PonintviewsView.FieldByName('tp').AsVariant = NULL) then
+            begin
+
+        ratrapage := dbData.PonintviewsView.FieldByName('ratrapage').AsFloat;
+
+        TD := dbData.PonintviewsView.FieldByName('td').AsFloat;
+        sum := ((ratrapage * 2) + TD)/3;
+
+        ADOQuery2.FieldByName('Sum').Value:= sum;
+
+            end
+            else
+
+        if (dbData.PonintviewsView.FieldByName('td').AsVariant = NULL) then
+            begin
+
+            ratrapage := dbData.PonintviewsView.FieldByName('ratrapage').AsFloat;
+              TP := dbData.PonintviewsView.FieldByName('tp').AsFloat;
+              sum := ((ratrapage * 2) + TP)/3;
+
+             ADOQuery2.FieldByName('Sum').Value:= sum;
+
+            end
+            else
+
+      if (dbData.PonintviewsView.FieldByName('td').AsVariant <> NULL) and (dbData.PonintviewsView.FieldByName('tp').AsVariant <> NULL)
+                 and (dbData.PonintviewsView.FieldByName('exama1').AsVariant <> NULL) and (dbData.PonintviewsView.FieldByName('exama2').AsVariant <> NULL) then
+            begin
+              ratrapage := dbData.PonintviewsView.FieldByName('ratrapage').AsFloat;
+              exama1 := dbData.PonintviewsView.FieldByName('exama1').AsFloat;
+              exama2 := dbData.PonintviewsView.FieldByName('exama2').AsFloat;
+              TD := dbData.PonintviewsView.FieldByName('td').AsFloat;
+              TP := dbData.PonintviewsView.FieldByName('tp').AsFloat;
+              sum := ((ratrapage * 2)+((TP + TD )/ 2)) / 3;
+
+
+        ADOQuery2.FieldByName('Sum').Value:= sum;
+
+    end;
+
+ end;
+
+end;
+
 procedure TForm17.DBGrid2DrawColumnCell(Sender: TObject; const Rect: TRect;
   DataCol: Integer; Column: TColumn; State: TGridDrawState);
 begin
@@ -299,8 +623,26 @@ begin
 
       Form17.Panel1.Color:= NightBlue;
       Form17.Body.Color := LightBlue;
-//      Form17.Panel2.Color:= BtnBlue;
-//      Form17.Panel2.Font.Color:=  TColor(RGB(255, 255, 255));
+      Form17.Panel2.Color:= BtnBlue;
+      Form17.Panel2.Font.Color:=  TColor(RGB(255, 255, 255));
+
+      Form17.Panel16.Color:= BtnBlue;
+      Form17.Panel16.Font.Color:=  TColor(RGB(255, 255, 255));
+
+      Form17.Panel17.Color:= BtnBlue;
+      Form17.Panel17.Font.Color:=  TColor(RGB(255, 255, 255));
+
+      Form17.Panel18.Color:= BtnBlue;
+      Form17.Panel18.Font.Color:=  TColor(RGB(255, 255, 255));
+
+      Form17.Panel7.Color:= BtnBlue;
+      Form17.Panel7.Font.Color:=  TColor(RGB(255, 255, 255));
+
+      Form17.Panel8.Color:= BtnBlue;
+      Form17.Panel8.Font.Color:=  TColor(RGB(255, 255, 255));
+
+      Form17.Panel9.Color:= BtnBlue;
+      Form17.Panel9.Font.Color:=  TColor(RGB(255, 255, 255));
 end;
 
 end.

@@ -1,0 +1,220 @@
+unit point;
+
+interface
+
+uses
+  Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Imaging.pngimage,
+  Vcl.StdCtrls, Vcl.WinXCtrls, Vcl.DBCtrls, Vcl.DBCGrids, Data.DB, Vcl.Grids,
+  Vcl.DBGrids, Data.Win.ADODB;
+
+type
+  TForm1 = class(TForm)
+    Body: TPanel;
+    Panel1: TPanel;
+    Image1: TImage;
+    Image3: TImage;
+    Image2: TImage;
+    GridPanel1: TGridPanel;
+    Panel3: TPanel;
+    Panel2: TPanel;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    DBGrid1: TDBGrid;
+    GridPanel2: TGridPanel;
+    Panel7: TPanel;
+    DBComboBoxclass_num: TComboBox;
+    DBComboBoxdiv_num: TComboBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    DBComboBoxspec_num: TComboBox;
+    Panel8: TPanel;
+    Panel9: TPanel;
+    Panel10: TPanel;
+    SearchBox1: TSearchBox;
+    GridPanel3: TGridPanel;
+    Panel11: TPanel;
+    Panel12: TPanel;
+    CheckBox1: TCheckBox;
+    Timer1: TTimer;
+    procedure FormCreate(Sender: TObject);
+    procedure Image1Click(Sender: TObject);
+    procedure Image2Click(Sender: TObject);
+    procedure Image3Click(Sender: TObject);
+    procedure SearchBox1Change(Sender: TObject);
+    procedure DBComboBoxclass_numChange(Sender: TObject);
+    procedure DBComboBoxdiv_numChange(Sender: TObject);
+    procedure DBComboBoxspec_numChange(Sender: TObject);
+    procedure Panel3Click(Sender: TObject);
+    procedure CheckBox1Click(Sender: TObject);
+    procedure Timer1Timer(Sender: TObject);
+  private
+    procedure WMNCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+  NightBlue,LightBlue,BtnBlue: TColor;
+
+
+
+implementation
+
+{$R *.dfm}
+
+uses Data, Unit14;
+
+ 
+procedure TForm1.CheckBox1Click(Sender: TObject);
+begin
+
+
+if CheckBox1.Checked = true then
+ begin
+dbData.View_1View.SQL.Clear;
+dbData.View_1View.SQL.Add('SELECT * from View_1 where ratrapage ='+intToStr(1));
+dbData.View_1View.Open;
+ end
+ else
+ begin
+   dbData.View_1View.SQL.Clear;
+dbData.View_1View.SQL.Add('SELECT * from View_1');
+dbData.View_1View.Open;
+ end;
+
+end;
+
+procedure TForm1.DBComboBoxclass_numChange(Sender: TObject);
+begin
+
+dbData.View_1View.SQL.Clear;
+dbData.View_1View.SQL.Add('SELECT * from View_1  where class_name  like '+QuotedStr(DBComboBoxclass_num.Text+'%'));
+dbData.View_1View.Open;
+
+end;
+
+procedure TForm1.DBComboBoxdiv_numChange(Sender: TObject);
+begin
+
+dbData.View_1View.SQL.Clear;
+dbData.View_1View.SQL.Add('SELECT * from View_1  where div_name  like '+QuotedStr(DBComboBoxdiv_num.Text+'%'));
+dbData.View_1View.Open;
+
+end;
+
+procedure TForm1.DBComboBoxspec_numChange(Sender: TObject);
+begin
+
+dbData.View_1View.SQL.Clear;
+dbData.View_1View.SQL.Add('SELECT * from View_1  where spec_name  like '+QuotedStr(DBComboBoxspec_num.Text+'%'));
+dbData.View_1View.Open;
+
+end;
+
+procedure TForm1.FormCreate(Sender: TObject);
+begin
+      NightBlue := TColor(RGB(33, 47, 61 ));
+      LightBlue := TColor(RGB(52, 73, 94  ));
+      BtnBlue := TColor(RGB(52, 60, 85  ));
+      Form1.Body.Color := LightBlue;
+      Form1.Color := NightBlue;
+      Form1.Panel1.Color:= NightBlue;
+
+      Form1.GridPanel1.Color:= BtnBlue;
+      Form1.Panel3.Color:= BtnBlue;
+      Form1.Panel3.Font.Color:=  TColor(RGB(255, 255, 255));
+      Form1.Panel2.Color:= BtnBlue;
+      Form1.Panel2.Font.Color:=  TColor(RGB(255, 255, 255));
+
+      Form1.Panel4.Color:= BtnBlue;
+      Form1.Panel4.Font.Color:=  TColor(RGB(255, 255, 255));
+
+      Form1.Panel5.Color:= BtnBlue;
+      Form1.Panel5.Font.Color:=  TColor(RGB(255, 255, 255));
+
+      Form1.Panel6.Color:= BtnBlue;
+      Form1.Panel6.Font.Color:=  TColor(RGB(255, 255, 255));
+
+
+//
+//      if dbData.View_1Viewexam1.AsFloat < 8 then
+//       begin
+//         dbData.View_1Viewexam1.:=  TColor(RGB(255, 255, 255));
+//        end;
+
+end;
+
+procedure TForm1.Image1Click(Sender: TObject);
+begin
+DBComboBoxspec_num.Items.Clear;
+DBComboBoxclass_num.Items.Clear;
+DBComboBoxdiv_num.Items.Clear;
+Close;
+end;
+
+procedure TForm1.Image2Click(Sender: TObject);
+begin
+if Form1.WindowState = wsNormal then
+   begin
+        Form1.WindowState:=wsMaximized;
+        with Screen.WorkAreaRect do
+            Form1.SetBounds(Left, Top, Right - Left, Bottom - Top);
+   end
+       else
+       begin
+         Form1.WindowState:=wsNormal;
+       end;
+end;
+
+procedure TForm1.Image3Click(Sender: TObject);
+begin
+    if Form1.WindowState = wsNormal then
+       begin
+          Form1.WindowState:=wsMinimized;
+      end else
+       begin
+         Form1.WindowState:=wsMinimized;
+       end;
+end;
+
+procedure TForm1.Panel3Click(Sender: TObject);
+begin
+Form14.ShowModal;
+end;
+
+procedure TForm1.SearchBox1Change(Sender: TObject);
+begin
+
+
+
+try
+
+
+dbData.View_1View.SQL.Clear;
+dbData.View_1View.SQL.Add('SELECT * from View_1  where std_num  like '+QuotedStr(SearchBox1.Text+'%'));
+dbData.View_1View.Open;
+
+
+finally
+
+end;
+
+
+end;
+
+procedure TForm1.Timer1Timer(Sender: TObject);
+begin
+dbData.View_1View.Refresh;
+end;
+
+procedure TForm1.WMNCHitTest(var Msg: TWMNCHitTest);
+begin
+inherited;
+  if Msg.Result = htClient then Msg.Result := htCaption;
+end;
+
+end.

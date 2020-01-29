@@ -69,28 +69,7 @@ type
     StudentTablediv_num: TIntegerField;
     StudentTablespec_num: TIntegerField;
     StudentTablestate_num: TIntegerField;
-    PointTable: TFDQuery;
-    PointTablepoint_num: TFDAutoIncField;
-    PointTabletp: TFloatField;
-    PointTabletd: TFloatField;
-    PointTableexama1: TFloatField;
-    PointTableexama2: TFloatField;
-    PointTablestd_num: TStringField;
-    PointTablesubj_num: TIntegerField;
-    PointTableteach_num: TIntegerField;
-    PointTableYear: TIntegerField;
-    PointTableratrapage: TBooleanField;
-    PonintviewsView: TFDQuery;
     StudentviewView: TFDQuery;
-    PonintviewsViewsubj_name: TStringField;
-    PonintviewsViewtp: TFloatField;
-    PonintviewsViewtd: TFloatField;
-    PonintviewsViewexama1: TFloatField;
-    PonintviewsViewexama2: TFloatField;
-    PonintviewsViewYear: TIntegerField;
-    PonintviewsViewratrapage: TBooleanField;
-    PonintviewsViewMultiplier: TIntegerField;
-    PonintviewsViewstd_num: TStringField;
     StudentviewViewstd_num: TStringField;
     StudentviewViewstd_name: TStringField;
     StudentviewViewstd_lastname: TStringField;
@@ -99,26 +78,51 @@ type
     StudentviewViewclass_name: TStringField;
     StudentviewViewspec_name: TStringField;
     StudentviewViewstate_name: TStringField;
-    PonintviewsViewSum: TFloatField;
     DataSource1: TDataSource;
     FDMemTable1: TFDMemTable;
     FDMemTable1SumAll: TFloatField;
-    DataSourceRatrapageview: TDataSource;
-    DataSource2: TDataSource;
-    FDMemTable2: TFDMemTable;
+    FDMemTable1Multiplier: TIntegerField;
+    FDMemTable1Average: TFloatField;
+    FDMemTable1Result: TStringField;
+    PointTable: TFDQuery;
+    PointTablepoint_num: TFDAutoIncField;
+    PointTabletp: TFloatField;
+    PointTabletd: TFloatField;
+    PointTableexama1: TFloatField;
+    PointTableexama2: TFloatField;
+    PointTableratrapage: TFloatField;
+    PointTablestd_num: TStringField;
+    PointTablesubj_num: TIntegerField;
+    PointTableteach_num: TIntegerField;
+    PointTableYear: TIntegerField;
+    PonintviewsView: TFDQuery;
+    PonintviewsViewsubj_name: TStringField;
+    PonintviewsViewtp: TFloatField;
+    PonintviewsViewtd: TFloatField;
+    PonintviewsViewexama1: TFloatField;
+    PonintviewsViewexama2: TFloatField;
+    PonintviewsViewYear: TIntegerField;
+    PonintviewsViewratrapage: TFloatField;
+    PonintviewsViewMultiplier: TIntegerField;
+    PonintviewsViewstd_num: TStringField;
+    PonintviewsViewSum: TFloatField;
+    FDMemTable1Ratrapage: TFloatField;
     RatrapageviewView: TFDQuery;
+    DataSourceRatrapageview: TDataSource;
     RatrapageviewViewtp: TFloatField;
     RatrapageviewViewtd: TFloatField;
     RatrapageviewViewexama1: TFloatField;
     RatrapageviewViewexama2: TFloatField;
     RatrapageviewViewYear: TIntegerField;
-    RatrapageviewViewratrapage: TBooleanField;
     RatrapageviewViewsubj_name: TStringField;
     RatrapageviewViewMultiplier: TIntegerField;
     RatrapageviewViewstd_num: TStringField;
+    RatrapageviewViewratrapage: TFloatField;
     RatrapageviewViewSum: TFloatField;
-    FDMemTable2SumAll: TFloatField;
+    PonintviewsViewR: TStringField;
     procedure PonintviewsViewCalcFields(DataSet: TDataSet);
+    procedure StudentviewViewError(ASender, AInitiator: TObject;
+      var AException: Exception);
     procedure RatrapageviewViewCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
@@ -140,194 +144,241 @@ uses Unit17;
 
 
 procedure TdbData.PonintviewsViewCalcFields(DataSet: TDataSet);
-var TP,TD,exama1,exama2,sum,x :real;
+var TP,TD,exama1,exama2,sum,x,ratrapage:real;
 begin
-//  dbData.FDMemTable1.Edit;
-//  dbData.FDMemTable1SumAll.AsFloat := 0;
-if (dbData.PonintviewsView.FieldByName('tp').AsVariant = NULL) and (dbData.PonintviewsView.FieldByName('td').AsVariant = NULL) then
-  begin
-    exama1 := dbData.PonintviewsView.FieldByName('exama1').AsFloat;
-    exama2 := dbData.PonintviewsView.FieldByName('exama2').AsFloat;
-    sum := (exama1+exama2)/2;
 
 
-    dbData.PonintviewsView.FieldByName('Sum').Value:= sum;
+//if (dbData.PonintviewsView.FieldByName('ratrapage').Value = NULL) then
+// begin
 
 
-
-
-    if sum <= 10 then
-     begin
-      dbData.PointTable.Edit;
-       dbData.PointTable.FieldByName('ratrapage').AsBoolean := true;
-      dbData.PointTable.Post;
-
-     end;
-
-
-  end;
-     if (dbData.PonintviewsView.FieldByName('tp').AsVariant = NULL) then
-        begin
-    exama1 := dbData.PonintviewsView.FieldByName('exama1').AsFloat;
-    exama2 := dbData.PonintviewsView.FieldByName('exama2').AsFloat;
-    TD := dbData.PonintviewsView.FieldByName('td').AsFloat;
-    sum := (exama1+exama2+TD)/3;
-
-    dbData.PonintviewsView.FieldByName('Sum').Value:= sum;
-
-
-    x :=  sum + x;
-
-    if sum <= 10 then
-     begin
-      dbData.PointTable.Edit;
-       dbData.PointTable.FieldByName('ratrapage').AsBoolean := true;
-       dbData.PointTable.Post;
-
-     end;
-        end;
-
-   if (dbData.PonintviewsView.FieldByName('td').AsVariant = NULL) then
-        begin
-    exama1 := dbData.PonintviewsView.FieldByName('exama1').AsFloat;
-    exama2 := dbData.PonintviewsView.FieldByName('exama2').AsFloat;
-    TP := dbData.PonintviewsView.FieldByName('tp').AsFloat;
-    sum := (exama1+exama2+TP)/3;
-   dbData.PonintviewsView.FieldByName('Sum').Value:= sum;
-
-       x :=  sum + x;
-   if sum <= 10 then
-     begin
-      dbData.PointTable.Edit;
-       dbData.PointTable.FieldByName('ratrapage').AsBoolean := true;
-       dbData.PointTable.Post;
-
-     end;
-        end;
-
-    if (dbData.PonintviewsView.FieldByName('td').AsVariant <> NULL) and (dbData.PonintviewsView.FieldByName('tp').AsVariant <> NULL)
-             and (dbData.PonintviewsView.FieldByName('exama1').AsVariant <> NULL) and (dbData.PonintviewsView.FieldByName('exama2').AsVariant <> NULL) then
-        begin
-    exama1 := dbData.PonintviewsView.FieldByName('exama1').AsFloat;
-    exama2 := dbData.PonintviewsView.FieldByName('exama2').AsFloat;
-    TD := dbData.PonintviewsView.FieldByName('td').AsFloat;
-    TP := dbData.PonintviewsView.FieldByName('tp').AsFloat;
-    sum := ((exama1+exama2)+((TP + TD )/ 2))/3;
-
-
-    dbData.PonintviewsView.FieldByName('Sum').Value:= sum;
-
-    x :=  sum + x;
-    if sum <= 10 then
-     begin
-
-       dbData.PointTable.Edit;
-       dbData.PointTable.FieldByName('ratrapage').AsBoolean := true;
-       dbData.PointTable.Post;
-
-     end;
-
-  end;
+    if (dbData.PonintviewsView.FieldByName('tp').AsVariant = NULL) and (dbData.PonintviewsView.FieldByName('td').AsVariant = NULL) then
+      begin
+        exama1 := dbData.PonintviewsView.FieldByName('exama1').AsFloat;
+        exama2 := dbData.PonintviewsView.FieldByName('exama2').AsFloat;
+        sum := (exama1+exama2)/2;
 
 
 
-//       dbData.FDMemTable1.FieldByName('SumAll').AsFloat:= x
-//                                   + dbData.FDMemTable1.FieldByName('SumAll').AsFloat;
+        dbData.PonintviewsView.FieldByName('Sum').AsFloat:= sum;
+
+        if sum >= 10 then
+         begin
+           dbData.PonintviewsView.FieldByName('R').AsString:= '·«' ;
+         end
+         else
+          begin
+            dbData.PonintviewsView.FieldByName('R').AsString:= '‰⁄„' ;
+          end;
+
+      end
+      else
+
+         if (dbData.PonintviewsView.FieldByName('tp').AsVariant = NULL) then
+            begin
+        exama1 := dbData.PonintviewsView.FieldByName('exama1').AsFloat;
+        exama2 := dbData.PonintviewsView.FieldByName('exama2').AsFloat;
+        TD := dbData.PonintviewsView.FieldByName('td').AsFloat;
+        sum := (exama1+exama2+TD)/3;
+
+        dbData.PonintviewsView.FieldByName('Sum').AsFloat:= sum;
+
+        if sum >= 10 then
+         begin
+           dbData.PonintviewsView.FieldByName('R').AsString:= '·«' ;
+         end
+         else
+          begin
+            dbData.PonintviewsView.FieldByName('R').AsString:= '‰⁄„';
+          end;
+
+            end
+            else
+
+       if (dbData.PonintviewsView.FieldByName('td').AsVariant = NULL) then
+            begin
+        exama1 := dbData.PonintviewsView.FieldByName('exama1').AsFloat;
+        exama2 := dbData.PonintviewsView.FieldByName('exama2').AsFloat;
+        TP := dbData.PonintviewsView.FieldByName('tp').AsFloat;
+        sum := (exama1+exama2+TP)/3;
+
+       dbData.PonintviewsView.FieldByName('Sum').AsFloat:= sum;
+
+       if sum >= 10 then
+         begin
+           dbData.PonintviewsView.FieldByName('R').AsString:= '·«' ;
+         end
+         else
+          begin
+            dbData.PonintviewsView.FieldByName('R').AsString:= '‰⁄„';
+          end;
+
+
+            end
+            else
+
+        if (dbData.PonintviewsView.FieldByName('td').AsVariant <> NULL) and (dbData.PonintviewsView.FieldByName('tp').AsVariant <> NULL)
+                 and (dbData.PonintviewsView.FieldByName('exama1').AsVariant <> NULL) and (dbData.PonintviewsView.FieldByName('exama2').AsVariant <> NULL) then
+            begin
+        exama1 := dbData.PonintviewsView.FieldByName('exama1').AsFloat;
+        exama2 := dbData.PonintviewsView.FieldByName('exama2').AsFloat;
+        TD := dbData.PonintviewsView.FieldByName('td').AsFloat;
+        TP := dbData.PonintviewsView.FieldByName('tp').AsFloat;
+        sum := ((exama1+exama2)+((TP + TD )/ 2)) / 3;
+
+
+        dbData.PonintviewsView.FieldByName('Sum').AsFloat:= sum;
+
+        if sum >= 10 then
+         begin
+           dbData.PonintviewsView.FieldByName('R').AsString:= '·«' ;
+         end
+         else
+          begin
+            dbData.PonintviewsView.FieldByName('R').AsString:= '‰⁄„';
+          end;
+
+
+
+      end;
+// end;
+ ///////////////////////////////////////////////  ratrapage
+//  else
 //
+//    if (dbData.PonintviewsView.FieldByName('tp').AsVariant = NULL) and (dbData.PonintviewsView.FieldByName('td').AsVariant = NULL) then
+//      begin
+//
+//
+//
+//        dbData.RatrapageviewView.FieldByName('Sum').AsFloat := dbData.PonintviewsView.FieldByName('ratrapage').AsFloat;
+//
+//      end
+//      else
+//
+//      if (dbData.PonintviewsView.FieldByName('tp').AsVariant = NULL) then
+//            begin
+//
+//        ratrapage := dbData.PonintviewsView.FieldByName('ratrapage').AsFloat;
+//
+//        TD := dbData.RatrapageviewView.FieldByName('td').AsFloat;
+//        sum := ((ratrapage * 2) + TD)/3;
+//
+//        dbData.RatrapageviewView.FieldByName('Sum').Value:= sum;
+//
+//            end
+//            else
+//
+//        if (dbData.PonintviewsView.FieldByName('td').AsVariant = NULL) then
+//            begin
+//
+//            ratrapage := dbData.PonintviewsView.FieldByName('ratrapage').AsFloat;
+//              TP := dbData.RatrapageviewView.FieldByName('tp').AsFloat;
+//              sum := ((ratrapage * 2) + TP)/3;
+//
+//             dbData.RatrapageviewView.FieldByName('Sum').Value:= sum;
+//
+//            end
+//            else
+//
+//      if (dbData.PonintviewsView.FieldByName('td').AsVariant <> NULL) and (dbData.PonintviewsView.FieldByName('tp').AsVariant <> NULL)
+//                 and (dbData.PonintviewsView.FieldByName('exama1').AsVariant <> NULL) and (dbData.PonintviewsView.FieldByName('exama2').AsVariant <> NULL) then
+//            begin
+//              ratrapage := dbData.PonintviewsView.FieldByName('ratrapage').AsFloat;
+//              exama1 := dbData.RatrapageviewView.FieldByName('exama1').AsFloat;
+//              exama2 := dbData.RatrapageviewView.FieldByName('exama2').AsFloat;
+//              TD := dbData.RatrapageviewView.FieldByName('td').AsFloat;
+//              TP := dbData.RatrapageviewView.FieldByName('tp').AsFloat;
+//              sum := ((ratrapage * 2)+((TP + TD )/ 2)) / 3;
+//
+//
+//        dbData.RatrapageviewView.FieldByName('Sum').Value:= sum;
+
+
+
+
+
+  //  end;
+
+
+
+
 
 end;
 
 
 procedure TdbData.RatrapageviewViewCalcFields(DataSet: TDataSet);
-var TP,TD,exama1,exama2,sum,x :real;
+var TP,TD,exama1,exama2,sum,x,ratrapage:real;
 begin
-//  dbData.FDMemTable1.Edit;
-//  dbData.FDMemTable1SumAll.AsFloat := 0;
-if (dbData.RatrapageviewView.FieldByName('tp').AsVariant = NULL) and (dbData.RatrapageviewView.FieldByName('td').AsVariant = NULL) then
-  begin
-    exama1 := dbData.RatrapageviewView.FieldByName('exama1').AsFloat;
-    exama2 := dbData.RatrapageviewView.FieldByName('exama2').AsFloat;
-    sum := (exama1+exama2)/2;
+
+if (dbData.PonintviewsView.FieldByName('ratrapage').Value <> NULL) then
+ begin
+
+ if (dbData.RatrapageviewView.FieldByName('tp').AsVariant = NULL) and (dbData.RatrapageviewView.FieldByName('td').AsVariant = NULL) then
+      begin
 
 
-    dbData.RatrapageviewView.FieldByName('Sum').Value:= sum;
+        RatrapageviewView.FieldByName('Sum').AsFloat := dbData.PonintviewsView.FieldByName('ratrapage').AsFloat;
+
+      end
+      else
+
+      if (dbData.RatrapageviewView.FieldByName('tp').AsVariant = NULL) then
+            begin
+
+        ratrapage := dbData.PonintviewsView.FieldByName('ratrapage').AsFloat;
+
+        TD := dbData.RatrapageviewView.FieldByName('td').AsFloat;
+        sum := ((ratrapage * 2) + TD)/3;
+
+        RatrapageviewView.FieldByName('Sum').Value:= sum;
+
+            end
+            else
+
+        if (dbData.RatrapageviewView.FieldByName('td').AsVariant = NULL) then
+            begin
+
+            ratrapage := dbData.PonintviewsView.FieldByName('ratrapage').AsFloat;
+              TP := dbData.RatrapageviewView.FieldByName('tp').AsFloat;
+              sum := ((ratrapage * 2) + TP)/3;
+
+             RatrapageviewView.FieldByName('Sum').Value:= sum;
+
+            end
+            else
+
+      if (dbData.RatrapageviewView.FieldByName('td').AsVariant <> NULL) and (dbData.RatrapageviewView.FieldByName('tp').AsVariant <> NULL)
+                 and (dbData.RatrapageviewView.FieldByName('exama1').AsVariant <> NULL) and (dbData.RatrapageviewView.FieldByName('exama2').AsVariant <> NULL) then
+            begin
+              ratrapage := dbData.PonintviewsView.FieldByName('ratrapage').AsFloat;
+              exama1 := dbData.RatrapageviewView.FieldByName('exama1').AsFloat;
+              exama2 := dbData.RatrapageviewView.FieldByName('exama2').AsFloat;
+              TD := dbData.RatrapageviewView.FieldByName('td').AsFloat;
+              TP := dbData.RatrapageviewView.FieldByName('tp').AsFloat;
+              sum := ((ratrapage * 2)+((TP + TD )/ 2)) / 3;
 
 
+        RatrapageviewView.FieldByName('Sum').Value:= sum;
 
+    end;
 
-    if sum <= 10 then
-     begin
-      dbData.PointTable.Edit;
-       dbData.PointTable.FieldByName('ratrapage').AsBoolean := true;
-      dbData.PointTable.Post;
-
-     end;
-
-
-  end;
-     if (dbData.RatrapageviewView.FieldByName('tp').AsVariant = NULL) then
-        begin
-    exama1 := dbData.RatrapageviewView.FieldByName('exama1').AsFloat;
-    exama2 := dbData.RatrapageviewView.FieldByName('exama2').AsFloat;
-    TD := dbData.RatrapageviewView.FieldByName('td').AsFloat;
-    sum := (exama1+exama2+TD)/3;
-
-    dbData.RatrapageviewView.FieldByName('Sum').Value:= sum;
-
-
-    x :=  sum + x;
-
-    if sum <= 10 then
-     begin
-      dbData.PointTable.Edit;
-       dbData.PointTable.FieldByName('ratrapage').AsBoolean := true;
-       dbData.PointTable.Post;
-
-     end;
-        end;
-
-   if (dbData.RatrapageviewView.FieldByName('td').AsVariant = NULL) then
-        begin
-    exama1 := dbData.RatrapageviewView.FieldByName('exama1').AsFloat;
-    exama2 := dbData.RatrapageviewView.FieldByName('exama2').AsFloat;
-    TP := dbData.RatrapageviewView.FieldByName('tp').AsFloat;
-    sum := (exama1+exama2+TP)/3;
-   dbData.RatrapageviewView.FieldByName('Sum').Value:= sum;
-
-       x :=  sum + x;
-   if sum <= 10 then
-     begin
-      dbData.PointTable.Edit;
-       dbData.PointTable.FieldByName('ratrapage').AsBoolean := true;
-       dbData.PointTable.Post;
-
-     end;
-        end;
-
-    if (dbData.RatrapageviewView.FieldByName('td').AsVariant <> NULL) and (dbData.RatrapageviewView.FieldByName('tp').AsVariant <> NULL)
-             and (dbData.RatrapageviewView.FieldByName('exama1').AsVariant <> NULL) and (dbData.RatrapageviewView.FieldByName('exama2').AsVariant <> NULL) then
-        begin
-    exama1 := dbData.RatrapageviewView.FieldByName('exama1').AsFloat;
-    exama2 := dbData.RatrapageviewView.FieldByName('exama2').AsFloat;
-    TD := dbData.RatrapageviewView.FieldByName('td').AsFloat;
-    TP := dbData.RatrapageviewView.FieldByName('tp').AsFloat;
-    sum := ((exama1+exama2)+((TP + TD )/ 2))/3;
-
-
-    dbData.RatrapageviewView.FieldByName('Sum').Value:= sum;
-
-    x :=  sum + x;
-    if sum <= 10 then
-     begin
-
-       dbData.PointTable.Edit;
-       dbData.PointTable.FieldByName('ratrapage').AsBoolean := true;
-       dbData.PointTable.Post;
-
-     end;
-
-  end;
-
+ end;
 end;
+
+procedure TdbData.StudentviewViewError(ASender, AInitiator: TObject;
+  var AException: Exception);
+
+var
+  oExc: EFDDBEngineException;
+begin
+  if AException is EFDDBEngineException then begin
+    oExc := EFDDBEngineException(AException);
+    if oExc.Kind = ekRecordLocked then
+      oExc.Message := 'Please, try the operation later. At moment, the record is busy'
+    else if (oExc.Kind = ekUKViolated) and SameText(oExc[0].ObjName, 'UniqueKey_Orders') then
+      oExc.Message := 'Please, provide the unique order information. It seems, your order was already put';
+  end;
+end;
+
 
 end.

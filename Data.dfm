@@ -224,7 +224,8 @@ object dbData: TdbData
     Active = True
     Connection = Stage_ensConnection
     SQL.Strings = (
-      'SELECT * FROM Stage_ENS.dbo.Student')
+      'SELECT * FROM Stage_ENS.dbo.Student '
+      '')
     Left = 632
     Top = 407
     object StudentTablestd_num: TStringField
@@ -333,119 +334,18 @@ object dbData: TdbData
   end
   object DataSourceStudentview: TDataSource
     DataSet = StudentviewView
-    Left = 32
-    Top = 424
-  end
-  object PointTable: TFDQuery
-    Active = True
-    Connection = Stage_ensConnection
-    SQL.Strings = (
-      'SELECT * FROM Stage_ENS.dbo.Point')
-    Left = 139
-    Top = 216
-    object PointTablepoint_num: TFDAutoIncField
-      FieldName = 'point_num'
-      ReadOnly = True
-    end
-    object PointTabletp: TFloatField
-      FieldName = 'tp'
-    end
-    object PointTabletd: TFloatField
-      FieldName = 'td'
-    end
-    object PointTableexama1: TFloatField
-      FieldName = 'exama1'
-    end
-    object PointTableexama2: TFloatField
-      FieldName = 'exama2'
-    end
-    object PointTablestd_num: TStringField
-      FieldName = 'std_num'
-      Required = True
-      Size = 16
-    end
-    object PointTablesubj_num: TIntegerField
-      FieldName = 'subj_num'
-      Required = True
-    end
-    object PointTableteach_num: TIntegerField
-      FieldName = 'teach_num'
-      Required = True
-    end
-    object PointTableYear: TIntegerField
-      FieldName = 'Year'
-      Required = True
-    end
-    object PointTableratrapage: TBooleanField
-      FieldName = 'ratrapage'
-      Required = True
-    end
-  end
-  object PonintviewsView: TFDQuery
-    Active = True
-    OnCalcFields = PonintviewsViewCalcFields
-    Connection = Stage_ensConnection
-    SQL.Strings = (
-      'SELECT * FROM Stage_ENS.dbo.PonintViews')
-    Left = 421
-    Top = 337
-    object PonintviewsViewsubj_name: TStringField
-      FieldName = 'subj_name'
-      Origin = 'subj_name'
-      Required = True
-      Size = 25
-    end
-    object PonintviewsViewtp: TFloatField
-      FieldName = 'tp'
-      Origin = 'tp'
-    end
-    object PonintviewsViewtd: TFloatField
-      FieldName = 'td'
-      Origin = 'td'
-    end
-    object PonintviewsViewSum: TFloatField
-      DisplayWidth = 3
-      FieldKind = fkInternalCalc
-      FieldName = 'Sum'
-      Precision = 3
-    end
-    object PonintviewsViewexama1: TFloatField
-      FieldName = 'exama1'
-      Origin = 'exama1'
-    end
-    object PonintviewsViewexama2: TFloatField
-      FieldName = 'exama2'
-      Origin = 'exama2'
-    end
-    object PonintviewsViewYear: TIntegerField
-      FieldName = 'Year'
-      Origin = 'Year'
-      Required = True
-    end
-    object PonintviewsViewratrapage: TBooleanField
-      FieldName = 'ratrapage'
-      Origin = 'ratrapage'
-      Required = True
-    end
-    object PonintviewsViewMultiplier: TIntegerField
-      FieldName = 'Multiplier'
-      Origin = 'Multiplier'
-      Required = True
-    end
-    object PonintviewsViewstd_num: TStringField
-      FieldName = 'std_num'
-      Origin = 'std_num'
-      Required = True
-      Size = 16
-    end
+    Left = 232
+    Top = 408
   end
   object StudentviewView: TFDQuery
     Active = True
+    Filtered = True
     Connection = Stage_ensConnection
+    OnError = StudentviewViewError
     SQL.Strings = (
       'SELECT * FROM Stage_ENS.dbo.StudentView')
-    Left = 41
-    Top = 358
+    Left = 241
+    Top = 342
     object StudentviewViewstd_num: TStringField
       FieldName = 'std_num'
       Origin = 'std_num'
@@ -506,6 +406,25 @@ object dbData: TdbData
         Name = 'SumAll'
         DataType = ftFloat
         Precision = 4
+      end
+      item
+        Name = 'Multiplier'
+        DataType = ftInteger
+      end
+      item
+        Name = 'Average'
+        DataType = ftFloat
+        Precision = 3
+      end
+      item
+        Name = 'Result'
+        DataType = ftString
+        Size = 20
+      end
+      item
+        Name = 'Ratrapage'
+        DataType = ftFloat
+        Precision = 3
       end>
     IndexDefs = <>
     FetchOptions.AssignedValues = [evMode]
@@ -524,48 +443,150 @@ object dbData: TdbData
       FieldName = 'SumAll'
       Precision = 4
     end
-  end
-  object DataSourceRatrapageview: TDataSource
-    DataSet = RatrapageviewView
-    Left = 240
-    Top = 408
-  end
-  object DataSource2: TDataSource
-    DataSet = FDMemTable2
-    Left = 136
-    Top = 408
-  end
-  object FDMemTable2: TFDMemTable
-    Active = True
-    FieldDefs = <
-      item
-        Name = 'SumAll'
-        DataType = ftFloat
-        Precision = 15
-      end>
-    IndexDefs = <>
-    FetchOptions.AssignedValues = [evMode]
-    FetchOptions.Mode = fmAll
-    ResourceOptions.AssignedValues = [rvSilentMode]
-    ResourceOptions.SilentMode = True
-    UpdateOptions.AssignedValues = [uvCheckRequired, uvAutoCommitUpdates]
-    UpdateOptions.CheckRequired = False
-    UpdateOptions.AutoCommitUpdates = True
-    StoreDefs = True
-    Left = 136
-    Top = 352
-    object FDMemTable2SumAll: TFloatField
+    object FDMemTable1Multiplier: TIntegerField
       FieldKind = fkInternalCalc
-      FieldName = 'SumAll'
+      FieldName = 'Multiplier'
+    end
+    object FDMemTable1Average: TFloatField
+      DisplayWidth = 3
+      FieldKind = fkInternalCalc
+      FieldName = 'Average'
+      Precision = 3
+    end
+    object FDMemTable1Result: TStringField
+      FieldKind = fkInternalCalc
+      FieldName = 'Result'
+    end
+    object FDMemTable1Ratrapage: TFloatField
+      DisplayWidth = 3
+      FieldKind = fkInternalCalc
+      FieldName = 'Ratrapage'
+      Precision = 3
     end
   end
-  object RatrapageviewView: TFDQuery
+  object PointTable: TFDQuery
     Active = True
     Connection = Stage_ensConnection
     SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Point')
+    Left = 145
+    Top = 221
+    object PointTablepoint_num: TFDAutoIncField
+      FieldName = 'point_num'
+      Origin = 'point_num'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object PointTabletp: TFloatField
+      FieldName = 'tp'
+      Origin = 'tp'
+    end
+    object PointTabletd: TFloatField
+      FieldName = 'td'
+      Origin = 'td'
+    end
+    object PointTableexama1: TFloatField
+      FieldName = 'exama1'
+      Origin = 'exama1'
+    end
+    object PointTableexama2: TFloatField
+      FieldName = 'exama2'
+      Origin = 'exama2'
+    end
+    object PointTableratrapage: TFloatField
+      FieldName = 'ratrapage'
+      Origin = 'ratrapage'
+    end
+    object PointTablestd_num: TStringField
+      FieldName = 'std_num'
+      Origin = 'std_num'
+      Required = True
+      Size = 16
+    end
+    object PointTablesubj_num: TIntegerField
+      FieldName = 'subj_num'
+      Origin = 'subj_num'
+      Required = True
+    end
+    object PointTableteach_num: TIntegerField
+      FieldName = 'teach_num'
+      Origin = 'teach_num'
+      Required = True
+    end
+    object PointTableYear: TIntegerField
+      FieldName = 'Year'
+      Origin = 'Year'
+      Required = True
+    end
+  end
+  object PonintviewsView: TFDQuery
+    Active = True
+    OnCalcFields = PonintviewsViewCalcFields
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.PonintViews')
+    Left = 423
+    Top = 350
+    object PonintviewsViewsubj_name: TStringField
+      FieldName = 'subj_name'
+      Origin = 'subj_name'
+      Required = True
+      Size = 25
+    end
+    object PonintviewsViewtp: TFloatField
+      FieldName = 'tp'
+      Origin = 'tp'
+    end
+    object PonintviewsViewtd: TFloatField
+      FieldName = 'td'
+      Origin = 'td'
+    end
+    object PonintviewsViewexama1: TFloatField
+      FieldName = 'exama1'
+      Origin = 'exama1'
+    end
+    object PonintviewsViewexama2: TFloatField
+      FieldName = 'exama2'
+      Origin = 'exama2'
+    end
+    object PonintviewsViewYear: TIntegerField
+      FieldName = 'Year'
+      Origin = 'Year'
+      Required = True
+    end
+    object PonintviewsViewratrapage: TFloatField
+      FieldName = 'ratrapage'
+      Origin = 'ratrapage'
+    end
+    object PonintviewsViewMultiplier: TIntegerField
+      FieldName = 'Multiplier'
+      Origin = 'Multiplier'
+      Required = True
+    end
+    object PonintviewsViewSum: TFloatField
+      DisplayWidth = 4
+      FieldKind = fkInternalCalc
+      FieldName = 'Sum'
+      Precision = 4
+    end
+    object PonintviewsViewstd_num: TStringField
+      FieldName = 'std_num'
+      Origin = 'std_num'
+      Required = True
+      Size = 16
+    end
+    object PonintviewsViewR: TStringField
+      FieldKind = fkInternalCalc
+      FieldName = 'R'
+    end
+  end
+  object RatrapageviewView: TFDQuery
+    OnCalcFields = RatrapageviewViewCalcFields
+    Connection = Stage_ensConnection
+    SQL.Strings = (
       'SELECT * FROM Stage_ENS.dbo.RatrapageView')
-    Left = 244
-    Top = 359
+    Left = 126
+    Top = 350
     object RatrapageviewViewtp: TFloatField
       FieldName = 'tp'
       Origin = 'tp'
@@ -582,14 +603,15 @@ object dbData: TdbData
       FieldName = 'exama2'
       Origin = 'exama2'
     end
+    object RatrapageviewViewSum: TFloatField
+      DisplayWidth = 4
+      FieldKind = fkInternalCalc
+      FieldName = 'Sum'
+      Precision = 4
+    end
     object RatrapageviewViewYear: TIntegerField
       FieldName = 'Year'
       Origin = 'Year'
-      Required = True
-    end
-    object RatrapageviewViewratrapage: TBooleanField
-      FieldName = 'ratrapage'
-      Origin = 'ratrapage'
       Required = True
     end
     object RatrapageviewViewsubj_name: TStringField
@@ -609,9 +631,14 @@ object dbData: TdbData
       Required = True
       Size = 16
     end
-    object RatrapageviewViewSum: TFloatField
-      FieldKind = fkInternalCalc
-      FieldName = 'Sum'
+    object RatrapageviewViewratrapage: TFloatField
+      FieldName = 'ratrapage'
+      Origin = 'ratrapage'
     end
+  end
+  object DataSourceRatrapageview: TDataSource
+    DataSet = RatrapageviewView
+    Left = 112
+    Top = 424
   end
 end

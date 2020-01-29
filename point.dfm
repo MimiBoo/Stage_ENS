@@ -19,6 +19,19 @@ object Form1: TForm1
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 18
+  object Label6: TLabel
+    Left = 637
+    Top = 8
+    Width = 83
+    Height = 19
+    Caption = #1575#1604#1605#1593#1583#1604#1575#1578' '#1608#1606#1602#1575#1591
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = 20
+    Font.Name = 'B amir'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
   object Body: TPanel
     Left = 0
     Top = 42
@@ -220,7 +233,6 @@ object Form1: TForm1
           FieldName = 'tp'
           ReadOnly = True
           Title.Caption = #1575#1604#1575#1593#1605#1575#1604' '#1575#1604#1578#1591#1576#1610#1602#1610#1577
-          Width = 64
           Visible = True
         end
         item
@@ -228,7 +240,6 @@ object Form1: TForm1
           FieldName = 'td'
           ReadOnly = True
           Title.Caption = #1575#1604#1575#1593#1605#1575#1604' '#1575#1604#1605#1608#1580#1607#1577
-          Width = 64
           Visible = True
         end
         item
@@ -244,7 +255,13 @@ object Form1: TForm1
           FieldName = 'exama2'
           ReadOnly = True
           Title.Caption = #1575#1604#1575#1605#1578#1581#1575#1606' '#1575#1604#1579#1575#1606#1610
-          Width = 64
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ratrapage'
+          ReadOnly = True
+          Title.Caption = #1575#1604#1575#1587#1578#1583#1585#1575#1603
           Visible = True
         end
         item
@@ -260,7 +277,6 @@ object Form1: TForm1
           FieldName = 'Multiplier'
           ReadOnly = True
           Title.Caption = #1575#1604#1605#1593#1575#1605#1604
-          Width = 64
           Visible = True
         end
         item
@@ -269,13 +285,6 @@ object Form1: TForm1
           ReadOnly = True
           Title.Caption = #1575#1604#1587#1606#1577
           Width = 73
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'ratrapage'
-          ReadOnly = True
-          Title.Caption = #1575#1604#1575#1587#1578#1583#1585#1575#1603
           Visible = True
         end
         item
@@ -391,7 +400,7 @@ object Form1: TForm1
             Height = 32
             Align = alRight
             DataField = 'std_num'
-            DataSource = dbData.DataSourceStudentview
+            DataSource = Form17.DataSource1
             Enabled = False
             TabOrder = 0
             OnChange = Editstd_numChange
@@ -404,7 +413,7 @@ object Form1: TForm1
             Height = 32
             Align = alRight
             DataField = 'std_name'
-            DataSource = dbData.DataSourceStudentview
+            DataSource = Form17.DataSource1
             Enabled = False
             TabOrder = 1
             ExplicitHeight = 24
@@ -416,7 +425,7 @@ object Form1: TForm1
             Height = 32
             Align = alRight
             DataField = 'std_lastname'
-            DataSource = dbData.DataSourceStudentview
+            DataSource = Form17.DataSource1
             Enabled = False
             TabOrder = 2
             ExplicitHeight = 24
@@ -657,6 +666,22 @@ object Form1: TForm1
         end
         object Label2: TLabel
           AlignWithMargins = True
+          Left = 308
+          Top = 3
+          Width = 94
+          Height = 34
+          Align = alRight
+          Caption = #1606#1602#1591#1577' '#1575#1604#1575#1587#1578#1583#1585#1575#1603'  : '
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindow
+          Font.Height = 18
+          Font.Name = 'B amir'
+          Font.Style = []
+          ParentFont = False
+          ExplicitHeight = 18
+        end
+        object Label3: TLabel
+          AlignWithMargins = True
           Left = 471
           Top = 3
           Width = 127
@@ -691,7 +716,7 @@ object Form1: TForm1
         end
         object Panel6: TPanel
           AlignWithMargins = True
-          Left = 353
+          Left = 190
           Top = 3
           Width = 49
           Height = 34
@@ -742,6 +767,15 @@ object Form1: TForm1
           Height = 40
           Align = alRight
           TabOrder = 5
+          ExplicitHeight = 26
+        end
+        object EditRatrapage: TEdit
+          Left = 242
+          Top = 0
+          Width = 63
+          Height = 40
+          Align = alRight
+          TabOrder = 6
           ExplicitHeight = 26
         end
       end
