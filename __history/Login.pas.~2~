@@ -17,7 +17,10 @@ type
     EdieUser_Name: TEdit;
     EdiePassword: TEdit;
     Panel2: TPanel;
+<<<<<<< HEAD
     CheckBox1: TCheckBox;
+=======
+>>>>>>> 7db3e5757bc80ee7b60c7413bede79342349d6b0
     procedure FormCreate(Sender: TObject);
     procedure Image1Click(Sender: TObject);
     procedure Panel2Click(Sender: TObject);
@@ -60,8 +63,13 @@ end;
 procedure TForm5.Panel2Click(Sender: TObject);
 begin
 
+<<<<<<< HEAD
 if (EdieUser_Name.Text = dbData.AdmenTableUser_Name.AsString) and
               (EdiePassword.Text = dbData.AdmenTablePassword.AsString) then
+=======
+if (EdieUser_Name.Text = dbData.AdminTableUser_Name.AsString) and
+              (EdiePassword.Text = dbData.AdminTablePassword.AsString) then
+>>>>>>> 7db3e5757bc80ee7b60c7413bede79342349d6b0
    begin
      Form2.ShowModal;
      Form5.Visible := True

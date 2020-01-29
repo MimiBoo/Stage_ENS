@@ -95,7 +95,7 @@ end;
 
 procedure TForm3.Panel5Click(Sender: TObject);
 begin
-dbData.AdmenTable.Edit;
+dbData.AdminTable.Edit;
      //Form4.ShowModal;
 end;
 

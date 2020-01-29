@@ -5,32 +5,26 @@ import pyodbc
 def read(conn, firebase):
     print("Read")
     cursor = conn.cursor()
-    points = cursor.execute("select * from Point")
+    points = cursor.execute(
+        "select exam1,exam2,tp, td,ratrapage,Student.std_num as student, Student.std_name as student,Student.std_lastname as student, Subject.subj_name as subject, Teacher.teach_name as teacher,Teacher.teach_lastname as teacher\
+        from Point \
+        INNER JOIN Student ON Point.std_num =student.std_num\
+        INNER JOIN Subject ON Point.subj_num =subject.subj_num\
+        INNER JOIN Teacher ON Point.teach_num =teacher.teach_num ")
     for row in points:
-        students = cursor.execute(
-            f"select std_num, std_name, std_lastname from Student where std_num={row[6]}"
-        )
-        student = students.fetchone()
-        subjects = cursor.execute(
-            f"select subj_name from Subject where subj_num={row[7]}")
-        subject = subjects.fetchone()
-        teachers = cursor.execute(
-            f"select teach_name, teach_lastname from Teacher where teach_num={row[8]}"
-        )
-        teacher = teachers.fetchone()
+        print(row)
         data = {
-            "Std_num": student[0],
-            "Std_name": student[1] + ' ' + student[2],
-            "Subject_name": subject[0],
-            "Teacher_name": teacher[0] + ' ' + teacher[1],
-            'Exam1': row[1],
-            'Exam2': row[2],
-            'tp': row[3],
-            'td': row[4],
-            'Ratrapage': row[5],
+            "Std_num": row[5],
+            "Std_name": row[6] + ' ' + row[7],
+            "Subject_name": row[8],
+            "Teacher_name": row[9] + ' ' + row[10],
+            'Exam1': row[0],
+            'Exam2': row[1],
+            'tp': row[2],
+            'td': row[3],
+            'Ratrapage': row[4],
         }
-        print(student)
-        resault = firebase.post("/Marks", data)
+        resault = firebase.post(f"/Marks/{row[8]}", data)
         print(resault)
 
     print('')

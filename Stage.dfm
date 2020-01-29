@@ -17,6 +17,7 @@ object Form6: TForm6
   Position = poDesktopCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
+<<<<<<< HEAD
   TextHeight = 14
   object Body: TPanel
     Left = 0
@@ -295,6 +296,9 @@ object Form6: TForm6
       end
     end
   end
+=======
+  TextHeight = 15
+>>>>>>> 7db3e5757bc80ee7b60c7413bede79342349d6b0
   object Panel1: TPanel
     Left = 1167
     Top = 0
@@ -396,7 +400,234 @@ object Form6: TForm6
         30375430393A35363A30332B30303A30309DEE6A130000001974455874536F66
         7477617265007777772E696E6B73636170652E6F72679BEE3C1A000000004945
         4E44AE426082}
+<<<<<<< HEAD
       OnClick = Image3Click
+=======
+    end
+  end
+  object Body: TPanel
+    Left = 0
+    Top = 38
+    Width = 835
+    Height = 493
+    Align = alBottom
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    BevelOuter = bvNone
+    Color = clActiveCaption
+    ParentBackground = False
+    TabOrder = 1
+    object Panel2: TPanel
+      Left = 720
+      Top = 6
+      Width = 107
+      Height = 35
+      BevelOuter = bvNone
+      Caption = #1573#1590#1575#1601#1577' '
+      Font.Charset = ARABIC_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'B amir'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 0
+      OnClick = Panel2Click
+    end
+    object Panel3: TPanel
+      Left = 607
+      Top = 6
+      Width = 107
+      Height = 35
+      BevelOuter = bvNone
+      Caption = #1575#1604#1578#1593#1583#1610#1604
+      Font.Charset = ARABIC_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'B amir'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 1
+      OnClick = Panel3Click
+    end
+    object SearchBox1: TSearchBox
+      Left = 47
+      Top = 32
+      Width = 193
+      Height = 26
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 18
+      Font.Name = 'B amir'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      TextHint = #1576#1581#1579' '#1593#1606' '#1591#1575#1604#1576
+      OnChange = SearchBox1Change
+    end
+    object GroupBox1: TGroupBox
+      Left = 0
+      Top = 64
+      Width = 835
+      Height = 429
+      Align = alBottom
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = 16
+      Font.Name = 'B amir'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 3
+      object DBCtrlGrid1: TDBCtrlGrid
+        Left = 2
+        Top = 18
+        Width = 831
+        Height = 409
+        Align = alClient
+        DataSource = dbData.DataSourceStudent
+        DragCursor = crArrow
+        PanelBorder = gbNone
+        PanelHeight = 29
+        PanelWidth = 814
+        ParentShowHint = False
+        TabOrder = 0
+        RowCount = 14
+        ShowHint = False
+        object Panel5: TPanel
+          Left = 696
+          Top = 0
+          Width = 118
+          Height = 29
+          Align = alRight
+          BevelOuter = bvNone
+          TabOrder = 0
+          object DBText1: TDBText
+            AlignWithMargins = True
+            Left = 3
+            Top = 3
+            Width = 112
+            Height = 23
+            Align = alClient
+            Alignment = taCenter
+            DataField = 'std_num'
+            DataSource = dbData.DataSourceStudent
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindow
+            Font.Height = 18
+            Font.Name = 'B amir'
+            Font.Style = []
+            ParentFont = False
+            ExplicitLeft = 6
+            ExplicitWidth = 87
+          end
+        end
+        object Panel6: TPanel
+          Left = 0
+          Top = 0
+          Width = 696
+          Height = 29
+          Align = alClient
+          BevelOuter = bvNone
+          TabOrder = 1
+          OnClick = Panel6Click
+          ExplicitWidth = 718
+          object DBText2: TDBText
+            AlignWithMargins = True
+            Left = 564
+            Top = 3
+            Width = 129
+            Height = 23
+            Align = alRight
+            DataField = 'std_name'
+            DataSource = dbData.DataSourceStudent
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindow
+            Font.Height = 18
+            Font.Name = 'B amir'
+            Font.Style = []
+            ParentFont = False
+            ExplicitLeft = 583
+          end
+          object DBText3: TDBText
+            AlignWithMargins = True
+            Left = 440
+            Top = 3
+            Width = 118
+            Height = 23
+            Align = alRight
+            Alignment = taCenter
+            DataField = 'std_lastname'
+            DataSource = dbData.DataSourceStudent
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindow
+            Font.Height = 18
+            Font.Name = 'B amir'
+            Font.Style = []
+            ParentFont = False
+            ExplicitLeft = 464
+            ExplicitTop = 4
+            ExplicitHeight = 32
+          end
+          object DBText4: TDBText
+            AlignWithMargins = True
+            Left = 256
+            Top = 3
+            Width = 178
+            Height = 23
+            Align = alRight
+            Alignment = taCenter
+            DataField = 'bDate_place'
+            DataSource = dbData.DataSourceStudent
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindow
+            Font.Height = 18
+            Font.Name = 'B amir'
+            Font.Style = []
+            ParentFont = False
+            ExplicitLeft = 280
+            ExplicitTop = 4
+            ExplicitHeight = 32
+          end
+          object DBText5: TDBText
+            AlignWithMargins = True
+            Left = 152
+            Top = 3
+            Width = 98
+            Height = 23
+            Align = alRight
+            Alignment = taCenter
+            DataField = 'bDate'
+            DataSource = dbData.DataSourceStudent
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindow
+            Font.Height = 18
+            Font.Name = 'B amir'
+            Font.Style = []
+            ParentFont = False
+            ExplicitLeft = 176
+            ExplicitTop = 4
+            ExplicitHeight = 32
+          end
+        end
+      end
+    end
+    object Panel4: TPanel
+      Left = 494
+      Top = 6
+      Width = 107
+      Height = 35
+      BevelOuter = bvNone
+      Caption = #1581#1584#1601
+      Font.Charset = ARABIC_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'B amir'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 4
+      OnClick = Panel4Click
+>>>>>>> 7db3e5757bc80ee7b60c7413bede79342349d6b0
     end
   end
 end

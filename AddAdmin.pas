@@ -55,10 +55,10 @@ if (Edit1.Text ='') and (Edit2.Text ='') and (Edit3.Text ='') then
  else if Edit3.Text = Edit2.Text then
 
   begin
-  dbData.AdmenTable.Append;
-  dbData.AdmenTableUser_Name.AsString := Edit1.Text;
-  dbData.AdmenTablePassword.AsString := Edit2.Text;
-  dbData.AdmenTable.Post;
+  dbData.AdminTable.Append;
+  dbData.AdminTableUser_Name.AsString := Edit1.Text;
+  dbData.AdminTablePassword.AsString := Edit2.Text;
+  dbData.AdminTable.Post;
   end
   else
   begin

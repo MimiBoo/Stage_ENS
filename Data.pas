@@ -23,6 +23,7 @@ type
     DataSourceSubject: TDataSource;
     DataSourceState: TDataSource;
     DataSourceStudent: TDataSource;
+<<<<<<< HEAD
     DataSourceMunicipal: TDataSource;
     AdmenTable: TFDQuery;
     ApsentTable: TFDQuery;
@@ -48,10 +49,22 @@ type
     SubjectTablesubj_num: TFDAutoIncField;
     SubjectTablesubj_name: TStringField;
     SubjectTableMultiplier: TIntegerField;
+=======
+    StudentTable: TFDQuery;
+    StudentTablestd_num: TStringField;
+    StudentTablestd_name: TStringField;
+    StudentTablestd_lastname: TStringField;
+    StudentTablebDate: TDateField;
+    StudentTablebDate_place: TStringField;
+    StudentTableclass_num: TIntegerField;
+    StudentTablestate_num: TIntegerField;
+    StateTable: TFDQuery;
+>>>>>>> 7db3e5757bc80ee7b60c7413bede79342349d6b0
     StateTablestate_num: TFDAutoIncField;
     StateTablestate_name: TStringField;
     DivisionTablediv_num: TFDAutoIncField;
     DivisionTablediv_name: TStringField;
+<<<<<<< HEAD
     AdmenTableUser_Name: TStringField;
     AdmenTablePassword: TStringField;
     ClassTableclass_num: TFDAutoIncField;
@@ -84,6 +97,9 @@ type
     FDMemTable1Multiplier: TIntegerField;
     FDMemTable1Average: TFloatField;
     FDMemTable1Result: TStringField;
+=======
+    ClassTable: TFDQuery;
+>>>>>>> 7db3e5757bc80ee7b60c7413bede79342349d6b0
     PointTable: TFDQuery;
     PointTablepoint_num: TFDAutoIncField;
     PointTabletp: TFloatField;
@@ -94,6 +110,7 @@ type
     PointTablestd_num: TStringField;
     PointTablesubj_num: TIntegerField;
     PointTableteach_num: TIntegerField;
+<<<<<<< HEAD
     PointTableYear: TIntegerField;
     PonintviewsView: TFDQuery;
     PonintviewsViewsubj_name: TStringField;
@@ -124,6 +141,18 @@ type
     procedure StudentviewViewError(ASender, AInitiator: TObject;
       var AException: Exception);
     procedure RatrapageviewViewCalcFields(DataSet: TDataSet);
+=======
+    AdminTable: TFDQuery;
+    SubjectTable: TFDQuery;
+    TeacherTable: TFDQuery;
+    ApsentTable: TFDQuery;
+    AdminTableUser_Name: TStringField;
+    AdminTablePassword: TStringField;
+    ClassTableclass_num: TFDAutoIncField;
+    ClassTableclass_name: TStringField;
+    ClassTablediv_num: TIntegerField;
+    ClassTablespec_num: TIntegerField;
+>>>>>>> 7db3e5757bc80ee7b60c7413bede79342349d6b0
   private
     { Private declarations }
   public

@@ -9,16 +9,22 @@ object dbData: TdbData
   end
   object Stage_ensConnection: TFDConnection
     Params.Strings = (
-      'ConnectionDef=Stage_ENS')
+      'ConnectionDef=StageENS')
     Connected = True
     LoginPrompt = False
     Left = 396
     Top = 18
   end
   object DataSourceAdmen: TDataSource
+<<<<<<< HEAD
     DataSet = AdmenTable
     Left = 40
     Top = 136
+=======
+    DataSet = AdminTable
+    Left = 96
+    Top = 128
+>>>>>>> 7db3e5757bc80ee7b60c7413bede79342349d6b0
   end
   object DataSourceTeacher: TDataSource
     DataSet = TeacherTable
@@ -60,6 +66,7 @@ object dbData: TdbData
     Left = 624
     Top = 336
   end
+<<<<<<< HEAD
   object DataSourceMunicipal: TDataSource
     DataSet = MunicipalTable
     Left = 744
@@ -220,6 +227,8 @@ object dbData: TdbData
       Size = 25
     end
   end
+=======
+>>>>>>> 7db3e5757bc80ee7b60c7413bede79342349d6b0
   object StudentTable: TFDQuery
     Active = True
     Connection = Stage_ensConnection
@@ -369,6 +378,7 @@ object dbData: TdbData
       Origin = 'bDate'
       Required = True
     end
+<<<<<<< HEAD
     object StudentviewViewdiv_name: TStringField
       FieldName = 'div_name'
       Origin = 'div_name'
@@ -463,6 +473,8 @@ object dbData: TdbData
       FieldName = 'Ratrapage'
       Precision = 3
     end
+=======
+>>>>>>> 7db3e5757bc80ee7b60c7413bede79342349d6b0
   end
   object PointTable: TFDQuery
     Active = True
@@ -640,5 +652,49 @@ object dbData: TdbData
     DataSet = RatrapageviewView
     Left = 112
     Top = 424
+  end
+  object AdminTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Admin')
+    Left = 96
+    Top = 94
+    object AdminTableUser_Name: TStringField
+      FieldName = 'User_Name'
+      Origin = 'User_Name'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+      Size = 30
+    end
+    object AdminTablePassword: TStringField
+      FieldName = 'Password'
+      Origin = 'Password'
+      Required = True
+    end
+  end
+  object SubjectTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Subject')
+    Left = 355
+    Top = 190
+  end
+  object TeacherTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Teacher')
+    Left = 403
+    Top = 341
+  end
+  object ApsentTable: TFDQuery
+    Active = True
+    Connection = Stage_ensConnection
+    SQL.Strings = (
+      'SELECT * FROM Stage_ENS.dbo.Apsent')
+    Left = 474
+    Top = 323
   end
 end

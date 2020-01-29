@@ -17,7 +17,7 @@ object Form4: TForm4
   Position = poOwnerFormCenter
   OnCreate = FormCreate
   PixelsPerInch = 96
-  TextHeight = 14
+  TextHeight = 15
   object Panel1: TPanel
     Left = 201
     Top = 0
@@ -146,9 +146,9 @@ object Form4: TForm4
       ParentFont = False
     end
     object Label2: TLabel
-      Left = 238
+      Left = 244
       Top = 78
-      Width = 55
+      Width = 49
       Height = 16
       Caption = #1603#1604#1605#1577' '#1575#1604#1605#1585#1608#1585':'
       Font.Charset = DEFAULT_CHARSET
@@ -159,9 +159,9 @@ object Form4: TForm4
       ParentFont = False
     end
     object Label3: TLabel
-      Left = 213
+      Left = 220
       Top = 113
-      Width = 80
+      Width = 73
       Height = 16
       Caption = #1575#1593#1575#1583#1577' '#1603#1604#1605#1577' '#1575#1604#1605#1585#1608#1585':'
       Font.Charset = DEFAULT_CHARSET

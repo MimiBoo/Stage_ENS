@@ -33,11 +33,15 @@ type
     procedure Image1Click(Sender: TObject);
     procedure Panel4Click(Sender: TObject);
     procedure SearchBox1Change(Sender: TObject);
+<<<<<<< HEAD
     procedure Image2Click(Sender: TObject);
     procedure Image3Click(Sender: TObject);
     procedure Panel7Click(Sender: TObject);
     procedure Panel3Click(Sender: TObject);
     procedure Panel16Click(Sender: TObject);
+=======
+    procedure Panel6Click(Sender: TObject);
+>>>>>>> 7db3e5757bc80ee7b60c7413bede79342349d6b0
   private
       procedure WMNCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
   public
@@ -264,6 +268,7 @@ end;
 
 end;
 
+<<<<<<< HEAD
 procedure TForm6.Panel7Click(Sender: TObject);
 begin
 
@@ -332,6 +337,11 @@ with dbData.ClassTable do
 Form7.ShowModal;
 
 
+=======
+procedure TForm6.Panel6Click(Sender: TObject);
+begin
+Panel6.Color:= clWhite;
+>>>>>>> 7db3e5757bc80ee7b60c7413bede79342349d6b0
 end;
 
 procedure TForm6.SearchBox1Change(Sender: TObject);
