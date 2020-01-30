@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:279401468000:android:89540809c2269e5a33b305",
+        "mobilesdk_app_id": "1:279401468000:android:d5e98f135b7b640a33b305",
         "android_client_info": {
-          "package_name": "com.example.ens_app"
+          "package_name": "com.notes.ens_app"
         }
       },
       "oauth_client": [

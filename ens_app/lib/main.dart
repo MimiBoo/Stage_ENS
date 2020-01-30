@@ -1,5 +1,3 @@
-import 'package:ens_app/models/pdf_file.dart';
-import 'package:ens_app/models/testing.dart';
 import 'package:ens_app/models/user_model.dart';
 import 'package:ens_app/views/notes_page.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +31,7 @@ class MyApp extends StatelessWidget {
         Locale("ar", "DZ"), // OR Locale('ar', 'AE') OR Other RTL locales
       ],
       locale: Locale("ar", "DZ"),
-      title: 'ENS APP',
+      title: 'ENS Note',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primaryColor: Color(0xffeeeeee)),
       home: MyHomePage(),

@@ -1,4 +1,3 @@
-import 'package:ens_app/models/pdf_file.dart';
 import 'package:ens_app/models/user_notes.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -133,7 +132,6 @@ class _NotesPageState extends State<NotesPage> {
                       color: Colors.black,
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
-                      fontFamily: 'Simple',
                     ),
                   ),
                 ),
@@ -160,13 +158,7 @@ class _NotesPageState extends State<NotesPage> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(8)),
                     child: RaisedButton(
-                      onPressed: () {
-                        PdfResault res = PdfResault(
-                          usernotes: user_notes,
-                        );
-
-                        res.createPdf();
-                      },
+                      onPressed: () {},
                       elevation: 0,
                       padding: EdgeInsets.only(right: 1),
                       color: Theme.of(context).primaryColor,
